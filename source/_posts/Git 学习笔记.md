@@ -121,7 +121,7 @@ Git 的版本库里存了很多东西，其中最重要的就是称为 stage（�
 
 你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
 
-![git-stage](./Git 学习笔记/1.png)
+![](./Git 学习笔记/1.png)
 
 ### 管理修改
 
@@ -191,7 +191,7 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 *分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习 Git 的时候，另一个你正在另一个平行宇宙里努力学习  SVN 。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了 Git 又学会了 SVN！*
 
-![learn-branches](./Git 学习笔记/2.png)
+![](./Git 学习笔记/2.png)
 
 分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。
 
@@ -254,7 +254,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 
 可以看到，不使用`Fast forward`模式，merge 后就像这样：
 
-![git-no-ff-mode](./Git 学习笔记/3.png)
+![](./Git 学习笔记/3.png)
 
 **分支策略**
 
@@ -268,7 +268,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 
 所以，团队合作的分支看起来就像这样：
 
-![git-br-policy](./Git 学习笔记/4.png)
+![](./Git 学习笔记/4.png)
 
 
 
@@ -416,9 +416,5 @@ $ cat .gitconfig
 ^_^ This is the END of the page / document. Thank you for reading!
 
 *Finished by **pkufzh (Small Shrimp)** on* **2022/01/19**.
-
-<div align = center>
-<a href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" title="Powered by Hexo"></a> <a href="https://hexo.fluid-dev.com/"><img src="https://img.shields.io/badge/Theme-Fluid-9cf?style=flat&amp;logo=fortran" title="Theme Fluid"></a> <a href="https://www.researchgate.net/profile/Zhenghao-Feng"><img src="https://img.shields.io/badge/ResearchGate-brightgreen?logo=researchgate&logoColor=white" / title="My Research Profile"></a> <a href="https://space.bilibili.com/167343763"><img src="https://img.shields.io/badge/dynamic/json?labelColor=FE7398&logo=bilibili&logoColor=white&label=Bilibili%20Fans&color=00aeec&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D167343763" / title="My Bilibili Space"></a> <a href="https://github.com/pkufzh"><img src="https://img.shields.io/badge/dynamic/json?color=262525&label=Github%20Followers&logo=github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dpkufzh" / title="My Github Homepage"></a>
-</div>
 
 <center><i> Who am I? A happy shrimp from Peking University! </i></center>
