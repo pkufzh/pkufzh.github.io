@@ -9,7 +9,7 @@ tags:
 - Git
 - Github
 categories:
-- [学习笔记, Git]
+- [Learning Notes, Git]
 ---
 
 # Git 学习笔记
@@ -414,8 +414,8 @@ $ cat .gitconfig
 
 ------
 
-^_^ This is the END of the page / document. Thank you for reading!
+<font size = 2.5>^_^ This is the END of the page / document. Thank you for reading!</font>>
 
-*Finished by **pkufzh (Small Shrimp)** on* **2022/01/19**.
+<font size = 2.5>*Finished by **pkufzh (Small Shrimp)** on* **2022/01/19**.</font>
 
-<center><i> Who am I? A happy shrimp from Peking University! </i></center>
+<div align = center><font size = 2.5><i> Who am I? A happy shrimp from Peking University! </i></font></div>
