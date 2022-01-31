@@ -19,6 +19,6 @@ layout: about
 
 ------
 
-<!-- Github Stats -->
+<!-- Github Stats & Most Used Languages -->
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=pkufzh&show_icons=true)
+![](https://github-readme-stats.vercel.app/api?username=pkufzh&show_icons=true) ![](https://github-readme-stats.vercel.app/api/top-langs/?username=pkufzh&theme=default&layout=compact)
