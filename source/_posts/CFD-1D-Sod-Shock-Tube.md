@@ -1,6 +1,7 @@
 ---
 title: Numerical Simulation of 1-D Sod Shock Tube
 excerpt: Guidance for the realization of the numerical simulation of 1-D Sod Shock Tube (v1.0)
+index_img: /img/posts/Cover_CFD_1D_Sod_Shock_Tube.png
 date: 2022-01-31 15:32:52
 updated:
 tags:
@@ -148,13 +149,14 @@ $$
 
 <font size = 2.5>^_^ This is the END of the page / document. Thank you for reading! </font>
 
-<font size = 2.5>If you think this project is helpful to you, do not hesitate to light up the 'Star' or 'Fork'!</font>
+<font size = 2.5>If you think this project is helpful to you, do not hesitate to light up the 'Star' or 'Fork' in my [Github Repository](https://github.com/pkufzh/CFD_1D_Sod_Shock_Tube)!</font>
 
-<font size = 2.5>Developed or Finished by <i><b>pkufzh (Small Shrimp)</b></i> on <i><b>2022/01/20</b></i> .</font>
-
-<div align = center><font size = 2.5><i> Who am I? A happy shrimp from Peking University! </i></font></div>
+<font size = 2.5>Developed by <i><b>pkufzh (Small Shrimp)</b></i> on <i><b>2022/01/20</b></i> .</font>
 
 ------
 
-<font size = 2.5>*This project is protected by the MIT license. Please obey the open source rules.*</font>
+<font size = 2.5>*This project is protected by the MIT license. Please obey the open source rules strictly .*</font>
 
+------
+
+<center><i> Who am I? A happy shrimp from Peking University! </i></center>

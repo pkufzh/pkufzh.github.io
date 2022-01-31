@@ -414,8 +414,10 @@ $ cat .gitconfig
 
 ------
 
-<font size = 2.5>^_^ This is the END of the page / document. Thank you for reading!</font>>
+<font size = 2.5>^_^ This is the END of the page / document. Thank you for reading!</font>
 
 <font size = 2.5>*Finished by **pkufzh (Small Shrimp)** on* **2022/01/19**.</font>
 
-<div align = center><font size = 2.5><i> Who am I? A happy shrimp from Peking University! </i></font></div>
+------
+
+<center><i> Who am I? A happy shrimp from Peking University! </i></center>
