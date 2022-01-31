@@ -1,6 +1,6 @@
 ---
 title: Numerical Simulation of 1-D Sod Shock Tube
-excerpt: Guidance for the realization of the numerical simulation of 1-D Sod Shock Tube (v1.0)
+excerpt: Guidance for the numerical simulation of 1-D Sod Shock Tube (v1.0)
 index_img: /img/posts/Cover_CFD_1D_Sod_Shock_Tube.png
 date: 2022-01-31 15:32:52
 updated:
