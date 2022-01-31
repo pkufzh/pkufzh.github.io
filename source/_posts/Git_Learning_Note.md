@@ -1,6 +1,7 @@
 ---
 title: Git 学习笔记
 excerpt: 本浓缩版 Git 学习笔记全部来自廖雪峰老师的官方网站。
+index_img: /img/posts/Cover_Git_Learning_Note.png
 date: 2022-01-19 20:00:00
 updated: 2022-01-30 09:50:01
 tags:
@@ -11,7 +12,7 @@ categories:
 - [学习笔记, Git]
 ---
 
-# Git 学习笔记（整理时间：2022/01/19）
+# Git 学习笔记
 
 ***整理作者：pkufzh (Small Shrimp)***
 
@@ -121,7 +122,7 @@ Git 的版本库里存了很多东西，其中最重要的就是称为 stage（�
 
 你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
 
-![](./Git 学习笔记/1.png)
+![](./Git_Learning_Note/1.png)
 
 ### 管理修改
 
@@ -191,7 +192,7 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 
 *分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习 Git 的时候，另一个你正在另一个平行宇宙里努力学习  SVN 。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了 Git 又学会了 SVN！*
 
-![](./Git 学习笔记/2.png)
+![](./Git_Learning_Note/2.png)
 
 分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。
 
@@ -254,7 +255,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 
 可以看到，不使用`Fast forward`模式，merge 后就像这样：
 
-![](./Git 学习笔记/3.png)
+![](./Git_Learning_Note/3.png)
 
 **分支策略**
 
@@ -268,7 +269,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 
 所以，团队合作的分支看起来就像这样：
 
-![](./Git 学习笔记/4.png)
+![](./Git_Learning_Note/4.png)
 
 
 
