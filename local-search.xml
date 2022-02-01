@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>Numerical Simulation of 1-D Sod Shock Tube</title>
+    <title>一维 Sod 激波管的数值模拟</title>
     <link href="/2022/01/31/CFD-1D-Sod-Shock-Tube/"/>
     <url>/2022/01/31/CFD-1D-Sod-Shock-Tube/</url>
     
@@ -22,9 +22,9 @@
     
     <tags>
       
-      <tag>Codes</tag>
-      
       <tag>Open-source</tag>
+      
+      <tag>Codes</tag>
       
       <tag>Computational Fluid Mechanics (CFD)</tag>
       
