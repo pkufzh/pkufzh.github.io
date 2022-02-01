@@ -1,6 +1,6 @@
 ---
 title: Git 学习笔记
-excerpt: Git 是什么？Git 是目前世界上最先进的分布式版本控制系统（没有之一）！本浓缩版 Git 学习笔记全部参考廖雪峰老师的官方网站教程。
+excerpt: Git 是什么？Git 是目前世界上最先进的分布式版本控制系统（没有之一）！  本浓缩版 Git 学习笔记参考廖雪峰老师的官方网站教程。
 index_img: /img/posts/Cover_Git_Learning_Note.png
 date: 2022-01-19 20:00:00
 updated: 2022-01-30 09:50:01
