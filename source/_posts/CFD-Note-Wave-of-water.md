@@ -1,6 +1,6 @@
 ---
 title: 流体之美——趣味小知识系列（一）
-excerpt: 如何通过波浪行进速度快速估计出湖的深度？生活小妙招 Get！
+excerpt: 如何通过波浪行进速度快速估计出湖的深度？教你一个生活小妙招！
 index_img: /img/posts/Cover_CFD_Note_Wave_of_water.png
 date: 2022-02-07 00:08:33
 updated:
@@ -19,7 +19,7 @@ categories:
 
 如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
 
-<img src="C:\Users\56333\Desktop\Pics\1.png" style="zoom: 67%;" />
+![](./CFD-Note-Wave-of-water/1.png)
 
 对于湖水，考虑 **无粘、不可压、原始静止、小扰动** 情况下的 ***Navier-Stokes (N-S)* 方程**，即 ***Euler* 方程**
 $$
@@ -101,7 +101,7 @@ $$
 
 - 考虑**有限水深**情况，水深 $ h $。
 
-<img src="C:\Users\56333\Desktop\Pics\2.png" style="zoom: 67%;" />
+![](./CFD-Note-Wave-of-water/2.png)
 
 如图，考虑水底无穿透边界条件为
 $$
