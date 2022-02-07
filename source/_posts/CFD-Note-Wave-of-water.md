@@ -109,7 +109,7 @@ $$
 $$
 下面应用两个边界条件，再通过引入壁面边界条件，求解扰动速度势满足的 ***Laplace* 方程**。
 
-{% raw %} 引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ {% endraw %} 的扰动速度势**主模态 (Normal mode)**
+{% raw %}引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} ${% endraw %} 的**主模态 (Normal mode)**
 $$
 \varphi=\Phi(z) e^{i(k x-\omega t)}
 $$
@@ -169,7 +169,7 @@ c = \frac{\omega}{k} = \frac{\lambda}{T} = \sqrt{g h \left[1 - \frac{1}{3} (k h)
 $$
 观察上式可得，若**水深 $ h $ 远小于波长 $ \lambda $** 时，此时称该界面波为**浅水波**，具有**非色散**特性，特征是波速 $c$ 仅与以及水深 $ h $ 有关。
 
-有了上面的波速关系式，我们就可以回到最初的问题，即<font color = blue>**如何仅通过观察波浪速度就能估计出湖的深度？**</font>
+有了上面的波速关系式，我们就可以回到最初的问题，即<font color = blue>**如何仅通过观察波浪行进速度就能估计出湖的深度？**</font>
 
 *若我们观察到一列行进速度较为稳定的大波浪，其**波长  {% raw %} $ \lambda $ {% endraw %}** 很长，可近似满足远大于**水深 $ h $** 的条件，即可快速估计水深*
 $$
@@ -177,16 +177,9 @@ h = \frac{c^{2}}{g}
 $$
 *其中，$ c $ 为水波行进速度，{% raw %} $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ {% endraw %} 为重力加速度。*
 
-{% raw %}
+事实上，该关系式在 {% raw %}$ \frac{\lambda}{20} < h < \frac{\lambda}{2} ${% endraw %} 情况下均适用。
 
-事实上，该关系式在 $ \frac{\lambda}{20} < h < \frac{\lambda}{2} $ 情况下均适用。
-
-{% endraw %}
-
-**是不是很简单？一个生活小妙招 Get！^_^**
-
-
-------
+{% note info %}
 
 <font size = 2.5>^_^ This is the END of the article. Thank you for reading! </font>
 
@@ -194,7 +187,7 @@ $$
 
 <font size = 2.5>Finished by <i><b>pkufzh (Small Shrimp)</b></i> on <i><b>2022/02/07</b></i> .</font>
 
-------
+{% endnote %}
 
 <center><i> Who am I? A happy shrimp from Peking University! </i></center>
 
