@@ -17,7 +17,11 @@ categories:
 如何通过波浪行进速度快速估计出湖的深度？生活小妙招 Get！
 {% endnote %}
 
-如下图所示，简化湖面为二维情形，建立平面直角坐标系 {% raw %} $ (z, x) $ {% endraw %} 。
+{% raw %}
+
+如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
+
+{% endraw %}
 
 ![](./CFD-Note-Wave-of-water/1.png)
 
@@ -25,13 +29,21 @@ categories:
 $$
 \frac{\partial \vec{u}}{\partial t} + \left(\vec{u} \cdot \nabla\right) \vec{u} = - \frac{1}{\rho} \nabla p + \vec{g}
 $$
+{% raw %}
+
 其中，$ \vec{u} $ 为速度，$ \rho $ 为密度，$ p $ 为压强，$ \vec{g} $ 为重力加速度矢量。
+
+{% endraw %}
 
 由原始静止、小扰动条件，可假设扰动速度与压强为
 $$
 \vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p = p_{0} + p^{\prime}
 $$
-其中，满足 $ \vec{u} $ 为趋于零的小量，且 {% raw %} $ p^{\prime} \ll p_{0} $ {% endraw %}。
+{% raw %}
+
+其中，满足 $ \vec{u} $ 为趋于零的小量，且 $ p^{\prime} \ll p_{0} $。
+
+{% endraw %}
 
 将式 (2) 代入式 (1) ，忽略高阶小对流项 $ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到 **线性化 *Euler* 方程**
 $$
@@ -53,11 +65,13 @@ $$
 $$
 \nabla^{2} \varphi = \Delta \varphi = \frac{\partial^{2} \varphi}{\partial z^{2}} + \frac{\partial^{2} \varphi}{\partial x^{2}} = 0
 $$
+{% endraw %}
+
 即扰动速度势满足 ***Laplace* 方程**。又将式 (5) 代入式 (3) 左式，可得
 $$
 \frac{\partial}{\partial t} \nabla \varphi = - \nabla \left(\frac{p}{\rho} + g z\right)
 $$
- {% endraw %}
+ {% raw %}
 
 其中，$ z $ 为水深。另外，由流体静力学知识，有
 $$
@@ -75,6 +89,8 @@ $$
 $$
 p^{\prime} = \rho g \zeta
 $$
+{% endraw %}
+
 将式 (11) 代入式 (10) 可得水波的 <font color = red>**动力学边界条件**</font>
 $$
 \left.\frac{\partial \varphi}{\partial t}\right|_{z=\zeta}=-g \zeta
@@ -93,7 +109,7 @@ $$
 $$
 下面应用两个边界条件，再通过引入壁面边界条件，求解扰动速度势满足的 ***Laplace* 方程**。
 
-引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ 的扰动速度势**主模态 (Normal mode)**
+{% raw %} 引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ {% endraw %} 的扰动速度势**主模态 (Normal mode)**
 $$
 \varphi=\Phi(z) e^{i(k x-\omega t)}
 $$
@@ -101,7 +117,11 @@ $$
 $$
 \Phi(z)=\phi_{1} e^{k z}+\phi_{2} e^{-k z}
 $$
+{% raw %}
+
 其中，$ \phi_{1}, \, \phi_{2} $ 为常数。
+
+{% endraw %}
 
 - 考虑**有限水深**情况，水深 $ h $。
 
@@ -119,7 +139,11 @@ $$
 $$
 \Phi(z)=\phi_{0} \cosh \left[k(z+h)\right]
 $$
+{% raw %}
+
 故扰动速度势 $ \varphi $ 解为
+
+{% endraw %}
 $$
 \varphi=\phi_{0} \cosh \left[k(z+h)\right] e^{i(k x-\omega t)}
 $$
@@ -127,7 +151,11 @@ $$
 $$
 \omega^{2} = gk \tanh (kh)
 $$
+{% raw %}
+
 注意到，当 $ kh \ll 1 $，即 $ h \ll \frac{1}{k} = \frac{\lambda}{2 \pi} $ 时，有
+
+{% endraw %}
 $$
 \tanh (kh) = kh - \frac{1}{3} (kh)^{3} + O((kh)^{5}) \approx kh
 $$
@@ -143,15 +171,19 @@ $$
 
 有了上面的波速关系式，我们就可以回到最初的问题，即<font color = blue>**如何仅通过观察波浪速度就能估计出湖的深度？**</font>
 
-*若我们观察到一列行进速度较为稳定的大波浪，其**波长 $ \lambda $** 很长，可近似满足远大于**水深 $ h $** 的条件，即可快速估计水深*
+*若我们观察到一列行进速度较为稳定的大波浪，其**波长  {% raw %} $ \lambda $ {% endraw %}** 很长，可近似满足远大于**水深 $ h $** 的条件，即可快速估计水深*
 $$
 h = \frac{c^{2}}{g}
 $$
-*其中，$ c $ 为水波行进速度， $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ 为重力加速度。*
+*其中，$ c $ 为水波行进速度，{% raw %} $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ {% endraw %} 为重力加速度。*
+
+{% raw %}
 
 事实上，该关系式在 $ \frac{\lambda}{20} < h < \frac{\lambda}{2} $ 情况下均适用。
 
-**是不是很简单？生活小妙招 Get！^_^**
+{% endraw %}
+
+**是不是很简单？一个生活小妙招 Get！^_^**
 
 
 ------
