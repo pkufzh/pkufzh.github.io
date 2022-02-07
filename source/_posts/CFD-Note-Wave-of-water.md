@@ -17,13 +17,11 @@ categories:
 
 <font color = blue>**问题：如何通过波浪行进速度快速估计出湖的深度？**</font>
 
-```markdown
 {% note success %}
 Test
 {% endnote %}
-```
 
-如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
+如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, x) $。
 
 ![](./CFD-Note-Wave-of-water/1.png)
 
