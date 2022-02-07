@@ -31,7 +31,7 @@ $$
 $$
 \vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p = p_{0} + p^{\prime}
 $$
-其中，满足 $ \( \vec{u} \) $ 为趋于零的小量，且 {% raw %} $ p^{\prime} \ll p_{0} $ {% endraw %}。
+其中，满足 $ \\\vec{u} $ 为趋于零的小量，且 {% raw %} $ p^{\prime} \ll p_{0} $ {% endraw %}。
 
 将式 (2) 代入式 (1) ，忽略高阶小对流项 $ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到 **线性化 *Euler* 方程**
 $$
