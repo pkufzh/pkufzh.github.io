@@ -17,6 +17,12 @@ categories:
 
 <font color = blue>**问题：如何通过波浪行进速度快速估计出湖的深度？**</font>
 
+```markdown
+{% note success %}
+Test
+{% endnote %}
+```
+
 如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
 
 ![](./CFD-Note-Wave-of-water/1.png)
@@ -25,7 +31,7 @@ categories:
 $$
 \frac{\partial \vec{u}}{\partial t} + \left(\vec{u} \cdot \nabla\right) \vec{u} = - \frac{1}{\rho} \nabla p + \vec{g}
 $$
-其中，$ \vec{u} $ 为速度，$ \rho $ 为密度，$ p $ 为压强，$ \vec{g} $ 为重力加速度 。
+其中，$ \vec{u} $ 为速度，$ \rho $ 为密度，$ p $ 为压强，$ \vec{g} $ 为重力加速度矢量。
 
 由原始静止、小扰动条件，可假设扰动速度与压强为
 $$
