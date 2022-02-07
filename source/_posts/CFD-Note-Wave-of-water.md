@@ -45,7 +45,7 @@ $$
 
 {% endraw %}
 
-将式 (2) 代入式 (1) ，忽略高阶小对流项 $ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到 **线性化 *Euler* 方程**
+将式 (2) 代入式 (1) ，忽略高阶小对流项 {% raw %}$ \left(\vec{u} \cdot \nabla\right) \vec{u} ${% endraw %} ，得到 **线性化 *Euler* 方程**
 $$
 \frac{\partial \vec{u}^{\prime}}{\partial t} = - \frac{1}{\rho} \nabla p + \vec{g}
 $$
@@ -109,7 +109,7 @@ $$
 $$
 下面应用两个边界条件，再通过引入壁面边界条件，求解扰动速度势满足的 ***Laplace* 方程**。
 
-{% raw %}引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} ${% endraw %} 的**主模态 (Normal mode)**
+引入波长为 {% raw %}$ \lambda ${% endraw %}，周期为 $ T $，波数为 {% raw %}$ k = \frac{2 \pi}{\lambda} ${% endraw %}，频率为 {% raw %}$ \omega = \frac{2 \pi}{T} ${% endraw %}，波速为 {% raw %}$ c = \frac{\omega}{k} = \frac{\lambda}{T} ${% endraw %} 的扰动速度势**主模态 (Normal mode)**
 $$
 \varphi=\Phi(z) e^{i(k x-\omega t)}
 $$
@@ -178,6 +178,8 @@ $$
 *其中，$ c $ 为水波行进速度，{% raw %} $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ {% endraw %} 为重力加速度。*
 
 事实上，该关系式在 {% raw %}$ \frac{\lambda}{20} < h < \frac{\lambda}{2} ${% endraw %} 情况下均适用。
+
+------
 
 {% note info %}
 
