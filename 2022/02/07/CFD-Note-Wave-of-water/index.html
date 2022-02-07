@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_CFD_Note_Wave_of_water.png">
 <meta property="article:published_time" content="2022-02-06T16:08:33.000Z">
-<meta property="article:modified_time" content="2022-02-07T03:41:06.190Z">
+<meta property="article:modified_time" content="2022-02-07T07:14:23.581Z">
 <meta property="article:author" content="pkufzh">
 <meta property="article:tag" content="Fluid Mechanics">
 <meta property="article:tag" content="Theory">
@@ -257,7 +257,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年2月7日 中午
+                  本文最后更新于：2022年2月7日 下午
                 
               </p>
             
@@ -290,8 +290,8 @@ p_{0} + p^{\prime}
 其中，满足 $ \vec{u} $ 为趋于零的小量，且 $ p^{\prime} \ll p_{0} $。
 
 </p>
-<p>将式 (2) 代入式 (1) ，忽略高阶小对流项 $ ( ) $ ，得到 <strong>线性化
-<em>Euler</em> 方程</strong> <span class="math display">\[
+<p>将式 (2) 代入式 (1) ，忽略高阶小对流项 $ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到
+<strong>线性化 <em>Euler</em> 方程</strong> <span class="math display">\[
 \frac{\partial \vec{u}^{\prime}}{\partial t} = - \frac{1}{\rho} \nabla p
 + \vec{g}
 \]</span> 
@@ -353,8 +353,9 @@ z}\right|_{z=\zeta}=\frac{\partial \zeta}{\partial t}
 \]</span>
 下面应用两个边界条件，再通过引入壁面边界条件，求解扰动速度势满足的
 <strong><em>Laplace</em> 方程</strong>。</p>
- 引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为 $ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ 
-<p>的扰动速度势<strong>主模态 (Normal mode)</strong> <span class="math display">\[
+<p>引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为
+$ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ 的扰动速度势<strong>主模态 (Normal
+mode)</strong> <span class="math display">\[
 \varphi=\Phi(z) e^{i(k x-\omega t)}
 \]</span> 其满足 <strong><em>Laplace</em> 方程</strong> (6) 的通解为
 <span class="math display">\[
@@ -397,27 +398,18 @@ c = \frac{\omega}{k} = \frac{\lambda}{T} = \sqrt{g h \left[1 -
 \]</span> 观察上式可得，若<strong>水深 $ h $ 远小于波长 $ $</strong>
 时，此时称该界面波为<strong>浅水波</strong>，具有<strong>非色散</strong>特性，特征是波速
 <span class="math inline">\(c\)</span> 仅与以及水深 $ h $ 有关。</p>
-<p>有了上面的波速关系式，我们就可以回到最初的问题，即<font color="blue"><strong>如何仅通过观察波浪速度就能估计出湖的深度？</strong></font></p>
+<p>有了上面的波速关系式，我们就可以回到最初的问题，即<font color="blue"><strong>如何仅通过观察波浪行进速度就能估计出湖的深度？</strong></font></p>
 <p><em>若我们观察到一列行进速度较为稳定的大波浪，其<strong>波长
  $ \lambda $ </strong> 很长，可近似满足远大于<strong>水深 $ h
 $</strong> 的条件，即可快速估计水深</em> <span class="math display">\[
 h = \frac{c^{2}}{g}
 \]</span> <em>其中，$ c $ 为水波行进速度， $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ 
 为重力加速度。</em></p>
-
-
-事实上，该关系式在 $ \frac{\lambda}{20} < h < \frac{\lambda}{2} $ 情况下均适用。
-
-
-<p>**是不是很简单？一个生活小妙招 Get！^_^**</p>
+<p>事实上，该关系式在 $ \frac{\lambda}{20} < h < \frac{\lambda}{2} $ 情况下均适用。</p>
 <hr>
-<p><font size="2.5">^_^ This is the END of the article. Thank you for
-reading! </font></p>
-<p><font size="2.5">If you think this article is helpful to you, do not
-hesitate to leave your comments!</font></p>
-<p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on
-<i><b>2022/02/07</b></i> .</font></p>
-<hr>
+<div class="note note-info">
+            <p><font size="2.5">^_^ This is the END of the article. Thank you forreading! </font></p><p><font size="2.5">If you think this article is helpful to you, do nothesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on<i><b>2022/02/07</b></i> .</font></p>
+          </div>
 <center>
 <i> Who am I? A happy shrimp from Peking University! </i>
 </center>
