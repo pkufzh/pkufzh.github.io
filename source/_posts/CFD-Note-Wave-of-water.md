@@ -17,7 +17,7 @@ categories:
 如何通过波浪行进速度快速估计出湖的深度？生活小妙招 Get！
 {% endnote %}
 
-如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, x) $。
+如下图所示，简化湖面为二维情形，建立平面直角坐标系 {% raw %} $ (z, x) $ {% endraw %} 。
 
 ![](./CFD-Note-Wave-of-water/1.png)
 
@@ -31,12 +31,14 @@ $$
 $$
 \vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p = p_{0} + p^{\prime}
 $$
-其中，满足 $ \\\vec{u} $ 为趋于零的小量，且 {% raw %} $ p^{\prime} \ll p_{0} $ {% endraw %}。
+其中，满足 $ \vec{u} $ 为趋于零的小量，且 {% raw %} $ p^{\prime} \ll p_{0} $ {% endraw %}。
 
 将式 (2) 代入式 (1) ，忽略高阶小对流项 $ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到 **线性化 *Euler* 方程**
 $$
 \frac{\partial \vec{u}^{\prime}}{\partial t} = - \frac{1}{\rho} \nabla p + \vec{g}
 $$
+ {% raw %}
+
 首先对上式两边取旋度，由于重力有势，故有
 $$
 \frac{\partial \vec{\omega}^{\prime}}{\partial t} \equiv 0
@@ -55,6 +57,8 @@ $$
 $$
 \frac{\partial}{\partial t} \nabla \varphi = - \nabla \left(\frac{p}{\rho} + g z\right)
 $$
+ {% endraw %}
+
 其中，$ z $ 为水深。另外，由流体静力学知识，有
 $$
 p = p_{a} - \rho g z + p^{\prime}
