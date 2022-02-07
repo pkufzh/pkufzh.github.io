@@ -103,7 +103,7 @@ $$
 $$
 \left.\frac{\partial \varphi}{\partial t}\right|_{z=\zeta}=-g \zeta
 $$
-考虑水波自由面作为物质面的运动过程
+另外，考虑水波自由面作为物质面的运动过程
 $$
 V_{z} = \left.\frac{\partial \varphi}{\partial z}\right|_{z=\zeta}=\frac{\mathrm{d} \zeta}{\mathrm{d} t} = \frac{\partial \zeta}{\partial t}+\frac{\partial \zeta}{\partial x} \frac{\mathrm{d} x}{\mathrm{d} t} = \frac{\partial \zeta}{\partial t}+\frac{\partial \zeta}{\partial x} u^{\prime}
 $$
