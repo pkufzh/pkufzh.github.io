@@ -1,5 +1,5 @@
 ---
-title: 流体之美——趣味小知识系列（一）
+title: 有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？
 excerpt: 如何通过波浪行进速度快速估计出湖的深度？教你一个生活小妙招！
 index_img: /img/posts/Cover_CFD_Note_Wave_of_water.png
 date: 2022-02-07 00:08:33
@@ -11,21 +11,25 @@ categories:
 - [Shared Notes, Bilibili Videos, Popularization of Science]
 ---
 
-# 流体之美——趣味小知识系列（一）
+# 有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？
 
 {% note success %}
 
-风拂湖面，波光粼粼。
+风拂湖面，波光粼粼，美轮美奂。
 
-现在思考这样一个问题：**我们只凭观察，没有测量，如何快速估计出湖的深度？**
+现在思考这样一个看似不可能的问题：**我们只凭观察，没有测量，如何快速估计出湖的深度？**
 
-**流体动力学**告诉我们，在一定条件下，我们通过**观察湖面波浪的行进速度**，就可以快速估计水深！
+流体动力学告诉我们，<font color = red>**在一定条件下，通过观察湖面波浪的行进速度，就可以快速估计水深！**</font>
 
-是不是很神奇？下面是详细的理论推导过程~
+是不是很神奇？生活小技巧 Get！
+
+下面我将从基本流体力学方程出发，给出详细的理论推导过程 ~ 公式预警，不感兴趣的小伙伴们也可以直接跳转最后的<font color = green>**答案揭晓环节**</font>，查看答案！
 
 {% endnote %}
 
 {% raw %}
+
+## 理论推导环节
 
 如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
 
@@ -35,7 +39,7 @@ categories:
 
 对于湖水，考虑 **无粘、不可压、原始静止、小扰动** 情况下的 ***Navier-Stokes (N-S)* 方程**，即 ***Euler* 方程**
 $$
-\frac{\partial \vec{u}}{\partial t} + \left(\vec{u} \cdot \nabla\right) \vec{u} = - \frac{1}{\rho} \nabla p + \vec{g}
+\frac{\partial \vec{u}}{\partial t} + \left(\vec{u} \cdot \nabla\right) \vec{u} = - \frac{1}{\rho} \nabla p + \vec{g} \tag{1} \label{eq1}
 $$
 {% raw %}
 
@@ -45,7 +49,7 @@ $$
 
 由原始静止、小扰动条件，可假设扰动速度与压强为
 $$
-\vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p = p_{0} + p^{\prime}
+\vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p = p_{0} + p^{\prime} \tag{2} \label{eq2}
 $$
 {% raw %}
 
@@ -53,7 +57,7 @@ $$
 
 {% endraw %}
 
-将式 (2) 代入式 (1) ，忽略高阶小对流项 {% raw %}$ \left(\vec{u} \cdot \nabla\right) \vec{u} ${% endraw %} ，得到 **线性化 *Euler* 方程**
+将式 $\eqref{eq2}$ 代入式 $\eqref{eq1}$ ，忽略高阶小对流项 {% raw %}$ \left(\vec{u} \cdot \nabla\right) \vec{u} ${% endraw %} ，得到 **线性化 *Euler* 方程**
 $$
 \frac{\partial \vec{u}^{\prime}}{\partial t} = - \frac{1}{\rho} \nabla p + \vec{g}
 $$
