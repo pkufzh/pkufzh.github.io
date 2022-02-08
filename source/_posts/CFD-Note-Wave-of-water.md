@@ -34,24 +34,13 @@ categories:
 
 {% raw %}
 
-如下图所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
+如图 1 所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
 
 {% endraw %}
 
-<img src="./CFD-Note-Wave-of-water/1.png" style="zoom: 67%;" />
+![](./CFD-Note-Wave-of-water/1.png)
 
-<center><font size = 2.5> 对湖面水波建立平面直角坐标系 </font></center>
-
-<center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./CFD-Note-Wave-of-water/1.png" width = "40%" alt=""/>
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">对湖面水波建立平面直角坐标系</div></center>
-
+<center><font size = 2.5> 图 1  对湖面水波建立平面直角坐标系 </font></center>
 
 对于湖水，考虑 **无粘、不可压、原始静止、小扰动** 情况下的 ***Navier-Stokes (N-S)* 方程**，即 ***Euler* 方程**
 $$
@@ -155,20 +144,9 @@ $$
 
 ![](./CFD-Note-Wave-of-water/2.png)
 
-<center><font size = 2.5> 有限水深几何坐标系示意图 </font></center>
+<center><font size = 2.5> 图 2  有限水深几何坐标系示意图 </font></center>
 
-<center>
-    <img style="border-radius: 0.3125em;
-    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./CFD-Note-Wave-of-water/2.png" width = "40%" alt=""/>
-    <br>
-    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
-    display: inline-block;
-    color: #999;
-    padding: 2px;">有限水深几何坐标系示意图<img src="http://latex.codecogs.com/gif.latex? \lambda"  /></div></center>
-
-
-如图，考虑水底无穿透边界条件为
+如图 2 所示，考虑水底无穿透边界条件为
 $$
 \left.\frac{\partial \varphi}{\partial z}\right|_{z = - h} = 0 \tag{18} \label{eq18}
 $$
