@@ -50,10 +50,8 @@ categories:
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">
-      对湖面水波建立平面直角坐标系
-  	</div>
-</center>
+    padding: 2px;">对湖面水波建立平面直角坐标系</div></center>
+
 
 对于湖水，考虑 **无粘、不可压、原始静止、小扰动** 情况下的 ***Navier-Stokes (N-S)* 方程**，即 ***Euler* 方程**
 $$
@@ -162,12 +160,13 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./CFD-Note-Wave-of-water/2.png" width = "65%" alt=""/>
+    src="./CFD-Note-Wave-of-water/2.png" width = "40%" alt=""/>
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
     padding: 2px;">有限水深几何坐标系示意图<img src="http://latex.codecogs.com/gif.latex? \lambda"  /></div></center>
+
 
 如图，考虑水底无穿透边界条件为
 $$
