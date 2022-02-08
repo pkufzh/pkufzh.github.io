@@ -40,12 +40,12 @@ categories:
 
 <img src="./CFD-Note-Wave-of-water/1.png" style="zoom: 67%;" />
 
-<center><font size = 2.5><i> Who am I? A happy shrimp from Peking University! </i></font></center>
+<center><font size = 2.5> 对湖面水波建立平面直角坐标系 </font></center>
 
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="./CFD-Note-Wave-of-water/1.png" width = "65%" alt=""/>
+    src="./CFD-Note-Wave-of-water/1.png" width = "40%" alt=""/>
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -157,6 +157,8 @@ $$
 
 ![](./CFD-Note-Wave-of-water/2.png)
 
+<center><font size = 2.5> 有限水深几何坐标系示意图 </font></center>
+
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
@@ -165,10 +167,7 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">
-      有限水深几何坐标系示意图
-  	</div>
-</center>
+    padding: 2px;">有限水深几何坐标系示意图<img src="http://latex.codecogs.com/gif.latex? \lambda"  /></div></center>
 
 如图，考虑水底无穿透边界条件为
 $$
