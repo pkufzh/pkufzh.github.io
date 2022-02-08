@@ -38,7 +38,7 @@ categories:
 
 {% endraw %}
 
-![](./CFD-Note-Wave-of-water/1.png)
+<img src="./CFD-Note-Wave-of-water/1.png" style="zoom:67%;" />
 
 <center><font size = 2.5> 图 1  对湖面水波建立平面直角坐标系 </font></center>
 
@@ -142,7 +142,7 @@ $$
 
 - 考虑**有限水深**情况，水深 $ h $。
 
-![](./CFD-Note-Wave-of-water/2.png)
+<img src="./CFD-Note-Wave-of-water/2.png" style="zoom:67%;" />
 
 <center><font size = 2.5> 图 2  有限水深几何坐标系示意图 </font></center>
 
