@@ -26,6 +26,13 @@ pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
+# 生成传统的sitemap
+sitemap:
+  path: sitemap.xml
+# 生成百度的sitemap
+baidusitemap:
+  path: baidusitemap.xml
+
 # Directory
 source_dir: source
 public_dir: public
