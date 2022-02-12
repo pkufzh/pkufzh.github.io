@@ -109,6 +109,6 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  type: baidu_url_submitter ## 这是新加的
+  # type: baidu_url_submitter ## 这是新加的
   repo: https://github.com/pkufzh/pkufzh.github.io
   branch: master
