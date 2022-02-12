@@ -75,20 +75,6 @@
   </url>
   
   <url>
-    <loc>https://pkufzh.github.io/tags/Fluid-Mechanics/</loc>
-    <lastmod>2022-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pkufzh.github.io/tags/Theory/</loc>
-    <lastmod>2022-02-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://pkufzh.github.io/tags/Learning-Resources/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -109,17 +95,24 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://pkufzh.github.io/categories/Shared-Projects/</loc>
+    <loc>https://pkufzh.github.io/tags/Fluid-Mechanics/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pkufzh.github.io/categories/Shared-Notes/</loc>
+    <loc>https://pkufzh.github.io/tags/Theory/</loc>
+    <lastmod>2022-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://pkufzh.github.io/categories/Shared-Projects/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -133,6 +126,13 @@
   </url>
   
   <url>
+    <loc>https://pkufzh.github.io/categories/Shared-Notes/</loc>
+    <lastmod>2022-02-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://pkufzh.github.io/categories/Shared-Projects/Numerical-Simulation/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -140,14 +140,14 @@
   </url>
   
   <url>
-    <loc>https://pkufzh.github.io/categories/Shared-Notes/Bilibili-Videos-Articles/</loc>
+    <loc>https://pkufzh.github.io/categories/Learning-Notes/Git/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pkufzh.github.io/categories/Learning-Notes/Git/</loc>
+    <loc>https://pkufzh.github.io/categories/Shared-Notes/Bilibili-Videos-Articles/</loc>
     <lastmod>2022-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
