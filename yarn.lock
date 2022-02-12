@@ -580,6 +580,13 @@
     "cheerio" "^0.19.0"
     "entities" "^1.1.2"
 
+"hexo-baidu-url-submit@^0.0.6":
+  "integrity" "sha512-0jDyIuw5B2Muqsjcf5Xxo1PNjxClPHP14FpB0amEAIr4wUdxk5zahImvOhkZwR9GrBhWKAPdjzmWS/xIMjzfrw=="
+  "resolved" "https://registry.npmjs.org/hexo-baidu-url-submit/-/hexo-baidu-url-submit-0.0.6.tgz"
+  "version" "0.0.6"
+  dependencies:
+    "xmlhttprequest" "^1.8.0"
+
 "hexo-cli@^4.0.0":
   "integrity" "sha512-lr46h1tK1RNQJAQZbzKYAWGsmqF5DLrW6xKEakqv/o9JqgdeempBjIm7HqjcZEUBpWij4EO65X6YJiDmT9LR7g=="
   "resolved" "https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.3.0.tgz"
@@ -1461,3 +1468,8 @@
   "integrity" "sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8="
   "resolved" "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   "version" "1.0.2"
+
+"xmlhttprequest@^1.8.0":
+  "integrity" "sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw="
+  "resolved" "https://registry.npmjs.org/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz"
+  "version" "1.8.0"
