@@ -1,6 +1,7 @@
 ---
 title: 有趣的流体小知识（二）——点涡系的稳定性与卡门涡街
 excerpt: In fluid dynamics, a Kármán vortex street (or a von Kármán vortex street) is a repeating pattern of swirling vortices, caused by a process known as vortex shedding, which is responsible for the unsteady separation of flow of a fluid around blunt bodies.
+index_img: /img/posts/Cover_FM_Note_Karman_Vortex_Street.jpg
 date: 2022-02-13 16:04:11
 updated:
 tags:
@@ -13,30 +14,25 @@ categories:
 
 # 卡门涡街 (von Kármán Vortex Street) 
 
-**题目要求**
+## **题目要求**
 
 ***卡门涡街 (von Kármán Vortex Street) 问题***
 
 考虑一个按图 [1](#fig1) 所示排列的点涡系，其由两排强度相同、符号相反，水平间距相同 (均为 $a$)，错位排列的点涡列组成。两排点涡位于 $y = \pm \frac{b}{2}$ 直线上。<span id = "fig1"></span>
 
-<img src="C:\Users\56333\Desktop\Dot_Vortice\1.png" label = "001" style="zoom:67%;" />
+<img src="./FM-Note-Karman-Vortex-Street/1.png" label = "001" style="zoom:67%;" />
 
-<div align = center>
-	<font size = 2.5>
-	图 1  题设点涡系示意图
-	</font>
-</div>
+<center><font size = 2.5> 图 1  题设点涡系示意图 </font></center>
+
 
 试解答以下问题：
 
-a)  求 $z = \frac{a}{2} - \mathrm{i} \frac{b}{2}$ 处的点涡 $\alpha$ 速度；
+1. 求 $z = \frac{a}{2} - \mathrm{i} \frac{b}{2}$ 处的点涡 $\alpha$ 速度；
+2. 绘制流线。
 
-b)  绘制流线。
+## **解答**
 
-**解答**
-
-a)  首先写出点涡系的总复位势为
-
+首先写出点涡系的总复位势为
 $$
 \begin{aligned}
 W(z)=\frac{\Gamma}{2 \pi \mathrm{i}} \ln \frac{\sin \left[\frac{\pi}{\alpha}\left(z-\frac{b}{2} \mathrm{i}\right)\right]}{\sin \left[\frac{\pi}{\alpha}\left(z+\frac{b}{2} \mathrm{i} -\frac{a}{2}\right)\right]}
@@ -71,7 +67,7 @@ V_{\alpha}^{*} =U_{\alpha}-\mathrm{i} V_{\alpha} = & \left.\frac{\mathrm{d}}{\ma
 \tag{4}
 \label{eq4}
 $$
-由 $ z \to -\frac{b}{2} \mathrm{i}+\frac{a}{2} $ 时，有 $\tan \left[\frac{\pi}{a}\left(z+\frac{b}{2} \mathrm{i}-\frac{a}{2}\right)\right] \approx \frac{\pi}{a}\left(z+\frac{b}{2} \mathrm{i}-\frac{a}{2}\right)$，代入上式 $ \eqref{eq4} $，整理有
+由 $z \to -\frac{b}{2} \mathrm{i}+\frac{a}{2}$ 时，有 $\tan \left[\frac{\pi}{a}\left(z+\frac{b}{2} \mathrm{i}-\frac{a}{2}\right)\right] \approx \frac{\pi}{a}\left(z+\frac{b}{2} \mathrm{i}-\frac{a}{2}\right)$，代入上式 $\eqref{eq4}$，整理有
 $$
 \begin{aligned}
 \begin{split}
