@@ -18,7 +18,9 @@ categories:
 
 ***卡门涡街 (von Kármán Vortex Street) 问题***
 
-考虑一个按图 [1](#fig1) 所示排列的点涡系，其由两排强度相同、符号相反，水平间距相同 (均为 $a$)，错位排列的点涡列组成。两排点涡位于 $y = \pm \frac{b}{2}$ 直线上。<span id = "fig1"></span>
+考虑一个按图 [1](#fig1) 所示排列的点涡系，其由两排强度相同、符号相反，水平间距相同 (均为 $a$)，错位排列的点涡列组成。两排点涡位于 $y = \pm \frac{b}{2}$ 直线上。
+
+<span id = "fig1"></span>
 
 <img src="./FM-Note-Karman-Vortex-Street/1.png" label = "001" style="zoom:67%;" />
 
@@ -128,6 +130,34 @@ $$
 以上流函数定义在笛卡尔坐标系 $(x,y)$ 下。令其为常数 $\text{const}$，则可根据不同 $b / a$ 大小的情形，来绘制一系列流线簇。
 
 下面采用 ***Mathematica*** 软件分别绘制 $b/a = 0.00, \;0.05, \;0.15, \;0.2806, \;0.35, \;0.50, \;1.00, \;1.50$ 六种情形下的流线分布，并设置 $a = 1, \; \Gamma = 1$，如图 [2](#fig2) 所示。可以观察到，该点涡系流线呈现在上下两排点涡间交替穿插的特点。随着 $b/a$ 增加，两排点涡间的流线扭曲程度逐渐趋缓。当 $b/a = 0$ 时，该点涡系退化为单排点涡系。值得注意的是，当 $b/a = 0.2806$ 时，该点涡系正是由 ***von Kármán*** 提出的**唯一能够保持无粘中性稳定**的情形，即为著名的**卡门涡街 (von Kármán Vortex Street)**。
+
+
+<img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_1.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_2.png" style="zoom: 67%;" /> 
+ ------------------------------------------------------------ | ------------------------------------------------------------ 
+(*a*) *b/a* = 0.00            (*b*) *b/a* = 0.05
+
+<img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_3.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_4.png" style="zoom: 67%;" /> 
+  ------------------------------------------------------------ | ------------------------------------------------------------ 
+
+(*c*) *b/a* = 0.00            (*d*) *b/a* = 0.05
+
+<img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_5.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_6.png" style="zoom: 67%;" /> 
+  ------------------------------------------------------------ | ------------------------------------------------------------ 
+
+(*e*) *b/a* = 0.00            (*f*) *b/a* = 0.05
+
+<img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_7.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_8.png" style="zoom: 67%;" /> 
+  ------------------------------------------------------------ | ------------------------------------------------------------ 
+
+(*g*) *b/a* = 0.00            (*h*) *b/a* = 0.05
+
+
+<center>
+    <figure>
+       <img src="./FM-Note-Karman-Vortex-Street/1.png" style="zoom:50%;" />
+       <img src="./FM-Note-Karman-Vortex-Street/1.png" style="zoom:50%;" />
+    </figure>
+</center>
 
 **问题 1** 的完整 ***Mathematica*** 代码展示如下。
 
