@@ -1,7 +1,7 @@
 ---
 title: 有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？
 excerpt: 现在思考这样一个看似不可能的问题：我们只凭观察，没有测量，如何快速估计出湖的深度？流体动力学告诉我们，在一定条件下，通过观察湖面波浪的行进速度，就可以快速估计水深！
-index_img: /img/posts/Cover_CFD_Note_Wave_of_water.png
+index_img: /img/posts/Cover_CFD_Note_Wave_of_water.jpg
 date: 2022-02-07 00:08:33
 updated:
 tags:
