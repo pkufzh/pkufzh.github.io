@@ -1,6 +1,6 @@
 ---
 title: 有趣的流体小知识（二）——神奇的卡门涡街
-excerpt: 天才通常拥有比常人敏锐的洞察力。实验中的这种反常现象引起了冯·卡门的注意，他想「也许振动不是偶然的，而是由内在原因决定的」。于是卡门从理论上进行思考，获得的这个关于涡街的理论被后来众多实验证实。
+excerpt: 天才通常拥有比常人敏锐的洞察力。实验中的这种反常现象引起了冯·卡门的注意，他想「也许振动不是偶然的，而是由内在原因决定的」。于是卡门从理论上进行思考。这个被称作「卡门涡街」的理论被后来众多实验证实。
 index_img: /img/posts/Cover_FM_Note_Karman_Vortex_Street.jpg
 date: 2022-02-13 16:04:11
 updated:
@@ -252,7 +252,7 @@ $$
 
 <span id = "fig4"></span>
 
-<img src="./FM-Note-Karman-Vortex-Street/3.jpg" label = "003" style="zoom:100%;" />
+<img src="./FM-Note-Karman-Vortex-Street/3.jpg" label = "003" style="zoom: 150%;" />
 
 <center><font size = 2.5> 图 4  圆柱绕流形成卡门涡街示意图 </font></center>
 
