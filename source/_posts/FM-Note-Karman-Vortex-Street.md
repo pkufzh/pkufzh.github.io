@@ -27,22 +27,22 @@ categories:
 ### 什么是卡门涡街
 
 > *In fluid dynamics, a **Kármán vortex street** (or a **von Kármán vortex street**) is a repeating pattern of swirling vortices, caused by a process known as vortex shedding, which is responsible for the unsteady separation of flow of a fluid  around blunt bodies.*
->
-> 在流体动力学中，**卡门涡街** (或 **冯·卡门涡街**)是一种重复的旋涡模式，由一个被称作旋涡脱落的过程引起，该过程是钝体周围的流体流动产生非定常分离的原因之一。
->
+
+在流体动力学中，**卡门涡街** (或 **冯·卡门涡街**)是一种重复的旋涡模式，由一个被称作旋涡脱落的过程引起，该过程是钝体周围的流体流动产生非定常分离的原因之一。
+
 > *It is named after the engineer and fluid dynamicist **Theodore von Kármán** and is responsible for such phenomena as the "singing" of suspended telephone or power lines and the vibration of a car antenna at certain speeds. Mathematical modeling of von Kármán vortex street can be performed using different techniques including but not limited to solving the full Navier-Stokes equations with k-epsilon, SST, k-omega and Reynolds stress, and large eddy simulation (LES) turbulence models, or by numerically solving some dynamic equations such as the Ginzburg-Landau equation.*
->
-> 它以工程师兼流体动力学家 **西奥多·冯卡门** 的名字命名。悬挂在空中的电话或电力线会发出「鸣叫」，汽车天线在特定风速下会振动，这些现象都是由卡门涡街造成的。卡门涡街有多种数学建模方式，比如求解应用 *k-epsilon*, *SST*, *k-omega*, 雷诺应力和大涡模拟 (*LES*) 湍流模型的完整 *Navier-Stokes* 方程，或数值求解 *Ginzburg-Landau* 方程等动力学方程。
+
+它以工程师兼流体动力学家 **西奥多·冯卡门** 的名字命名。悬挂在空中的电话或电力线会发出「鸣叫」，汽车天线在特定风速下会振动，这些现象都是由卡门涡街造成的。卡门涡街有多种数学建模方式，比如求解应用 *k-epsilon*, *SST*, *k-omega*, 雷诺应力和大涡模拟 (*LES*) 湍流模型的完整 *Navier-Stokes* 方程，或数值求解 *Ginzburg-Landau* 方程等动力学方程。
 
 ### 卡门涡街的发现
 
 > Although named after Theodore von Kármán, he acknowledged that the vortex street had been studied earlier by Arnulph Mallock and Henri Bénard. Kármán tells the story in his book Aerodynamics: 
->
-> 虽然以冯·卡门的名字命名，卡门本人指出**阿努夫·马洛克**和**亨利·伯纳德**早前就对漩涡街进行过研究。卡门在他的《*Aerodynamics*》（空气动力学）著作中讲述了这样一个有趣的故事：
->
+
+虽然以冯·卡门的名字命名，卡门本人指出**阿努夫·马洛克**和**亨利·伯纳德**早前就对漩涡街进行过研究。卡门在他的《*Aerodynamics*》（空气动力学）著作中讲述了这样一个有趣的故事：
+
 > *...Prandtl had a doctoral candidate, Karl Hiemenz, to whom he gave the task of constructing a water channel in which he could observe the separation of the flow behind a cylinder. The object was to check experimentally the separation point calculated by means of the boundary-layer theory. For this purpose, it was first necessary to know the pressure distribution around the cylinder in a steady flow. Much to his surprise, Hiemenz found that the flow in his channel oscillated violently. When he reported this to Prandtl, the latter told him: 'Obviously your cylinder is not circular.' However, even after very careful machining of the cylinder, the flow continued to oscillate. Then Hiemenz was told that possibly the channel was not symmetric, and he started to adjust it. I was not concerned with this problem, but every morning when I came in the laboratory I asked him, 'Herr Hiemenz, is the flow steady now?' He answered very sadly, 'It always oscillates.'*
->
-> …1911年，**普朗特**[^N1] 给了他的一个博士生候选人，**卡尔·希门兹**[^N2] 一个任务：建造一个可以观察到圆柱体后面的水流分离的水道，以通过实验来检验利用边界层理论计算出的流动分离点的正确性。为此，首先需要知道在稳定流动中圆柱体周围的压力分布。令希门兹吃惊的是，他发现管道中的流动振荡十分剧烈。当他将这一情况报告给普朗特时，导师告诉他：“很明显，你的圆柱体不是准确的圆形。”然而，即使在对圆柱进行了非常仔细的打磨之后，流动仍然在振荡。接着，普朗特又告诉希门兹可能由于槽道不对称，希门兹又开始调整它。我不是很关心这个问题，但每天早上我一进实验室就问他：”希门兹先生，现在流量稳定了吗?“他非常悲伤地回答说:“它总是振荡的。”
+
+1911年，**普朗特**[^N1] 给了他的一个博士生，**卡尔·希门兹**[^N2] 一个任务：建造一个可以观察到圆柱体后面的水流分离的水道，以通过实验来检验利用边界层理论计算出的流动分离点的正确性。为此，首先需要知道在稳定流动中圆柱体周围的压力分布。令希门兹吃惊的是，他发现管道中的流动振荡十分剧烈。当他将这一情况报告给普朗特时，导师告诉他：「很明显，你的圆柱体不是准确的圆形。」然而，即使在对圆柱进行了非常仔细的打磨之后，流动仍然在振荡。接着，普朗特又告诉希门兹可能由于槽道不对称，希门兹又开始调整它。我不是很关心这个问题，但每天早上我一进实验室就问他：「希门兹先生，现在流量稳定了吗?」他非常悲伤地回答说:「它总是振荡的。」
 
 [^N1]:注：路德维希·普朗特，近代力学奠基人之一，被誉为空气动力学之父和现代流体力学之父，冯·卡门的恩师
 [^N2]:注：驻点流（Plane stagnation point flow）提出与最早研究者
@@ -132,7 +132,7 @@ V_{\alpha} = U_{\alpha} = \frac{\Gamma}{2 a} \tanh \left(\frac{\pi b}{a}\right).
 \tag{6}
 \label{eq6}
 $$
-b)  由放置在 $x$ 轴上，关于 $y$ 轴对称（原点布置一个点涡），强度相同，间距相同为 $a$ 的一排无穷多个点涡的流函数为[^1] 
+b)  由放置在 $x$ 轴上，关于 $y$ 轴对称（原点布置一个点涡），强度相同，间距相同为 $a$ 的一排无穷多个点涡的流函数为[<sup>1</sup>](#refer-anchor-1)
 $$
 \begin{aligned}
 \psi_{0} = \frac{1}{2 \mathrm{i}} \left[W_{0}(z) - W_{0}^{*}(z)\right] = - \frac{\Gamma}{4 \pi} \ln \frac{1}{2} \left(\cosh\frac{2 \pi y}{a} - \cos \frac{2 \pi x}{a}\right)
@@ -206,13 +206,13 @@ $$
 $$
 其中，$\nu$ 为运动粘性系数。$\operatorname{Re}_{L}$ 的物理意义是定常运惯性力与粘性力之比，是流体力学中**最基本、最重要**的无量纲数。
 
-关于卡门涡街中扰流圆柱涡的脱落频率 $f$，**泰勒（*F. Taylor*）**和 **瑞利（*L. Rayleigh*）**给出了下列经验公式[^2]
+关于卡门涡街中扰流圆柱涡的脱落频率 $f$，**泰勒（*F. Taylor*）**和 **瑞利（*L. Rayleigh*）**给出了下列经验公式[<sup>2</sup>](#refer-anchor-2)
 $$
 f = 0.198\frac{U}{d}(1 - \frac{19.7}{\operatorname{Re}_{d}})
 $$
 该式适用于 $250<\operatorname{Re}_{d}= \frac{U d}{\nu}<2 \times 10^{5}$ 。其中 $d$ 为圆柱直径。由此看出，扰流圆柱卡门涡街中涡脱落频率 $f$ 与流速 $U$ 成正比，即流速越大，涡脱落的越快；而与圆柱直径 $d$ 成反比，即圆柱直径越大，涡脱落的越慢。
 
-通过上述经验式我们还可以定量分析一些现象：比如在风吹电线嗡鸣发声的现象中，假设已知风速和电线的直径，那么就可以获得「风吼声」的频率。反之，我们测得了声音频率就可以获得风速！[^3]
+通过上述经验式我们还可以定量分析一些现象：比如在风吹电线嗡鸣发声的现象中，假设已知风速和电线的直径，那么就可以获得「风吼声」的频率。反之，我们测得了声音频率就可以获得风速！[<sup>3</sup>](#refer-anchor-3)
 
 神奇的卡门涡街，伟大的物理直觉，无穷的科学灵感！
 
@@ -227,11 +227,17 @@ $$
 
 ## 参考资料
 
-[^1]:朱克勤，彭杰. 高等流体力学[M]. 科学出版社, 2017.
+<div id="refer-anchor-1"></div>
 
-[^2]:Wikipedia contributors. "[Kármán vortex street](https://en.wikipedia.org/wiki/K%C3%A1rm%C3%A1n_vortex_street)." *Wikipedia, The Free Encyclopedia*.
+- [1] 朱克勤，彭杰. 高等流体力学[M]. 科学出版社, 2017.
 
-[^3]:[流川疯](https://www.zhihu.com/people/sheng-ren-mo-shi-24), [「流体那些事儿之卡门涡街」](https://zhuanlan.zhihu.com/p/129273764), 知乎 
+<div id="refer-anchor-2"></div>
+
+- [2] Wikipedia contributors. "[Kármán vortex street](https://en.wikipedia.org/wiki/K%C3%A1rm%C3%A1n_vortex_street)." *Wikipedia, The Free Encyclopedia*.
+
+<div id="refer-anchor-3"></div>
+
+- [3] [流川疯](https://www.zhihu.com/people/sheng-ren-mo-shi-24), [「流体那些事儿之卡门涡街」](https://zhuanlan.zhihu.com/p/129273764), 知乎 
 
 ## 附录
 
