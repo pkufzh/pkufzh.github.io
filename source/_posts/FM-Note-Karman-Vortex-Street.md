@@ -32,7 +32,21 @@ categories:
 
 > *It is named after the engineer and fluid dynamicist **Theodore von Kármán** and is responsible for such phenomena as the "singing" of suspended telephone or power lines and the vibration of a car antenna at certain speeds. Mathematical modeling of von Kármán vortex street can be performed using different techniques including but not limited to solving the full Navier-Stokes equations with k-epsilon, SST, k-omega and Reynolds stress, and large eddy simulation (LES) turbulence models, or by numerically solving some dynamic equations such as the Ginzburg-Landau equation.*
 
-它以工程师兼流体动力学家 **西奥多·冯·卡门** 的名字命名。悬挂在空中的电话或电力线会发出「嗡鸣」，汽车天线在特定风速下会振动，这些现象都是由卡门涡街造成的。卡门涡街有多种数学建模方式，比如求解应用 *k-epsilon*, *SST*, *k-omega*, 雷诺应力和大涡模拟 (*LES*) 湍流模型的完整 *Navier-Stokes* 方程，或数值求解 *Ginzburg-Landau* 方程等动力学方程。
+它以工程师兼流体动力学家 **西奥多·冯·卡门** 的名字命名。**悬挂在空中的电话或电力线会发出「嗡鸣」，汽车天线在特定风速下会振动，卫星图片上岛群后面出现的尾迹**（如图 [1](#fig1) 所示）……这些现象都是由卡门涡街造成的。卡门涡街有多种数学建模方式，比如求解应用 *k-epsilon*, *SST*, *k-omega*, 雷诺应力和大涡模拟 (*LES*) 湍流模型的完整 *Navier-Stokes* 方程，或数值求解 *Ginzburg-Landau* 方程等动力学方程。
+
+<span id = "fig1"></span>
+
+<img src="./FM-Note-Karman-Vortex-Street/4.jpg" label = "001" style="zoom:50%;" />
+
+<center><font size = 2.5> 图 1  卫星拍摄的群岛后出现的卡门涡街 </font></center>
+
+<br/>
+
+### 流体力学大师，航空航天奇才
+
+**西奥多·冯·卡门**（1881年5月11日 ~ 1963年5月6日），匈牙利犹太人，1936年入美国籍，是20世纪最伟大的航天工程学家，开创了数学和基础科学在航空航天和其他技术领域的应用，被誉为「航空航天时代的科学奇才」。 卡门师从有「现代流体力学之父」「空气动力学之父」之称的普朗特（我国著名流体力学家 **陆士嘉先生** 是普朗特的唯一亲传女弟子）。 他所在的加利福尼亚理工学院实验室后来成为美国国家航空和航天喷气实验室（*NASA JPL*），我国著名科学家**钱伟长、钱学森、郭永怀、林家翘**都是他的亲传弟子。同时，卡门在我国老百姓中知名度也很高。
+
+冯·卡门在航空事业上的卓越成就是无可辩驳的。航空学和航天学上一些最光辉的理论、概念都是以他的名字命名，月球上也有一个名为冯·卡门的陨石坑。而航空史上令人瞩目的里程碑，如齐柏林飞艇、风洞，滑翔机和火箭…… 可以说20世纪的一切实际飞行和模拟飞行的成功都与他有着密切联系。卡门特别的贡献包括非弹性弯曲，环筒流的非定常尾迹，层流稳定性，紊流，定常和非定常流中的翼型，边界层以及超音速空气动力学。在其他领域他也有贡献，包括弹性，振动，传热和结晶学等。
 
 ### 卡门涡街的发现
 
@@ -67,13 +81,13 @@ categories:
 
 物理的直觉告诉卡门，流动稳定的振荡与组合旋涡，即点涡系的稳定性有关。但是，两道对称排列但反方向的旋涡的互相诱导明显不稳定。那么如果两道旋涡交错排列呢？这样又能诞生怎样的流体之美呢？
 
-现在构建一个按图 [1](#fig1) 所示排列的点涡系，其由两排强度相同、符号相反，水平间距相同 (均为 $a$)，错位排列的点涡列组成，考虑无粘情形。两排点涡位于 $y = \pm \frac{b}{2}$ 直线上。
+现在构建一个按图 [2](#fig2) 所示排列的点涡系，其由两排强度相同、符号相反，水平间距相同 (均为 $a$)，错位排列的点涡列组成，考虑无粘情形。两排点涡位于 $y = \pm \frac{b}{2}$ 直线上。
 
-<span id = "fig1"></span>
+<span id = "fig2"></span>
 
 <img src="./FM-Note-Karman-Vortex-Street/1.png" label = "001" style="zoom:67%;" />
 
-<center><font size = 2.5> 图 1  双列交错点涡系示意图 </font></center>
+<center><font size = 2.5> 图 2  双列交错点涡系示意图 </font></center>
 
 <br/>
 
@@ -98,13 +112,13 @@ W(z) = \phi + \mathrm{i} \psi
 $$
 其中，$\phi$ 为速度势，$\psi$ 为流函数。
 
-如图 [2](#fig2) 所示，考虑放置在 $x$ 轴上，关于 $y$ 轴对称（原点布置一个点涡），强度相同，间距相同为 $a$ 的一排无穷多个点涡。
+如图 [3](#fig3) 所示，考虑放置在 $x$ 轴上，关于 $y$ 轴对称（原点布置一个点涡），强度相同，间距相同为 $a$ 的一排无穷多个点涡。
 
-<span id = "fig2"></span>
+<span id = "fig3"></span>
 
 <img src="./FM-Note-Karman-Vortex-Street/2.jpg" label="002" style="zoom:67%;" />
 
-<center><font size = 2.5> 图 2  单列点涡系示意图 </font></center>
+<center><font size = 2.5> 图 3  单列点涡系示意图 </font></center>
 
 <br/>
 
@@ -186,7 +200,7 @@ V_{\alpha} = U_{\alpha} = \frac{\Gamma}{2 a} \tanh \left(\frac{\pi b}{a}\right).
 $$
 事实上，式 $\eqref{eq10}$ 的推导可根据**「单排点列对该列任意点涡诱导合速度为零」**而更加简化，这一结论容易由对称性得到。
 
-进一步考虑上图 [2](#fig2) 所示单排点涡，流函数为
+进一步考虑上图 [3](#fig3) 所示单排点涡，流函数为
 $$
 \begin{aligned}
 \psi_{0} = \frac{1}{2 \mathrm{i}} \left[W_{0}(z) - W_{0}^{*}(z)\right] = - \frac{\Gamma}{4 \pi} \ln \frac{1}{2} \left(\cosh\frac{2 \pi y}{a} - \cos \frac{2 \pi x}{a}\right)
@@ -223,13 +237,13 @@ $$
 $$
 以上流函数定义在笛卡尔坐标系 $(x,y)$ 下。令其为常数 $\text{const}$，则可根据不同 $b / a$ 大小的情形，来绘制一系列流线簇。
 
-下面采用 ***Mathematica 12.3*** 软件分别绘制 $b/a = 0.00, \;0.05, \;0.15, \;0.2806, \;0.35, \;0.50, \;1.00, \;1.50$ 六种情形下的流线分布，并设置 $a = 1, \; \Gamma = 1$，如图 [3](#fig3) 所示，源代码见<a href="#附录">附录</a>。
+下面采用 ***Mathematica 12.3*** 软件分别绘制 $b/a = 0.00, \;0.05, \;0.15, \;0.2806, \;0.35, \;0.50, \;1.00, \;1.50$ 六种情形下的流线分布，并设置 $a = 1, \; \Gamma = 1$，如图 [4](#fig4) 所示，源代码见<a href="#附录">附录</a>。
 
 可以观察到，该点涡系流线呈现在上下两排点涡间交替穿插的特点。随着 $b/a$ 增加，两排点涡间的流线扭曲程度逐渐趋缓。当 $b/a = 0$ 时，该点涡系退化为单排点涡系。
 
 值得注意的是，当 $b/a = 0.2806$ 时，该点涡系正是由冯·卡门提出的**唯一能够保持无粘中性稳定**的情形，即为著名的**卡门涡街 (von Kármán Vortex Street)**。这里有关点涡系稳定性的推导这里从略，详细请参考相关文献，不再列出。
 
-<span id = "fig3"></span>
+<span id = "fig4"></span>
 
 
  <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_1.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_2.png" style="zoom: 67%;" /> 
@@ -242,19 +256,27 @@ $$
  <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_7.png" style="zoom: 67%;" /> | <img src="./FM-Note-Karman-Vortex-Street/AdFM_hw_2_2_8.png" style="zoom: 67%;" /> 
 (*g*) *b/a* = 1.00                                               |                      (*h*) *b/a* = 1.50
 
-<center><font size = 2.5> 图 3  不同 <i>b/a</i> 情形下点涡系诱导的流线簇示意图 </font></center>
+<center><font size = 2.5> 图 4  不同 <i>b/a</i> 情形下点涡系诱导的流线簇示意图 </font></center>
 
 <br/>
 
 <font color = blue>**由一个看似基本的点涡系稳定性问题，便获得了卡门涡街优美的数学模型**</font>，是不是很奇妙呢？
 
-后来，在卡门基础上，进一步研究发现，圆柱绕流卡门涡街（如图 [4](#fig4) 所示）的形成，**其来流必须满足一定条件**。
+后来，在卡门基础上，进一步研究发现，圆柱绕流卡门涡街（如图 [5](#fig5), [6](#fig6) 所示）的形成，**其来流必须满足一定条件**。
 
-<span id = "fig4"></span>
+<span id = "fig5"></span>
 
 <img src="./FM-Note-Karman-Vortex-Street/3.jpg" label = "003" style="zoom: 150%;" />
 
-<center><font size = 2.5> 图 4  圆柱绕流形成卡门涡街示意图 </font></center>
+<center><font size = 2.5> 图 5  圆柱绕流形成卡门涡街实际图 </font></center>
+
+<span id = "fig6"></span>
+
+<img src="./FM-Note-Karman-Vortex-Street/5.png" label = "003" style="zoom: 60%;" />
+
+<center><font size = 2.5> 图 6  圆柱绕流形成卡门涡街示意图 </font></center>
+
+<br/>
 
 由 <font color = red>**量纲分析**</font> （相应推导从略）可知，主导涡街形态的两个无量纲数为 **斯特劳哈尔数** $\operatorname{St}$ **(Strouhal number)** 和 **雷诺数** $\operatorname{Re}$ **(Reynolds number)**，其定义分别如下：
 $$
@@ -280,13 +302,15 @@ $$
 
 通过上述经验式我们还可以定量分析一些现象：比如在风吹电线嗡鸣发声的现象中，假设已知风速和电线的直径，那么就可以获得风嗡鸣的频率。反之，我们测得了声音频率就可以获得风速！[<sup>[4]</sup>](#refer-anchor-4)
 
-神奇的卡门涡街，伟大的物理直觉，无穷的科学灵感！
+当然，卡门涡街的理论与应用不止于此，感兴趣的小伙伴可以去参考相关资料哦！
+
+**神奇的卡门涡街，不朽的探索精神，伟大的物理直觉，无穷的科学灵感！**
 
 ------
 
 以上就是本文全部内容，如有疑问，敬请大家批评指正！
 
-相应文章也将发布在我的B站空间、知乎专栏上。后续我会不定期更新本博客与专栏，欢迎大家关注！ 
+相应文章也将发布在我的 [B站空间](https://www.bilibili.com/read/cv15262815) 、[知乎专栏](https://zhuanlan.zhihu.com/p/468074536) 上。后续我会不定期更新本博客与专栏，欢迎大家关注！ 
 
 ------
 
