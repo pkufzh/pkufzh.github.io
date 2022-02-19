@@ -9,7 +9,7 @@ tags:
 - Theory
 categories:
 - Shared Notes
-- Bilibili Videos & Articles
+- Articles
 ---
 
 # 有趣的流体小知识（二）——神奇的卡门涡街
