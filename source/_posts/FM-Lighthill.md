@@ -1,7 +1,7 @@
 ---
 title: 有趣的流体小知识（三）——Lighthill声学比拟
 excerpt: 「这篇论文是一项杰作，充分利用数学工具对其观点进行了优美的阐述，所有分析都建立在最基础的层次上，他推导出的产生声音的精确理论，完全秉承了几百年来声学大师的传统理念。如果 Rayleigh 或者 Stokes 当时就意识到这个问题的重要性，同样会推导出这些结果。气动声学从此翻开了崭新的一页……」
-index_img: /img/posts/Cover_FM_Lighthill.jpg
+index_img: /img/posts/Cover_FM_Lighthill.png
 date: 2022-02-19 22:46:58
 updated:
 tags:
@@ -30,7 +30,7 @@ categories:
 
 <span id = "fig1"></span>
 
-<img src=".\FM-Lighthill\1.jpg" style="zoom:67%;" />
+<img src="./FM-Lighthill/1.jpg" style="zoom:67%;" />
 
 <center><font size = 2.5> 图 1  声波与声音传播示意图 </font></center>
 
@@ -50,7 +50,7 @@ categories:
 
 <span id = "fig2"></span>
 
-<img src=".\FM-Lighthill\2.png" style="zoom:67%;" />
+<img src="./FM-Lighthill/2.png" style="zoom:67%;" />
 
 <center><font size = 2.5> 图 2  由有旋流动引起的声波传播示意图 </font></center>
 
@@ -147,7 +147,7 @@ $$
 
 <span id = "fig3"></span>
 
-<img src=".\FM-Lighthill\3.png" style="zoom:120%;" />
+<img src="./FM-Lighthill/3.png" style="zoom:120%;" />
 
 <center><font size = 2.5> 图 3  气动声源的三种类型示意图 </font></center>
 

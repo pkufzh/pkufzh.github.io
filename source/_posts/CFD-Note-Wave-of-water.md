@@ -9,7 +9,7 @@ tags:
 - Theory
 categories:
 - Shared Notes
-- Bilibili Videos & Articles
+- Articles
 ---
 
 # 有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？
