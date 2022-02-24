@@ -20,9 +20,8 @@ categories:
 
 {% endnote %}
 
-<div align = right>
-    —— 英国流体力学家，气动声学主要奠基人 John Ffowcs Williams
-</div>
+<div align = right> —— 英国流体力学家，气动声学主要奠基人 John Ffowcs Williams</div>
+
 {% note success %}
 
 ***「自古英雄出少年」**，Lighthill 在尝试解释射流噪声问题时，并没有运用非常复杂的数学工具或理论，而是结合流体方程，**对流动发声的物理源头**进行数学建模与比拟分析，从而找到了**声场与流场之间的相似关联**，并最终给出**简洁的数学表达形式**。*
