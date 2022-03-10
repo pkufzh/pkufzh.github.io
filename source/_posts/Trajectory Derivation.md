@@ -26,7 +26,7 @@ categories:
 
 <span id = "fig1"></span>
 
-<img src=".\Trajectory Derivation\Fig_1s.png" style="zoom:40%;" />
+<img src="./Trajectory Derivation/Fig_1s.png" style="zoom:40%;" />
 
 <center><font size = 2.5> 图 1  探测器绕天体运动示意图 </font></center>
 
@@ -54,7 +54,7 @@ $$
 $$
 <span id = "fig2"></span>
 
-<img src=".\Trajectory Derivation\Fig_2s.png" style="zoom:40%;" />
+<img src="./Trajectory Derivation/Fig_2s.png" style="zoom:40%;" />
 
 <center><font size = 2.5> 图 2  矢量关系式推导示意图 </font></center>
 
@@ -194,7 +194,7 @@ $$
 
 <span id = "fig3"></span>
 
-<img src=".\Trajectory Derivation\Fig_3s.png" style="zoom:40%;" />
+<img src="./Trajectory Derivation/Fig_3s.png" style="zoom:40%;" />
 
 <center><font size = 2.5> 图 3  选择极轴穿过近地点情况下探测器绕天体运动示意图 </font></center>
 
