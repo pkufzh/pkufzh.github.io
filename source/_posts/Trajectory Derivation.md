@@ -109,12 +109,10 @@ m \left[\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}}\right] \vec
 $$
 由单位矢量 $\vec{e_{r}}$ 与 $\vec{e_{\theta}}$ 的正交性，可得以下方程组
 $$
-\left\{
 \begin{align}
-\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}} = 0 \quad \tag{11} \label{11}\\
-\left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) = 0  \quad \tag{12} \label{12}
+&\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}} = 0 \quad \tag{11} \label{11}\\
+&\left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) = 0  \quad \tag{12} \label{12}
 \end{align}
-\right.
 $$
 观察上述方程组，其中出现 $r$ 与 $\theta$ 对时间 $t$ 的各阶导数，而轨道方程与时间应无关，故考虑将关于时间的导数项转换为 $r$ 与 $\theta$ 之间的关系式。
 
