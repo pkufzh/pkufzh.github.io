@@ -5,7 +5,7 @@ index_img: /img/posts/Cover_Trajectory Derivation.png
 date: 2022-03-10 12:00:00
 updated:
 tags:
-- Aeronautics & Aerospace
+- Aeronautics & Astronautics
 - Theory
 categories:
 - Shared Notes
