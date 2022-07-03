@@ -20,16 +20,16 @@
   <meta name="author" content="pkufzh">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Data assimilation program for turbulent flows (DATF) v1.0">
+    <meta name="description" content="本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="湍流数据同化程序 v1.0（使用说明）">
+<meta property="og:title" content="湍流数据同化程序（DATF）使用说明 v1.0">
 <meta property="og:url" content="https://pkufzh.github.io/2022/06/24/DATF/index.html">
 <meta property="og:site_name" content="Small Shrimp">
-<meta property="og:description" content="Data assimilation program for turbulent flows (DATF) v1.0">
+<meta property="og:description" content="本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_DATF.png">
 <meta property="article:published_time" content="2022-06-24T08:30:00.000Z">
-<meta property="article:modified_time" content="2022-07-03T07:20:19.626Z">
+<meta property="article:modified_time" content="2022-07-03T07:49:32.874Z">
 <meta property="article:author" content="pkufzh">
 <meta property="article:tag" content="Open-source">
 <meta property="article:tag" content="Codes">
@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="https://pkufzh.github.io/img/posts/Cover_DATF.png">
   
   
-  <title>湍流数据同化程序 v1.0（使用说明） - Small Shrimp</title>
+  <title>湍流数据同化程序（DATF）使用说明 v1.0 - Small Shrimp</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="湍流数据同化程序 v1.0（使用说明）">
+            <span class="h2" id="subtitle" title="湍流数据同化程序（DATF）使用说明 v1.0">
               
             </span>
 
@@ -259,7 +259,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">湍流数据同化程序 v1.0（使用说明）</h1>
+            <h1 style="display: none">湍流数据同化程序（DATF）使用说明 v1.0</h1>
             
               <p class="note note-info">
                 
@@ -268,25 +268,24 @@
               </p>
             
             <div class="markdown-body">
-              <div class="note note-success">
-            <p>Data assimilation program for turbulent flows (DATF) Version 1.0(v1.0)</p><p><strong><em>湍流数据同化程序 v1.0（使用说明）</em></strong></p>
+              <h1 id="郑重声明">郑重声明</h1>
+<div class="note note-warning">
+            <p><font color="red"><strong>本程序测试平台采用 In-house CFDcodes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守MIT License协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
           </div>
-<h1 id="程序介绍">程序介绍</h1>
+<hr>
+<div class="note note-success">
+            <p><font color="blue"><strong>本仓库为西北工业大学航空学院 2021届本科毕业设计论文《翼型绕流的数据同化方法研究》源程序</strong></font></p><p><font color="blue"><strong>该论文获得 2021年全国高校航空航天类专业本科毕业设计成果交流会个人项目一等奖。</strong></font></p>
+          </div>
+<h1 id="data-assimilation-program-for-turbulent-flows-datf-version-1.0-v1.0">Data
+assimilation program for turbulent flows (DATF) Version 1.0 (v1.0)</h1>
+<h1 id="程序介绍">0 程序介绍</h1>
 <p><strong>程序名称：Data assimilation program for turbulent flows
 (DATF) 湍流数据同化程序</strong></p>
-<p><strong>Github
-仓库：https://github.com/pkufzh/DATF_Release</strong></p>
-<p><strong>作者：北京大学工学院 2021 级博士生，原西北工业大学航空学院
-2017 级本科生 冯铮浩</strong></p>
+<p><strong>Github 仓库：<a target="_blank" rel="noopener" href="https://github.com/pkufzh/DATF_Release">点我传送 O(∩_∩)O
+~</a></strong></p>
+<p><strong>作者：北京大学工学院 2021 级博士生，西北工业大学航空学院 2017
+级本科生 冯铮浩</strong></p>
 <p><strong>联系邮箱：pkufzh@stu.pku.edu.cn</strong></p>
-<h1 id="声明">声明</h1>
-<p><font color="red"><strong>注意：本程序测试平台采用 In-house CFD
-codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p>
-<p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
-<p><font color="blue"><strong>本仓库为西北工业大学航空学院 2021
-届本科毕业设计论文《翼型绕流的数据同化方法研究》源程序</strong></font></p>
-<p><font color="blue"><strong>该论文获得 2021
-年全国高校航空航天类专业本科毕业设计成果交流会个人项目一等奖。</strong></font></p>
 <h1 id="程序整体框架">1 程序整体框架</h1>
 <p>​
 本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。目前程序整体框架为
@@ -679,7 +678,7 @@ CFD 计算结果，主要信息将写入 MATLAB 命令行窗口以及
 <li>Flowfield_Model_Err_Observation.lay ——
 RAE2822翼型绕流同化前后的涡粘场对比云图</li>
 </ul>
-<p><img src="/2022/06/24/DATF/Users\56333\Desktop\Hexo_New\Blog\public\img\posts\Cover_DATF.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p></li>
+<p><img src="/2022/06/24/DATF/RAE2822_Flowfield_Comp.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p></li>
 <li><p><strong><em>Results_Recal_Covergence_Analysis</em></strong>
 文件夹：保存内迭代过程气动力收敛曲线结果。可制作一组模板图如下：</p></li>
 </ul>
@@ -691,17 +690,13 @@ RAE2822翼型绕流同化前后的涡粘场对比云图</li>
 文件夹：保存初始集合成员与内迭代过程集合成员计算的压力系数曲线分布图片。</li>
 </ul>
 <hr>
-<p><font color="red"><strong>注意：本程序测试平台采用 In-house CFD
-codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p>
-<p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
+<div class="note note-warning">
+            <p><font color="red"><strong>本程序测试平台采用 In-house CFDcodes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守MIT License协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
+          </div>
 <hr>
-<p>^_^ This is the END of the page. Thank you for reading!</p>
-<p>If you think this project is helpful to you, do not hesitate to
-<em>Light a Star</em> ~ 🌟 or <em>Fork this repository</em> ~ 🍴!</p>
-<p>Uploaded by <strong><em>pkufzh (Small Shrimp)</em></strong> on
-<strong><em>2022/06/23</em></strong>.</p>
-<p><em>This project is protected by the MIT license. Please obey the
-open source rules strictly.</em></p>
+<div class="note note-info">
+            <p>^_^ This is the END of the page. Thank you for reading!</p><p>If you think this project is helpful to you, do not hesitate to<em>Light a Star</em> ~ 🌟 or <em>Fork this repository</em> ~ 🍴!</p><p>Uploaded by <strong><em>pkufzh (Small Shrimp)</em></strong> on<strong><em>2022/06/23</em></strong>.</p><p><em>This project is protected by the MIT license. Please obey theopen source rules strictly.</em></p>
+          </div>
 <hr>
 <p><em>Who am I? A happy shrimp from Peking University!</em></p>
 
