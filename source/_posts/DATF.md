@@ -1,6 +1,6 @@
 ---
-title: 湍流数据同化程序 v1.0（使用说明）
-excerpt: Data assimilation program for turbulent flows (DATF) v1.0
+title: 湍流数据同化程序（DATF）使用说明 v1.0
+excerpt: 本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。
 index_img: /img/posts/Cover_DATF.png
 date: 2022-06-24 16:30:00
 updated:
@@ -15,29 +15,37 @@ categories:
 - [Shared Projects, Numerical Simulation]
 ---
 
-# Data assimilation program for turbulent flows (DATF) Version 1.0 (v1.0)
+# 郑重声明
 
-# **湍流数据同化程序 v1.0（使用说明）**
+{% note warning %}
 
-# 程序介绍 #
+<font color = 'red'>**本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。**</font>
 
-**程序名称：Data assimilation program for turbulent flows (DATF) 湍流数据同化程序**
+<font color = 'red'>**本仓库中的所有关于数据同化核心代码全部由作者原创，遵守 MIT License 协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！**</font>
 
-**Github 仓库：https://github.com/pkufzh/DATF_Release**
+{% endnote %}
 
-**作者：西北工业大学航空学院 2017 级本科生冯铮浩**
+------
 
-**联系邮箱：pkufzh@stu.pku.edu.cn**
-
-# 声明
-
-<font color = 'red'>**注意：本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。**</font>
-
-<font color = 'red'>**本仓库中的所有关于数据同化核心代码全部由作者原创。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！**</font>
+{% note success %}
 
 <font color = 'blue'>**本仓库为西北工业大学航空学院 2021 届本科毕业设计论文《翼型绕流的数据同化方法研究》源程序**</font>
 
 <font color = 'blue'>**该论文获得 2021 年全国高校航空航天类专业本科毕业设计成果交流会个人项目一等奖。**</font>
+
+{% endnote %}
+
+# Data assimilation program for turbulent flows (DATF) Version 1.0 (v1.0)
+
+# 0 程序介绍 #
+
+**程序名称：Data assimilation program for turbulent flows (DATF) 湍流数据同化程序**
+
+**Github 仓库：[点我传送 O(∩_∩)O ~](https://github.com/pkufzh/DATF_Release)**
+
+**作者：北京大学工学院 2021 级博士生，西北工业大学航空学院 2017 级本科生 冯铮浩**
+
+**联系邮箱：pkufzh@stu.pku.edu.cn**
 
 # 1 程序整体框架
 
@@ -651,11 +659,17 @@ num_da_arr=[(12:7:75),(76:5:186),(208:5:288),(290:3:320),(321:5:376),(377:4:405)
 
 ------
 
-<font color = 'red'>**注意：本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。**</font>
+{% note warning %}
 
-<font color = 'red'>**本仓库中的所有关于数据同化核心代码全部由作者原创。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！**</font>
+<font color = 'red'>**本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。**</font>
+
+<font color = 'red'>**本仓库中的所有关于数据同化核心代码全部由作者原创，遵守 MIT License 协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！**</font>
+
+{% endnote %}
 
 ------
+
+{% note info %}
 
 ^_^ This is the END of the page. Thank you for reading!
 
@@ -664,6 +678,8 @@ If you think this project is helpful to you, do not hesitate to *Light a Star* ~
 Uploaded by ***pkufzh (Small Shrimp)*** on ***2022/06/23***.
 
 *This project is protected by the MIT license. Please obey the open source rules strictly.*
+
+{% endnote %}
 
 ------
 
