@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="code-QwpYUlcB3E" />
+  <meta name="google-site-verification" content="6npz9eKU3PHYKNjmCrkCnokukt5cYcbZsFnL_TjawdU" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/wind_128x128.png">
+  <link rel="icon" href="/img/wind_128x128.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pkufzh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="「这篇论文是一项杰作，充分利用数学工具对其观点进行了优美的阐述，所有分析都建立在最基础的层次上，他推导出的产生声音的精确理论，完全秉承了几百年来声学大师的传统理念。气动声学从此翻开了崭新的一页……」">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有趣的流体小知识（三）——Lighthill声学比拟">
+<meta property="og:url" content="https://pkufzh.github.io/2022/02/19/FM-Lighthill/index.html">
+<meta property="og:site_name" content="Small Shrimp">
+<meta property="og:description" content="「这篇论文是一项杰作，充分利用数学工具对其观点进行了优美的阐述，所有分析都建立在最基础的层次上，他推导出的产生声音的精确理论，完全秉承了几百年来声学大师的传统理念。气动声学从此翻开了崭新的一页……」">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_FM_Lighthill.png">
+<meta property="article:published_time" content="2022-02-19T14:46:58.000Z">
+<meta property="article:modified_time" content="2022-08-08T03:00:23.205Z">
+<meta property="article:author" content="pkufzh">
+<meta property="article:tag" content="Fluid Mechanics">
+<meta property="article:tag" content="Theory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pkufzh.github.io/img/posts/Cover_FM_Lighthill.png">
+  
+  
+  <title>有趣的流体小知识（三）——Lighthill声学比拟 - Small Shrimp</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pkufzh.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=17602339","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog of Small Shrimp</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wallhaven/10.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="有趣的流体小知识（三）——Lighthill声学比拟">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      pkufzh
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-19 22:46" pubdate>
+        2022年2月19日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      52 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">有趣的流体小知识（三）——Lighthill声学比拟</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月8日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="有趣的流体小知识三lighthill声学比拟">有趣的流体小知识（三）——Lighthill声学比拟</h1>
+<div class="note note-success">
+            <p><em>「这篇论文是一项杰作，充分利用数学工具对其观点进行了优美的阐述，所有分析都建立在最基础的层次上，他推导出的产生声音的精确理论，完全秉承了几百年来声学大师的传统理念。如果Rayleigh 或者 Stokes当时就意识到这个问题的重要性，同样会推导出这些结果。气动声学从此翻开了崭新的一页……」</em></p>
+          </div>
+<div data-align="right">
+—— 英国流体力学家，气动声学主要奠基人 John Ffowcs Williams
+</div>
+<div class="note note-success">
+            <p><em><strong>「自古英雄出少年」</strong>，Lighthill在尝试解释射流噪声问题时，并没有运用非常复杂的数学工具或理论，而是结合流体方程，<strong>对流动发声的物理源头</strong>进行数学建模与比拟分析，从而找到了<strong>声场与流场之间的相似关联</strong>，并最终给出<strong>简洁的数学表达形式</strong>。</em></p>
+          </div>
+<h2 id="如何解释气流噪声传统声学的困境">如何解释气流噪声——传统声学的困境</h2>
+<p>声音传播是自然界中最常见的一种物理现象。风吹过电线会发出奇特的鸣叫，气流吹过竹笛会产生美妙的旋律。从音乐到噪声，从次声波到超声波，从说话鼓掌到喷气式发动机轰鸣……声音传播与我们的生活息息相关。</p>
+<p>声学，作为一门古老的学科，其已经有数百年的发展历史。<strong>经典声学</strong>认为，声音在气体中的传播是基于分子的运动，是由分子碰撞引起的。振动发出的声波在空间内传播，距离声源较近的介质分子首先感受到声波产生的微小的压强与密度的变化，进而通过分子碰撞将这种影响传递给相邻的分子，如图
+<a href="#fig1">1</a>
+所示。通过这一种类似<strong>「多米诺骨牌」</strong>式的连锁反应，声波由近及远传播，并随着距离与时间的增大而不断衰减。声波传播实质上是对扰动的一种输运。</p>
+<p><span id="fig1"></span></p>
+<p><img src="/2022/02/19/FM-Lighthill/1.jpg" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<center>
+<font size="2.5"> 图 1 声波与声音传播示意图 </font>
+</center>
+<p><br></p>
+<p>在20世纪50年代之前，人们对声音产生的机理仍然停留在传统声学的范畴。第二次世界大战之后，航空工业在欧美等工业强国得到迅速发展，喷气式发动机的出现，使得人类突破音障成为可能。然而，<strong>严重的气流噪声制约着喷气式发动机的商业化应用，解决流动噪声问题成为难题</strong>。当时的工程师或研究人员仍倾向将这类发动机噪声、射流噪声、螺旋桨噪声等流动发声现象理解为流体冲击壁面振动发声。但在50年代，<em>Lilley</em>
+用将铅笔放进射流中扰动流场来改变噪声模态的实验否定了这种说法。<strong>人们逐渐意识到，过去几百年的经典声学理论与认识尚无法解决具有实际工程意义的流动发声问题，亟待新的理论与学科出现。</strong></p>
+<h2 id="伟大的妙想lighthill的声学比拟">伟大的妙想——Lighthill的声学比拟</h2>
+<p>1949年的英国，在一趟从曼彻斯特到伦敦的列车上，一位时年25岁的年轻人在信封背面推导公式，相应思想与结果经三年几易其稿，以<em>《<strong>On
+sound generated aerodynamically I. General
+theory</strong>》</em>为题，在英国皇家学会会刊（<em>Proceedings of the
+Royal Society of
+London</em>）上正式发表。英国流体力学家、气动声学主要奠基人，也是后来为<strong>「协和号」</strong>（Concorde）超声速客机的研制做出突出贡献的
+<em>John Ffowcs Williams</em> 教授曾这样评价这项工作：</p>
+<blockquote>
+<p><em>「这篇论文是一项杰作，充分利用数学工具对其观点进行了优美的阐述，所有分析都建立在最基础的层次上，他推导出的产生声音的精确理论，完全秉承了几百年来声学大师的传统理念。如果
+Rayleigh 或者 Stokes
+当时就意识到这个问题的重要性，同样会推导出这些结果。<strong>气动声学</strong>从此翻开了崭新的一页……」</em></p>
+</blockquote>
+<p><strong>「自古英雄出少年」</strong>，这位年轻人就是气动声学领域的奠基人与先驱者，英国著名的应用数学家，<strong>詹姆斯·莱特希尔</strong>（<em>James
+Lighthill</em>, 1924 ~ 1998），这项工作的核心便是提出了
+<font color="red"><strong>声学比拟</strong></font>
+这一重要概念，<font color="blue"><strong>是对传统声学的一次开拓性的贡献，并标志着气动声学这一交叉学科的诞生，成为一座连接流体力学与声学的桥梁。</strong></font></p>
+<p><em>Lighthill</em>
+的比拟核心思想在于，<font color="blue"><strong>将有旋的流动区域（如图 <a href="#fig2">2</a>
+所示）类比为一个四极子声源，从而将由流动引起的声波传播问题，等效为经典的有源声学问题。</strong></font>这种思想充分继承了声波传播的传统理念，并对流动发声的物理现象给出合理的解释，是对声音产生机理的丰富与拓展，具有深刻的物理内涵。</p>
+<p><span id="fig2"></span></p>
+<p><img src="/2022/02/19/FM-Lighthill/2.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<center>
+<font size="2.5"> 图 2 由有旋流动引起的声波传播示意图 </font>
+</center>
+<p><br></p>
+<h2 id="优美的阐述应用数学与物理内涵">优美的阐述——应用数学与物理内涵</h2>
+<p>在对科学问题与物理现象具有深刻理解后，应用数学的下一个重要步骤便是建立严谨的数学模型来描述现象。而
+<em>Lighthill</em> 正是采用这样的思想<a href="#refer-anchor-1"><sup>[1]</sup></a><a href="#refer-anchor-2"><sup>[2]</sup></a>，从最基本的流动运动
+<strong><em>Navier-Stokes（N-S）</em></strong>方程出发，推导声学比拟方程，得到流体发声现象的数学阐述。下面对这一过程涉及的应用数学方法与物理内涵进行说明。</p>
+<p>考虑无界区域内由局部有旋流动区域所引起的扰动传播问题。在无穷远处流体处于静止状态，相应的流体压强、密度和声速分别记为
+<span class="math inline">\(p_{0} \, , \rho_{0} \,\)</span> 和 <span class="math inline">\(c_{0}\)</span>。忽略体积力，写出流体运动的基本控制方程为
+<span class="math display">\[
+\frac{\partial\rho}{\partial t}+\frac{\partial\left(\rho
+u_i\right)}{\partial x_i}=0
+\tag{1}
+\label{1}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial\left(\rho u_i\right)}{\partial
+t}+\frac{\partial\left(\rho u_iu_j\right)}{\partial x_i}=-\frac{\partial
+p}{\partial x_i}+\frac{\partial\tau_{ij}}{\partial x_j}
+\tag{2}
+\label{2}
+\]</span></p>
+<p>其中，<span class="math inline">\(p, \,\rho\)</span> 和 <span class="math inline">\(u_{i}\,(i = 1,2,3)\)</span>
+分别代表气体压强、密度和速度。<span class="math inline">\(\tau_{ij}\)</span>
+为黏性应力项（忽略雷诺应力），其形式为 <span class="math display">\[
+\tau_{ij}=2\mu
+S_{ij}-\frac{2}{3}\delta_{ij}\nabla\cdot\mathbf{u}=\mu\left(\frac{\partial
+u_i}{\partial x_j}+\frac{\partial u_j}{\partial
+x_i}-\frac{2}{3}\delta_{ij}\frac{\partial u_k}{\partial x_k}\right)
+\tag{3}
+\label{3}
+\]</span> 则动量方程可进一步写成 <span class="math display">\[
+\frac{\partial\left(\rho u_i\right)}{\partial
+t}=-\frac{\partial\pi_{ij}}{\partial x_j}
+\tag{4}
+\label{4}
+\]</span>
+其中<strong>定义<font color="red">动量通量张量</font></strong>为 <span class="math display">\[
+\pi_{ij}=\rho u_iu_j+\left(p-p_0\right)\delta_{ij}-\tau_{ij}
+\tag{5}
+\label{5}
+\]</span>
+在经典声学理论中（理想可压缩流体中线性小扰动引起的流动），<span class="math inline">\(\pi_{ij}\)</span> 可以退化为 <span class="math display">\[
+\pi_{ij}^0=\left(p-p_0\right)\delta_{ij}=c_0^2\left(\rho-\rho_0\right)\delta_{ij}
+\tag{6}
+\label{6}
+\]</span> 利用上式，动量方程可化为 <span class="math display">\[
+\frac{\partial\left(\rho u_i\right)}{\partial
+t}+\frac{\partial}{\partial
+x_i}\left[c_0^2\left(\rho-\rho_0\right)\right]=0
+\tag{7}
+\label{7}
+\]</span> 在连续方程中引入 <span class="math inline">\(\rho_{0}\)</span>
+，可以得到 <span class="math display">\[
+\frac{\partial}{\partial
+t}\left(\rho-\rho_0\right)+\frac{\partial\left(\rho u_i\right)}{\partial
+x_i}=0
+\tag{8}
+\label{8}
+\]</span> 由以上两式联立，可消去 <span class="math inline">\(\rho
+u_{i}\)</span> 项，即得 <span class="math display">\[
+\left(\frac{1}{c_0^2}\frac{\partial^2}{\partial
+t^2}-\nabla^2\right)\left[c_0^2\left(\rho-\rho_0\right)\right]=0
+\tag{9}
+\label{9}
+\]</span>
+上式即为经典声学的<strong>无源齐次双曲波动方程</strong>，是传统声学理论的奠基性方程，注意引入了理想无黏和线性化假设。<font color="blue"><strong><em>Lighthill</em>
+的过人之处在于，利用比拟思想，考虑不对动量通量张量进行简化，即舍去理想化假设，来刻画控制流动的物理项对经典声学波动方程的影响。</strong></font>对于一般黏性流动，<strong>引入
+<em>Lighthill</em> 张量</strong> <span class="math display">\[
+T_{ij}=\pi_{ij}-\pi_{ij}^0=\rho
+u_iu_j+\left[\left(p-p_0\right)-c_0^2\left(\rho-\rho_0\right)\right]\delta_{ij}-\tau_{ij}
+\tag{10}
+\label{10}
+\]</span> 则动量方程可化为 <span class="math display">\[
+\frac{\partial\left(\rho u_i\right)}{\partial
+t}+\frac{\partial\pi_{ij}^0}{\partial x_j}=-\frac{\partial
+T_{ij}}{\partial x_j}
+\tag{11}
+\label{11}
+\]</span> 类似地，将动量通量张量代入可得 <span class="math display">\[
+\frac{\partial\left(\rho u_i\right)}{\partial
+t}+\frac{\partial}{\partial
+x_j}\left[c_0^2\left(\rho-\rho_0\right)\right]=-\frac{\partial
+T_{ij}}{\partial x_j}
+\tag{12}
+\label{12}
+\]</span> 最终消去 <span class="math inline">\(\rho u_{i}\)</span>
+项，可以得到 <span class="math display">\[
+\left(\frac{1}{c_0^2}\frac{\partial^2}{\partial
+t^2}-\nabla^2\right)\left[c_0^2\left(\rho-\rho_0\right)\right]=\frac{\partial^2T_{ij}}{\partial
+x_i\partial x_j}
+\tag{13}
+\label{13}
+\]</span> 这就是著名的 <font color="blue"><strong><em>Lighthill</em>
+方程</strong></font>，也是<font color="red"><strong>气动声学领域的奠基性方程</strong></font>。由上述推导可以看出，<em>Lighthill</em>
+方程由流体控制 <em>N-S</em>
+方程直接推出，没有添加任何其他假设或者参量，是一个「精确」的方程。同时，对比
+<em>Lighthill</em>
+方程与经典声学双曲波动方程，两者仅在右端源项存在差异，其中流动发声声源为由
+<em>Lighthill</em>
+张量的空间二阶梯度组成的四极子声源。整个推导过程中，数学演算严谨、干净、优美，物理内涵清晰易懂，依赖概念虽异常基础，获得结论却十分震撼。</p>
+<p>作为一名流体力学研究者，<em>Lighthill</em>
+对流体性质首先拥有敏锐的直觉与认知，但他又不仅仅局限于流体领域的探索，而是大胆迈出去，汲取传统声学的理论精华，充分发挥类比与想象，寻找运动流体与发声声源这本不相关的二者内在的相似性，并运用数学工具，成功建立精准简洁的数学描述。这种由学科交叉促生的比拟思想，不仅拥有非凡的理论与实际应用价值，更具有拓展与延伸的生命力。</p>
+<p>历史上，<em>Lighthill</em> 的声学比拟理论经由 <em>Curle</em> 的推广<a href="#refer-anchor-3"><sup>[3]</sup></a>用于解释固壁发声问题。一般形式的声学比拟方程（<strong><em>Ffowcs
+Williams and Hawkings equation, FW-H</em></strong><a href="#refer-anchor-4"><sup>[4]</sup></a>）在物理上清晰解释了运动物体的三个气动声源（如图
+<a href="#fig3">3</a>
+所示）：厚度噪声（单极子噪声）、载荷噪声（偶极子噪声）以及湍流噪声（四极子噪声），推动了气动声学学科的深入发展。</p>
+<p><span id="fig3"></span></p>
+<p><img src="/2022/02/19/FM-Lighthill/3.png" srcset="/img/loading.gif" lazyload style="zoom:120%;"></p>
+<center>
+<font size="2.5"> 图 3 气动声源的三种类型示意图 </font>
+</center>
+<p><br></p>
+<h2 id="有趣的故事lighthill的著名预测">有趣的故事——Lighthill的著名预测</h2>
+<p><strong>有趣的是，</strong>正是这样一位应用数学大师与交叉学科的先行者，<em>Lighthill</em>
+在1973年提交给英国科学与工程研究委员会的名为《<em>Artificial
+Intelligence: A General
+Survey</em>》的一篇评论中，对当时尚在襁褓的人工智能（Artificial
+Intelligence,
+AI），表达了对这一领域许多核心研究方面的非常悲观的预测，称<strong>「该领域迄今为止的发现尚未产生当时承诺的重大影响」</strong>（<em>「In
+no part of the field have the discoveries made so far produced the major
+impact that was then
+promised」</em>），并直接导致当时英国政府对大学的人工智能研究停止拨款。而在21世纪的今天，人工智能技术作为前沿交叉学科的代表，其各个研究方向已经成为炙手可热。<em>Lighthill</em>
+的预测似乎是错误的，这不禁引发我们思考，应如何看待应用数学与学科交叉的未来？</p>
+<p><strong><em>Lighthill</em>
+的传奇已经谢幕，但气动声学与人工智能的发展正欣欣向荣。他的人生故事依旧启发我们思考：当充满风险的新事物、新机遇出现时，我们应该固守成规，还是开拓进取？</strong></p>
+<hr>
+<p>以上就是本文全部内容，如有疑问，敬请大家批评指正！</p>
+<p>相应文章也将发布在我的 <a target="_blank" rel="noopener" href="https://space.bilibili.com/167343763/article">B站空间</a> 、<a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1477306597446213634">知乎专栏</a>
+上。后续我会不定期更新本博客与专栏，欢迎大家关注！</p>
+<hr>
+<h2 id="参考文献">参考文献</h2>
+<div id="refer-anchor-1">
+
+</div>
+<ul>
+<li>[1] Lighthill, M. J. (1952). On sound generated aerodynamically I.
+General theory. <em>Proceedings of the Royal Society of London. Series
+A. Mathematical and Physical Sciences</em>, 211(1107), 564-587.</li>
+</ul>
+<div id="refer-anchor-2">
+
+</div>
+<ul>
+<li>[2] Lighthill, M. J. (1954). On sound generated aerodynamically II.
+Turbulence as a source of sound. <em>Proceedings of the Royal Society of
+London. Series A. Mathematical and Physical Sciences</em>, 222(1148),
+1-32.</li>
+</ul>
+<div id="refer-anchor-3">
+
+</div>
+<ul>
+<li>[3] Curle, N. (1955). The influence of solid boundaries upon
+aerodynamic sound. <em>Proceedings of the Royal Society of London.
+Series A. Mathematical and Physical Sciences</em>, 231(1187),
+505-514.</li>
+</ul>
+<div id="refer-anchor-4">
+
+</div>
+<ul>
+<li>[4] Williams, J. F., &amp; Hawkings, D. L. (1969). Sound generation
+by turbulence and surfaces in arbitrary motion. <em>Philosophical
+Transactions for the Royal Society of London. Series A, Mathematical and
+Physical Sciences</em>, 321-342.</li>
+</ul>
+<hr>
+<div class="note note-info">
+            <p><font size="2.5">^_^ This is the END of the article. Thank you forreading! </font></p><p><font size="2.5">If you think this article is helpful to you, do nothesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on<i><b>2022/02/19</b></i> .</font></p>
+          </div>
+<center>
+<i> Who am I? A happy shrimp from Peking University! </i>
+</center>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/">Shared Notes</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/Articles/">Articles</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Fluid-Mechanics/">Fluid Mechanics</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Theory/">Theory</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/10/Trajectory%20Derivation/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">有趣的航空航天小知识（一）——探测器绕天体运行轨道方程推导</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/13/FM-Note-Karman-Vortex-Street/">
+                        <span class="hidden-mobile">有趣的流体小知识（二）——神奇的卡门涡街</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81NTM1MS8zMTgxOA==">
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#lv-container', function() {
+        Fluid.utils.createScript('https://cdn-city.livere.com/js/embed.dist.js');
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div align = center> <a target="_blank" rel="noopener" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" srcset="/img/loading.gif" lazyload title="Powered by Hexo"></a> <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/"><img src="https://img.shields.io/badge/Theme-Fluid-9cf?style=flat&amp;logo=fortran" srcset="/img/loading.gif" lazyload title="Theme Fluid"></a> <a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Zhenghao-Feng"><img src="https://img.shields.io/badge/ResearchGate-brightgreen?logo=researchgate&logoColor=white" srcset="/img/loading.gif" lazyload / title="My Research Profile"></a> <a target="_blank" rel="noopener" href="https://space.bilibili.com/167343763"><img src="https://img.shields.io/badge/dynamic/json?labelColor=FE7398&logo=bilibili&logoColor=white&label=Bilibili%20Fans&color=00aeec&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D167343763" srcset="/img/loading.gif" lazyload / title="My Bilibili Space"></a> <a target="_blank" rel="noopener" href="https://github.com/pkufzh"><img src="https://img.shields.io/badge/dynamic/json?color=262525&label=Github%20Followers&logo=github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dpkufzh" srcset="/img/loading.gif" lazyload / title="My Github Homepage"></a> </div> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=17602339";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

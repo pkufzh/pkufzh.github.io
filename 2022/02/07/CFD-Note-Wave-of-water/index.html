@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="code-QwpYUlcB3E" />
+  <meta name="google-site-verification" content="6npz9eKU3PHYKNjmCrkCnokukt5cYcbZsFnL_TjawdU" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/wind_128x128.png">
+  <link rel="icon" href="/img/wind_128x128.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pkufzh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="现在思考这样一个看似不可能的问题：我们只凭观察，没有测量，如何快速估计出湖的深度？流体动力学告诉我们，在一定条件下，通过观察湖面波浪的行进速度，就可以快速估计水深！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？">
+<meta property="og:url" content="https://pkufzh.github.io/2022/02/07/CFD-Note-Wave-of-water/index.html">
+<meta property="og:site_name" content="Small Shrimp">
+<meta property="og:description" content="现在思考这样一个看似不可能的问题：我们只凭观察，没有测量，如何快速估计出湖的深度？流体动力学告诉我们，在一定条件下，通过观察湖面波浪的行进速度，就可以快速估计水深！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_CFD_Note_Wave_of_water.jpg">
+<meta property="article:published_time" content="2022-02-06T16:08:33.000Z">
+<meta property="article:modified_time" content="2022-08-08T03:00:23.189Z">
+<meta property="article:author" content="pkufzh">
+<meta property="article:tag" content="Fluid Mechanics">
+<meta property="article:tag" content="Theory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pkufzh.github.io/img/posts/Cover_CFD_Note_Wave_of_water.jpg">
+  
+  
+  <title>有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？ - Small Shrimp</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pkufzh.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=17602339","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog of Small Shrimp</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wallhaven/10.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      pkufzh
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-07 00:08" pubdate>
+        2022年2月7日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      42 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月8日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="有趣的流体小知识一只凭观察如何快速估计出湖的深度">有趣的流体小知识（一）——只凭观察，如何快速估计出湖的深度？</h1>
+<div class="note note-success">
+            <p>风拂湖面，波光粼粼，美轮美奂。</p><p>现在思考这样一个看似不可能的问题：<strong>我们只凭观察，没有测量，如何快速估计出湖的深度？</strong></p><p>流体动力学告诉我们，<font color="red"><strong>在一定条件下，通过观察湖面波浪的行进速度，就可以快速估计水深！</strong></font></p><p>是不是很神奇？生活小技巧 Get！</p><p>下面我将从基本流体力学方程出发，给出详细的<a href="#理论推导环节"><font color="green"><strong>理论推导过程</strong></font></a>~</p><p>公式预警，不感兴趣的小伙伴们也可以跳转最后的<a href="#答案揭晓环节"><font color="green"><strong>答案揭晓环节</strong></font></a>，直接查看答案！</p>
+          </div>
+<h2 id="理论推导环节">理论推导环节</h2>
+
+
+如图 1 所示，简化湖面为二维情形，建立平面直角坐标系 $ (z, \,x) $。
+
+
+<p><img src="/2022/02/07/CFD-Note-Wave-of-water/1.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<center>
+<font size="2.5"> 图 1 对湖面水波建立平面直角坐标系 </font>
+</center>
+<p>对于湖水，考虑 <strong>无粘、不可压、原始静止、小扰动</strong>
+情况下的 <strong><em>Navier-Stokes (N-S)</em> 方程</strong>，即
+<strong><em>Euler</em> 方程</strong> <span class="math display">\[
+\frac{\partial \vec{u}}{\partial t} + \left(\vec{u} \cdot \nabla\right)
+\vec{u} = - \frac{1}{\rho} \nabla p + \vec{g} \tag{1} \label{eq1}
+\]</span> 
+
+其中，$ \vec{u} $ 为速度，$ \rho $ 为密度，$ p $ 为压强，$ \vec{g} $ 为重力加速度矢量。
+
+</p>
+<p>由原始静止、小扰动条件，可假设扰动速度与压强为 <span class="math display">\[
+\vec{u} = \vec{u}_{0} + \vec{u}^{\prime} = \vec{u}^{\prime} , \quad p =
+p_{0} + p^{\prime} \tag{2} \label{eq2}
+\]</span> 
+
+其中，满足 $ \vec{u} $ 为趋于零的小量，且 $ p^{\prime} \ll p_{0} $。
+
+</p>
+<p>将式 <span class="math inline">\(\eqref{eq2}\)</span> 代入式 <span class="math inline">\(\eqref{eq1}\)</span> ，忽略高阶小对流项
+$ \left(\vec{u} \cdot \nabla\right) \vec{u} $ ，得到 <strong>线性化 <em>Euler</em> 方程</strong> <span class="math display">\[
+\frac{\partial \vec{u}^{\prime}}{\partial t} = - \frac{1}{\rho} \nabla p
++ \vec{g} \tag{3} \label{eq3}
+\]</span> 
+
+首先对上式两边取旋度，由于重力有势，故有
+$$
+\frac{\partial \vec{\omega}^{\prime}}{\partial t} \equiv 0 \tag{4} \label{eq4}
+$$
+其中 $ \vec{\omega}^{\prime} = \nabla \times \vec{u}^{\prime} $ 为扰动速度旋度，故扰动速度无旋。
+
+由无旋场与有势场的等价性，可引入扰动速度势 $ \varphi $，满足
+$$
+\vec{u}^{\prime} = \nabla \varphi \tag{5} \label{eq5}
+$$
+ 将上式代入不可压连续性方程 $ \nabla \cdot \vec{u}^{\prime} = 0 $，可得
+$$
+\nabla^{2} \varphi = \Delta \varphi = \frac{\partial^{2} \varphi}{\partial z^{2}} + \frac{\partial^{2} \varphi}{\partial x^{2}} = 0 \tag{6} \label{eq6}
+$$
+</p>
+<p>即扰动速度势满足 <strong><em>Laplace</em> 方程</strong>。又将式 <span class="math inline">\(\eqref{eq5}\)</span> 代入式 <span class="math inline">\(\eqref{eq3}\)</span> 左式，可得 <span class="math display">\[
+\frac{\partial}{\partial t} \nabla \varphi = - \nabla
+\left(\frac{p}{\rho} + g z\right) \tag{7} \label{eq7}
+\]</span> 
+
+其中，$ z $ 为水深。另外，由流体静力学知识，有
+$$
+p = p_{a} - \rho g z + p^{\prime} \tag{8} \label{eq8}
+$$
+其中，$ p_{a} $ 为湖面上方大气压强，假设保持恒定。将式 $\eqref{eq8}$ 代入式 $\eqref{eq7}$，可得
+$$
+\frac{\partial}{\partial t} \nabla \varphi = - \nabla \left(\frac{p}{\rho} + g z\right) = - \nabla \left(\frac{p_{a} + p^{\prime}}{\rho}\right) = - \nabla \left(\frac{p^{\prime}}{\rho}\right) \tag{9} \label{eq9}
+$$
+上式可进一步化为
+$$
+\frac{\partial \varphi}{\partial t} = - \frac{p^{\prime}}{\rho} \tag{10} \label{eq10}
+$$
+假设水波自由面方程为 $ z = \zeta \left(x, t\right) $，$ \zeta $ 为偏离平衡位置的位移小量，在该界面上满足 $ p = p_{a} $，代入式 $\eqref{eq8}$ 可得
+$$
+p^{\prime} = \rho g \zeta \tag{11} \label{eq11}
+$$
+</p>
+<p>将式 <span class="math inline">\(\eqref{eq11}\)</span> 代入式 <span class="math inline">\(\eqref{eq10}\)</span> 可得水波的
+<font color="red"><strong>动力学边界条件</strong></font> <span class="math display">\[
+\left.\frac{\partial \varphi}{\partial t}\right|_{z=\zeta}=-g \zeta
+\tag{12} \label{eq12}
+\]</span> 另外，考虑水波自由面作为物质面的运动过程 <span class="math display">\[
+V_{z} = \left.\frac{\partial \varphi}{\partial
+z}\right|_{z=\zeta}=\frac{\mathrm{d} \zeta}{\mathrm{d} t} =
+\frac{\partial \zeta}{\partial t}+\frac{\partial \zeta}{\partial x}
+\frac{\mathrm{d} x}{\mathrm{d} t} = \frac{\partial \zeta}{\partial
+t}+\frac{\partial \zeta}{\partial x} u^{\prime} \tag{13} \label{eq13}
+\]</span> 对上式略去高阶小量，进行线性化，得到水波的
+<font color="red"><strong>运动学边界条件</strong></font> <span class="math display">\[
+\left.\frac{\partial \varphi}{\partial
+z}\right|_{z=\zeta}=\frac{\partial \zeta}{\partial t} \tag{14}
+\label{eq14}
+\]</span> 结合式 <span class="math inline">\(\eqref{eq12}\)</span> 与
+<span class="math inline">\(\eqref{eq14}\)</span>，可得 <span class="math display">\[
+\left.\left(\frac{\partial^{2} \varphi}{\partial t^{2}}+g \frac{\partial
+\varphi}{\partial z}\right)\right|_{z = \zeta} = 0 \tag{15} \label{eq15}
+\]</span>
+下面应用两个边界条件，再通过引入壁面边界条件，求解扰动速度势满足的
+<strong><em>Laplace</em> 方程</strong>。</p>
+<p>引入波长为 $ \lambda $，周期为 $ T $，波数为 $ k = \frac{2 \pi}{\lambda} $，频率为
+$ \omega = \frac{2 \pi}{T} $，波速为 $ c = \frac{\omega}{k} = \frac{\lambda}{T} $ 的扰动速度势<strong>主模态 (Normal
+mode)</strong> <span class="math display">\[
+\varphi=\Phi(z) e^{i(k x-\omega t)} \tag{16} \label{eq16}
+\]</span> 其满足 <strong><em>Laplace</em> 方程</strong> <span class="math inline">\(\eqref{eq6}\)</span> 的通解为 <span class="math display">\[
+\Phi(z)=\phi_{1} e^{k z}+\phi_{2} e^{-k z} \tag{17} \label{eq17}
+\]</span> 
+
+其中，$ \phi_{1}, \, \phi_{2} $ 为常数。
+
+</p>
+<ul>
+<li>考虑<strong>有限水深</strong>情况，水深 $ h $。</li>
+</ul>
+<p><img src="/2022/02/07/CFD-Note-Wave-of-water/2.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<center>
+<font size="2.5"> 图 2 有限水深几何坐标系示意图 </font>
+</center>
+<p>如图 2 所示，考虑水底无穿透边界条件为 <span class="math display">\[
+\left.\frac{\partial \varphi}{\partial z}\right|_{z = - h} = 0 \tag{18}
+\label{eq18}
+\]</span> 将式 <span class="math inline">\(\eqref{eq16}\)</span> <span class="math inline">\(\eqref{eq17}\)</span> 代入上式，可令 <span class="math display">\[
+\phi_{1} e^{-k h}=\phi_{2} e^{k h}=\frac{1}{2} \phi_{0} \tag{19}
+\label{eq19}
+\]</span> 进一步可得 <span class="math display">\[
+\Phi(z)=\phi_{0} \cosh \left[k(z+h)\right] \tag{20} \label{eq20}
+\]</span> 
+
+故扰动速度势 $ \varphi $ 解为
+
+ <span class="math display">\[
+\varphi=\phi_{0} \cosh \left[k(z+h)\right] e^{i(k x-\omega t)} \tag{21}
+\label{eq21}
+\]</span> 将上式解代入式 <span class="math inline">\(\eqref{eq15}\)</span>，可得水波色散关系式 <span class="math display">\[
+\omega^{2} = gk \tanh (kh) \tag{22} \label{eq22}
+\]</span> 
+
+注意到，当 $ kh \ll 1 $，即 $ h \ll \frac{1}{k} = \frac{\lambda}{2 \pi} $ 时，有
+
+ <span class="math display">\[
+\tanh (kh) = kh - \frac{1}{3} (kh)^{3} + O((kh)^{5}) \approx kh \tag{23}
+\label{eq23}
+\]</span> 将上式代入式 <span class="math inline">\(\eqref{eq22}\)</span>，可得 <span class="math display">\[
+\omega^{2} = gk \left[kh - \frac{1}{3} (kh)^{3} + O((kh)^{5})\right] = g
+h k^{2} \left[1 - \frac{1}{3} (k h)^{2} + O ((kh)^{4})\right] \tag{24}
+\label{eq24}
+\]</span> 故水波波速 $ c $ 为 <span class="math display">\[
+c = \frac{\omega}{k} = \frac{\lambda}{T} = \sqrt{g h \left[1 -
+\frac{1}{3} (k h)^{2} + O ((kh)^{4})\right]} \approx \sqrt{g h} \tag{25}
+\label{eq25}
+\]</span> 观察上式可得，若<strong>水深 $ h $ 远小于波长
+$ \lambda $</strong>
+时，此时称该界面波为<strong>浅水波</strong>，具有<strong>非色散</strong>特性，特征是波速
+<span class="math inline">\(c\)</span> 仅与以及水深 $ h $ 有关。</p>
+<h2 id="答案揭晓环节">答案揭晓环节</h2>
+<p>有了上面的波速关系式，我们就可以回到最初的问题，即<font color="blue"><strong>如何仅通过观察波浪行进速度就能估计出湖的深度？</strong></font></p>
+<p><em>若我们观察到一列行进速度较为稳定的大波浪，其<strong>波长
+$ \lambda $</strong> 很长，可近似满足远大于<strong>水深 $ h
+$</strong>
+的条件，即<font color="red"><strong>浅水波</strong></font>，即可快速估计水深</em>
+<span class="math display">\[
+h = \frac{c^{2}}{g} \tag{26} \label{eq26}
+\]</span> <em>其中，$ c $ 为水波行进速度， $ g \approx 9.81 \, \text{m} / \text{s}^{2} $ 
+为重力加速度。</em></p>
+<p>事实上，该关系式在 $ \frac{\lambda}{20} < h < \frac{\lambda}{2} $
+情况下均适用。当然，这只是根据水波动力学推导出的理论关系式，其中包含众多假设条件，实际上只是一种粗略的估计。</p>
+<p>最后，值得注意的是，若满足水波波长 $ \lambda $较短，水深 $ h $
+较大，即 $ h > \frac{\lambda}{2} $
+时，通常认为该水波为<font color="red"><strong>深水波</strong></font>（或表面波），此时界面波为负色散波，其色散关系式为
+<span class="math display">\[
+c = \sqrt{\frac{g}{k}} \tag{27} \label{eq27}
+\]</span>
+即波长越长，波数越小，波速越大。此时波速与水深无关，这也就意味着我们也就不能根据波速来估计湖的水深啦~</p>
+<p><strong>想象一下，站在湖面，欣赏美景，观看浪潮，顺便还能估算出湖的深度，是不是非常神奇呢？（手动狗头
+doge）</strong></p>
+<h2 id="参考资料">参考资料</h2>
+<p>以上就是本期全部内容，参考朱克勤、彭杰老师的《高等流体力学》。</p>
+<p>公式推导不够细致，排版也不够美观，还请大家谅解。如有疑问，敬请大家批评指正！</p>
+<p>相应文章也发布在我的B站空间专栏上。后续我会不定期更新本博客与专栏，也正在构思相似内容的科普短视频创作，欢迎大家关注！</p>
+<hr>
+<div class="note note-info">
+            <p><font size="2.5">^_^ This is the END of the article. Thank you forreading! </font></p><p><font size="2.5">If you think this article is helpful to you, do nothesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on<i><b>2022/02/07</b></i> .</font></p>
+          </div>
+<center>
+<i> Who am I? A happy shrimp from Peking University! </i>
+</center>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/">Shared Notes</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/Articles/">Articles</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Fluid-Mechanics/">Fluid Mechanics</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Theory/">Theory</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/13/FM-Note-Karman-Vortex-Street/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">有趣的流体小知识（二）——神奇的卡门涡街</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/31/CFD-1D-Sod-Shock-Tube/">
+                        <span class="hidden-mobile">一维 Sod 激波管的数值模拟</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81NTM1MS8zMTgxOA==">
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#lv-container', function() {
+        Fluid.utils.createScript('https://cdn-city.livere.com/js/embed.dist.js');
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div align = center> <a target="_blank" rel="noopener" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" srcset="/img/loading.gif" lazyload title="Powered by Hexo"></a> <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/"><img src="https://img.shields.io/badge/Theme-Fluid-9cf?style=flat&amp;logo=fortran" srcset="/img/loading.gif" lazyload title="Theme Fluid"></a> <a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Zhenghao-Feng"><img src="https://img.shields.io/badge/ResearchGate-brightgreen?logo=researchgate&logoColor=white" srcset="/img/loading.gif" lazyload / title="My Research Profile"></a> <a target="_blank" rel="noopener" href="https://space.bilibili.com/167343763"><img src="https://img.shields.io/badge/dynamic/json?labelColor=FE7398&logo=bilibili&logoColor=white&label=Bilibili%20Fans&color=00aeec&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D167343763" srcset="/img/loading.gif" lazyload / title="My Bilibili Space"></a> <a target="_blank" rel="noopener" href="https://github.com/pkufzh"><img src="https://img.shields.io/badge/dynamic/json?color=262525&label=Github%20Followers&logo=github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dpkufzh" srcset="/img/loading.gif" lazyload / title="My Github Homepage"></a> </div> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=17602339";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
