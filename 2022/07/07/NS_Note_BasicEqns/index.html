@@ -1,0 +1,1069 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta name="baidu-site-verification" content="code-QwpYUlcB3E" />
+  <meta name="google-site-verification" content="6npz9eKU3PHYKNjmCrkCnokukt5cYcbZsFnL_TjawdU" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/wind_128x128.png">
+  <link rel="icon" href="/img/wind_128x128.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pkufzh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文旨在给出流体力学基本方程组完整清晰的数学表达，包括流体力学领域最基本、最重要的控制方程——纳维-斯托克斯（Navier-Stokes, N-S）方程的具体形式，同时给出基本方程组的几种常见的变形与简化形式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流体小白学习笔记（一）——流体力学基本方程组">
+<meta property="og:url" content="https://pkufzh.github.io/2022/07/07/NS_Note_BasicEqns/index.html">
+<meta property="og:site_name" content="Small Shrimp">
+<meta property="og:description" content="本文旨在给出流体力学基本方程组完整清晰的数学表达，包括流体力学领域最基本、最重要的控制方程——纳维-斯托克斯（Navier-Stokes, N-S）方程的具体形式，同时给出基本方程组的几种常见的变形与简化形式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_NS_Note_BasicEqns.jpg">
+<meta property="article:published_time" content="2022-07-07T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-15T12:18:55.672Z">
+<meta property="article:author" content="pkufzh">
+<meta property="article:tag" content="Fluid Mechanics">
+<meta property="article:tag" content="Theory">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pkufzh.github.io/img/posts/Cover_NS_Note_BasicEqns.jpg">
+  
+  
+  <title>流体小白学习笔记（一）——流体力学基本方程组 - Small Shrimp</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"pkufzh.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"siteId=17602339","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog of Small Shrimp</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wallhaven/10.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="流体小白学习笔记（一）——流体力学基本方程组">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      pkufzh
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-07 20:00" pubdate>
+        2022年7月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      16k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      135 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">流体小白学习笔记（一）——流体力学基本方程组</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年8月15日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="流体小白学习笔记一流体力学基本方程组">流体小白学习笔记（一）——流体力学基本方程组</h1>
+<h2 id="前言">前言</h2>
+<div class="note note-success">
+            <p>前排提示：大量公式预警 ~本文干货多多，欢迎小伙伴们点赞、收藏、转发！O(∩_∩)O</p>
+          </div>
+<p>流体力学是一门古老而优美的学科。艺术家们描绘的流转星空、奔腾江河，科学家们研究的跳跃液滴、飞舞浪花，工程师们设计的大型飞机、运载火箭……在日常生活与工业生产中，随处可见流体力学的身影。描述流动规律，捕捉流体特征，解决流动难题，成为流体力学工作者们的毕生追求。</p>
+<p><strong>流体力学基本方程组，是整座流体力学大厦的基石。</strong>理解并熟记基本方程组的数学表达与物理含义，是开展流体力学理论、实验和计算等各项研究的基础。</p>
+<p>本文旨在给出流体力学基本方程组完整清晰的数学表达，包括流体力学领域最基本、最重要的控制方程——纳维-斯托克斯（Navier-Stokes,
+N-S）方程的具体形式，同时给出基本方程组的几种常见的变形与简化形式。相比其他类似科普文章，本文给出了更加详细的公式说明，适合相关专业人员阅读与收藏。</p>
+<h2 id="流体力学基本方程组的数学表达1">流体力学基本方程组的数学表达<a href="#refer-anchor-1"><sup>[1]</sup></a></h2>
+<p>根据<strong>质量守恒定律</strong>、<strong>动量定理</strong>、<strong>能量守恒定律</strong>以及<strong>黏性规律</strong>，能够导出关于运动流体所需满足的三大基本方程：连续性方程（continuity
+equation）、运动方程（momentum equations）、能量方程（energy
+equation）。这些方程再加上本构方程（constitutive
+equations）、状态方程（equation of state, EOS）以及内能（internal
+energy）和熵（entropy）的表达式，便构成了流体力学的基本方程组。</p>
+<p>下面直接给出微分形式的流体力学基本方程组。写成<strong>应力矢量（stress
+vector）形式</strong>的流体力学基本方程组为 <span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\frac{\partial \rho}{\partial t}+\nabla \cdot(\rho \mathbf{u})=0, &amp;
+\text { 连续性方程 } \\
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}=\rho
+\boldsymbol{F}+\nabla \cdot \boldsymbol{P}, &amp; \text { 运动方程 } \\
+\rho \frac{\mathrm{D} e}{\mathrm{D} t}=\boldsymbol{P}: \boldsymbol{S}+
+\nabla \cdot(\kappa \nabla T)+\rho \dot{q}, &amp; \text { 能量方程 } \\
+\boldsymbol{P}=-p \boldsymbol{I} + \boldsymbol{\Pi}=-p \boldsymbol{I}+2
+\mu\left(\boldsymbol{S}-\frac{1}{3} (\nabla \cdot \mathbf{u})
+\boldsymbol{I} \right)+\mu^{\prime} (\nabla \cdot \mathbf{u})
+\mathbf{I}, &amp; \text { 本构方程 } \\
+p=f(\rho, T), &amp; \text { 状态方程 }
+\end{array}\right. \label{eq001} \tag{1}
+\end{align}
+\]</span> 或写成应力张量（stress tensor）形式为 <span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\frac{\partial \rho}{\partial t} + \frac{\partial(\rho u_{i})}{\partial
+x_{i}} = 0,\\
+\rho \frac{\mathrm{D} u_{i}}{\mathrm{D} \mathbf{t}} = \rho F_{i} +
+\frac{\partial p_{i j}}{\partial x_{j}},\\
+\rho \frac{\mathrm{D} e}{\mathrm{D} \mathbf{t}} = p_{i j} s_{j i} +
+\frac{\partial}{\partial x_{i}}(\kappa \frac{\partial T}{\partial
+x_{i}}) + \rho \dot{q},\\
+p_{i j} = - p \delta_{i j} + \pi_{i j} = - p \delta_{i j} + 2 \mu
+\left(s_{i j} - \frac{1}{3} s_{k k} \delta_{i j} \right)
++\mu^{\prime}s_{k k} \delta_{i j},\\
+p = f(\rho, T),\\
+\end{array}\right. \label{eq002} \tag{2}
+\end{align}
+\]</span> 其中，<span class="math inline">\(i, j = 1, 2,
+3\)</span>；速度矢量为 <span class="math inline">\(\mathbf{u} =
+[u,v,w]^{T}\)</span>，<span class="math inline">\(\boldsymbol{F}\)</span> 为体积力项（volumetric
+force term），<span class="math inline">\(\boldsymbol{P}\)</span>
+为应力张量（stress tensor），<span class="math inline">\(\boldsymbol{\Pi}\)</span> 为偏应力张量（deviatoric
+stress tensor），<span class="math inline">\(\boldsymbol{S}\)</span>
+为变形速率张量（tensor of deformation rate, symmetric），<span class="math inline">\(\boldsymbol{I}\)</span> 为单位矩阵（identity
+matrix），<span class="math inline">\(\dot{q}\)</span>
+为热源项，其代表由于辐射或其他原因在单位时间内传入单位质量流体的热量；<span class="math inline">\(\rho\)</span> 为密度，<span class="math inline">\(p\)</span> 为压强，<span class="math inline">\(T\)</span> 为热力学温度； <span class="math inline">\(\mu\)</span> 为剪切或动力黏性系数（shear / dynamic
+viscosity），也称为第一粘性系数（first coefficient of viscosity），<span class="math inline">\(\mu^{\prime}\)</span> 为体积或膨胀粘度（volume /
+bulk viscosity），<span class="math inline">\(\kappa\)</span>
+为导热系数（thermal conductivity），这三个系数均与温度 <span class="math inline">\(T\)</span> 有关，且体积或膨胀粘度 <span class="math inline">\(\mu^{\prime}\)</span> 满足 <span class="math display">\[
+\begin{align}
+\mu^{\prime} = \lambda + \frac{2}{3} \mu \label{eq003} \tag{3}
+\end{align}
+\]</span> 其中，<span class="math inline">\(\lambda\)</span>
+为第二黏性系数（second coefficient of
+viscosity）。若斯托克斯假设（Stoke's assumption）成立，则有 <span class="math inline">\(\mu^{\prime} = 0\)</span>，而动力黏性系数 <span class="math inline">\(\mu\)</span> 可利用萨瑟兰公式（Sutherland's
+formula）进行估计，有以下关系式 <span class="math display">\[
+\begin{align}
+\mu=\mu_{\text{ref}}\left(\frac{T}{T_{\text{ref}}}\right)^{\frac{3}{2}}
+\frac{T_{\text{ref}}+S}{T+S} \label{eq004} \tag{4}
+\end{align}
+\]</span> 其中，<span class="math inline">\(T_{\text{ref}}\)</span>
+为参考温度，<span class="math inline">\(\mu_{\text{ref}}\)</span>
+为参考温度下的动力黏性系数，<span class="math inline">\(S\)</span> 为
+Sutherland 温度。若考虑标准状态下的气体，则有 <span class="math inline">\(T_{\text{ref}} = T_{0} = 273.15 \;
+\text{K}\)</span>，<span class="math inline">\(\mu_{\text{ref}} =
+\mu_{0} = 1.716 \times 10^{- 5} \;\text{kg} \cdot \text{m}^{-1} \cdot
+\text{s}^{-1}\)</span>，<span class="math inline">\(S = 110.4 \;
+\text{K}\)</span>。若考虑流动介质为完全气体（perfect
+gas），则状态方程与内能和焓的表达式可表示为 <span class="math display">\[
+\begin{align}
+p &amp; = \rho R T \label{eq005} \tag{5} \\
+e &amp; = c_{v} T \label{eq006} \tag{6} \\
+h &amp; = c_{p} T \label{eq007} \tag{7}
+\end{align}
+\]</span> 其中，式 <span class="math inline">\(\eqref{eq005}\)</span>
+为状态方程；式 <span class="math inline">\(\eqref{eq006}\)</span> 中
+<span class="math inline">\(e\)</span> 为单位质量流体的内能，式 <span class="math inline">\(\eqref{eq007}\)</span> 中 <span class="math inline">\(h\)</span>
+为单位质量流体的焓（enthalpy），并满足热力学关系式 <span class="math inline">\(h = e +p / \rho\)</span>；<span class="math inline">\(c_{v}\)</span> 为定容比热（specific heat capacity
+at constant volume），<span class="math inline">\(c_{p}\)</span>
+为定压比热（specific heat capacity at constant pressure），<span class="math inline">\(R\)</span> 为气体常数，一般取 <span class="math inline">\(287 \; \text{J} \cdot \text{kg}^{-1} \cdot
+\text{K}^{-1}\)</span>。当流体温度不太高时，可近似认为 <span class="math inline">\(c_{v}, c_{p}\)</span> 为常数，满足 <span class="math display">\[
+\begin{align}
+c_{v} = \frac{1}{\gamma - 1} R \label{eq008} \tag{8} \\
+c_{p} = \frac{\gamma}{\gamma - 1} R \label{eq009} \tag{9}
+\end{align}
+\]</span> 其中，<span class="math inline">\(\gamma = c_{v} /
+c_{p}\)</span> 称为比热比（specific heat capacity
+ratio）或绝热指数，对于空气 <span class="math inline">\(\gamma \approx
+1.4\)</span>。。另外，引入运动黏性系数（kinematic viscosity）<span class="math inline">\(\nu\)</span>，热扩散系数（thermal
+diffusivity）<span class="math inline">\(\alpha\)</span>，两者均可采用前述变量表示为如下形式
+<span class="math display">\[
+\begin{align}
+\nu &amp; = \frac{\mu}{\rho} \label{eq010} \tag{10}\\
+\alpha &amp; = \frac{\kappa}{c_{p} \rho} \label{eq011} \tag{11}
+\end{align}
+\]</span> 综上所述，列出的基本方程组 <span class="math inline">\(\eqref{eq001}\)</span> 由 12 个方程组成（包括 1
+个连续性方程、3 个运动方程、1 个能量方程、6 个本构方程、1
+个状态方程），可以用来确定 <span class="math inline">\(\mathbf{u}, p,
+\rho, T, p_{xx}, p_{yy}, p_{zz}, p_{xy}, p_{yz}, p_{zx}\)</span> 这 12
+个未知数，且增加的热力学变量内能或焓都有额外的温度关联式成立。由此可见，该微分形式的流体力学基本方程组是封闭的，理论上可以直接求解。</p>
+<p>现考虑基本方程组 <span class="math inline">\(\eqref{eq001}\)</span>
+的另一种形式，若将本构方程代入运动方程与能量方程，则可消去应力张量 <span class="math inline">\(\boldsymbol{P}\)</span> 。首先考虑 <span class="math inline">\(\eqref{eq001}\)</span>
+运动方程中的最后一项（应力散度项），有 <span class="math display">\[
+\begin{align}
+\nabla \cdot \boldsymbol{P} &amp;=\frac{\partial p_{i j}}{\partial
+x_{j}}=\frac{\partial}{\partial x_{j}}\left[-p \delta_{i j}+2
+\mu\left(s_{i j}-\frac{1}{3} s_{k k} \delta_{i j}\right)+\mu^{\prime}
+s_{k k} \delta_{i j}\right] \\
+&amp;=-\frac{\partial p}{\partial x_{i}}+\frac{\partial}{\partial
+x_{j}}\left[2 \mu\left(s_{i j}-\frac{1}{3} s_{k k} \delta_{i
+j}\right)\right]+\frac{\partial}{\partial x_{j}}\left(\mu^{\prime} s_{k
+k} \delta_{i j}\right) \quad \quad \text{（张量形式）}\\
+&amp;=-\nabla p+2 \nabla \cdot(\mu \boldsymbol{S})-\frac{2}{3}
+\nabla(\mu(\nabla \cdot \mathbf{u}))+\nabla\left(\mu^{\prime}(\nabla
+\cdot \mathbf{u})\right) \quad \quad \; \; \;\text{（矢量形式）} \\
+\end{align} \label{eq012} \tag{12}
+\]</span> 其中，<span class="math inline">\(\nabla \cdot
+\boldsymbol{P}\)</span>
+表示为单位体积上应力张量的散度，物理含义是与面力等效的体力分布函数。将式
+<span class="math inline">\(\eqref{eq012}\)</span> 代入式 <span class="math inline">\(\eqref{eq001}\)</span> 中的运动方程可得 <span class="math display">\[
+\begin{align}
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}=\rho
+\boldsymbol{F}-\nabla p+2 \nabla \cdot(\mu \boldsymbol{S})-\frac{2}{3}
+\nabla(\mu(\nabla \cdot \mathbf{u}))+\nabla\left(\mu^{\prime}(\nabla
+\cdot \mathbf{u})\right) \label{eq013} \tag{13}
+\end{align}
+\]</span> 由上文可知，第一与第二动力黏性系数 <span class="math inline">\(\mu\)</span> 与 <span class="math inline">\(\mu^{\prime}\)</span> 一般依赖于温度 <span class="math inline">\(T\)</span>，但若考虑温差很小的流场，则可近似认为两个黏性系数为常数，此时上式可进一步化为
+<span class="math display">\[
+\begin{align}
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}=\rho
+\boldsymbol{F}-\nabla p + \mu \Delta \mathbf{u} + \left(\mu^{\prime} +
+\frac{1}{3} \mu\right) \nabla (\nabla \cdot \mathbf{u}) \label{eq014}
+\tag{14}
+\end{align}
+\]</span></p>
+<p>其次，考虑 <span class="math inline">\(\eqref{eq001}\)</span>
+中能量方程右式第一项（应力功率项），有</p>
+<p><span class="math display">\[
+\begin{align}
+\boldsymbol{P} : \boldsymbol{S} &amp; = p_{i j} s_{j i} = \left[- p
+\delta_{i j} + 2 \mu \left(s_{i j} - \frac{1}{3} s_{k k} \delta_{i j}
+\right) +\mu^{\prime}s_{k k} \delta_{i j}\right] s_{j i} \\
+&amp; = - p s_{k k} + 2 \mu \left(s_{i j} s_{j i} - \frac{1}{3} s_{k
+k}^{2}\right) + \mu^{\prime} s_{k k}^{2}  \quad \quad \quad \quad \quad
+\quad \quad \quad \quad \text{（张量形式）}\\
+&amp; = - p (\nabla \cdot \mathbf{u}) + 2 \mu \left(\boldsymbol{S} :
+\boldsymbol{S} - \frac{1}{3} (\nabla \cdot \mathbf{u})^{2}\right) +
+\mu^{\prime} (\nabla \cdot \mathbf{u})^{2} \\
+&amp; = - p (\nabla \cdot \mathbf{u}) + 2 \mu \boldsymbol{S} :
+\boldsymbol{S} + \left(\mu^{\prime} - \frac{2}{3} \mu\right) (\nabla
+\cdot \mathbf{u})^{2} \quad \quad \quad \quad \quad \quad
+\text{（矢量形式）}
+\end{align} \label{eq015} \tag{15}
+\]</span> 其中，<span class="math inline">\(\boldsymbol{P} :
+\boldsymbol{S}\)</span>
+代表应力张量与变形速度张量的并矢，物理含义是由于流体变形后，应力（面力）所做的功的功率，其由三部分组成：第一部分是
+<span class="math inline">\(- p (\nabla \cdot \mathbf{u})\)</span>
+，代表当流体体积有相对膨胀或压缩时压强 <span class="math inline">\(p\)</span> 所做的功的功率；第二部分是 <span class="math inline">\(2 \mu \boldsymbol{S} : \boldsymbol{S} - 2 \mu
+(\nabla \cdot
+\mathbf{u})^{2}/3\)</span>，代表由剪切黏性在单位时间内所耗散的机械能；第三部分是
+<span class="math inline">\(\mu^{\prime} (\nabla \cdot
+\mathbf{u})^{2}\)</span>，代表流体在膨胀时黏性在单位时间内所耗散的机械能。由黏性所耗散的机械能全部转化为热能，这是一个不可逆过程。令
+<span class="math display">\[
+\begin{align}
+\Phi = 2 \mu \boldsymbol{S} : \boldsymbol{S} + \left(\mu^{\prime} -
+\frac{2}{3} \mu\right) (\nabla \cdot \mathbf{u})^{2} \label{eq016}
+\tag{16}
+\end{align}
+\]</span> 上式中的 <span class="math inline">\(\Phi\)</span>
+称为耗散函数（dissipation
+function），其表征由于流体黏性而耗散的机械能。将式 <span class="math inline">\(\eqref{eq016}\)</span> 代入式 <span class="math inline">\(\eqref{eq015}\)</span> 可得 <span class="math display">\[
+\begin{align}
+\boldsymbol{P} : \boldsymbol{S} = - p (\nabla \cdot \mathbf{u}) + \Phi
+\label{eq017} \tag{17}
+\end{align}
+\]</span> 再将上式 <span class="math inline">\(\eqref{eq017}\)</span>
+代入 <span class="math inline">\(\eqref{eq001}\)</span> 中的能量方程可得
+<span class="math display">\[
+\begin{align}
+\rho \frac{\mathrm{D} e}{\mathrm{D} t} + p (\nabla \cdot \mathbf{u})=
+\Phi+ \nabla \cdot(\kappa \nabla T)+\rho \dot{q} \label{eq018} \tag{18}
+\end{align}
+\]</span> 利用 <span class="math inline">\(\eqref{eq001}\)</span>
+中的连续性方程可得 <span class="math display">\[
+\begin{align}
+p (\nabla \cdot \mathbf{u}) = - \frac{p}{\rho} \frac{\mathrm{D}
+\rho}{\mathrm{D} t} = \rho p \frac{\mathrm{D}}{\mathrm{D} t}
+\left(\frac{1}{\rho}\right) \label{eq019} \tag{19}
+\end{align}
+\]</span> 于是有 <span class="math display">\[
+\begin{align}
+\rho \left[\frac{\mathrm{D} e}{\mathrm{D} t} + p
+\frac{\mathrm{D}}{\mathrm{D} t} \left(\frac{1}{\rho}\right)\right] =
+\Phi+ \nabla \cdot(\kappa \nabla T)+\rho \dot{q} \label{eq020} \tag{20}
+\end{align}
+\]</span> 根据热力学第二定律（second law of thermodynamics）可得 <span class="math display">\[
+\begin{align}
+T \mathrm{d}s = \mathrm{d} e + p \mathrm{d} \tau = \mathrm{d} e + p
+\mathrm{d} \left(\frac{1}{\rho}\right) = \mathrm{d} h - \frac{1}{\rho}
+\mathrm{d} p \label{eq021} \tag{21}
+\end{align}
+\]</span> 其中，<span class="math inline">\(s\)</span>
+为热力学定义的熵，<span class="math inline">\(\tau = 1 / \rho\)</span>
+为单位质量流体的体积。则式 <span class="math inline">\(\eqref{eq020}\)</span> 可改写为 <span class="math display">\[
+\begin{align}
+\rho \frac{\mathrm{D} h}{\mathrm{D} t} = \frac{\mathrm{D} p}{\mathrm{D}
+t} + \Phi + \nabla \cdot(\kappa \nabla T)+\rho \dot{q} \label{eq022}
+\tag{22}
+\end{align}
+\]</span> 或 <span class="math display">\[
+\begin{align}
+\rho T \frac{\mathrm{D} s}{\mathrm{D} t} = \Phi + \nabla \cdot(\kappa
+\nabla T)+\rho \dot{q} \label{eq023} \tag{23}
+\end{align}
+\]</span> 因此，根据式 <span class="math inline">\(\eqref{eq013},
+\eqref{eq022}\)</span>
+，可进一步化简微分形式的流体力学基本方程组，最终得到 <span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\frac{\partial \rho}{\partial t}+\nabla \cdot(\rho \mathbf{u})=0, &amp;
+\text { 连续性方程 } \\
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t}=\rho
+\boldsymbol{F}-\nabla p+2 \nabla \cdot(\mu \boldsymbol{S})-\frac{2}{3}
+\nabla(\mu(\nabla \cdot \mathbf{u}))+\nabla\left(\mu^{\prime}(\nabla
+\cdot \mathbf{u})\right) \\
+\; \; \; \overset{\mu, \;\mu^{\prime} = \text{const.}}{=}\rho
+\boldsymbol{F}-\nabla p + \mu \Delta \mathbf{u} + \left(\mu^{\prime} +
+\frac{1}{3} \mu\right) \nabla (\nabla \cdot \mathbf{u}), &amp; \text {
+运动方程（Navier-Stokes 方程） } \\
+\rho \frac{\mathrm{D} h}{\mathrm{D} t} = \frac{\mathrm{D} p}{\mathrm{D}
+t} + \Phi + \nabla \cdot(\kappa \nabla T)+\rho \dot{q} \\
+or \quad \rho T \frac{\mathrm{D} s}{\mathrm{D} t} = \Phi + \nabla
+\cdot(\kappa \nabla T)+\rho \dot{q}, &amp; \text { 能量方程 } \\
+\boldsymbol{P}=-p \boldsymbol{I} + \boldsymbol{\Pi}=-p \boldsymbol{I}+2
+\mu\left(\boldsymbol{S}-\frac{1}{3} (\nabla \cdot \mathbf{u})
+\boldsymbol{I} \right)+\mu^{\prime} (\nabla \cdot \mathbf{u})
+\mathbf{I}, &amp; \text { 本构方程 } \\
+p=f(\rho, T), &amp; \text { 状态方程 }
+\end{array}\right. \label{eq024} \tag{24}
+\end{align}
+\]</span> 其中，耗散函数 <span class="math inline">\(\Phi\)</span> 由式
+<span class="math inline">\(\eqref{eq016}\)</span>
+确定。求解该封闭方程组时，可分步求解：首先不考虑本构方程，求解 <span class="math inline">\(\mathbf{u}, p, \rho,
+T\)</span>；再将各流动变量代入本构方程中，即可得到应力张量的各个分量。方程组
+<span class="math inline">\(\eqref{eq024}\)</span>
+中的运动方程即称为<strong>纳维-斯托克斯（Navier-Stokes,
+N-S）方程，这是流体力学领域最基本、最重要的控制方程，其本质是牛顿第二定律的一种变形</strong>。</p>
+<h2 id="几种常见的变形与简化形式">几种常见的变形与简化形式</h2>
+<p>下面给出微分形式的流体力学基本方程组的几种变形与简化形式。</p>
+<p><strong>黏性不可压缩流体情形</strong></p>
+<p>考虑流体处于不可压缩状态（一般认为流动马赫数 <span class="math inline">\(Ma &lt; 0.3\)</span>），则有 <span class="math inline">\(\mathrm{D} \rho / \mathrm{D}t =
+0\)</span>；由于流速较低时温差较小，一般可认为 <span class="math inline">\(\mu\)</span> 为常数，此时基本方程组变为 <span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\nabla \cdot \mathbf{u} = 0 \\
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t} = \rho
+\boldsymbol{F}-\nabla p + \mu \Delta \mathbf{u} \\
+\rho \frac{\mathrm{D} h}{\mathrm{D} t} = \frac{\mathrm{D} p}{\mathrm{D}
+t} + \Phi + \nabla \cdot(\kappa \nabla T)+\rho \dot{q} \\
+\boldsymbol{P}=-p \boldsymbol{I}+2 \mu \boldsymbol{S} \\
+p = \rho R T
+\end{array}\right. \label{eq025} \tag{25}
+\end{align}
+\]</span>
+其中，运动方程、能量方程与本构方程已经采用连续性方程得到的无散条件（<span class="math inline">\(\nabla \cdot \mathbf{u} =
+0\)</span>）进行化简。这里注意区分以下定义：</p>
+<ul>
+<li><strong>不可压缩流体</strong>指的是流体微团的密度在随体运动中保持不变，即其随体导数为零，流体微团体积不变，而当地密度与流场密度梯度有可能发生变化；</li>
+<li>定常（<span class="math inline">\(\partial / \partial t =
+0\)</span>）、不可压缩（<span class="math inline">\(\mathrm{D} \rho /
+\mathrm{D}t = 0\)</span>）流体满足 <span class="math inline">\(\mathbf{u} \cdot \nabla \rho = u_{i} \cdot
+\partial \rho/ \partial x_{i} = 0\)</span>；</li>
+<li>均匀（<span class="math inline">\(\partial \rho/ \partial x_{i} =
+0\)</span>）、不可压缩（<span class="math inline">\(\mathrm{D} \rho /
+\mathrm{D}t = 0\)</span>）的流体密度为常数，即有 <span class="math inline">\(\rho = \text{const.}\)</span>。</li>
+</ul>
+<p><strong>理想不可压缩流体情形（不可压缩型欧拉方程，imcompressible
+Euler equation）</strong></p>
+<p>考虑流体为理想或无黏（<span class="math inline">\(\mu =
+0\)</span>）且不可压缩的，则可进一步化简式 <span class="math inline">\(\eqref{eq025}\)</span> 得到 <span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\nabla \cdot \mathbf{u} = 0 \\
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t} = \rho
+\boldsymbol{F}-\nabla p \\
+\end{array}\right. \label{eq026} \tag{26}
+\end{align}
+\]</span> <strong>理想可压缩流体情形（可压缩型欧拉方程，compressible
+Euler equation）</strong></p>
+<p>考虑流体为理想绝热，即等熵（isentropic）的完全气体，此时基本方程组变为
+<span class="math display">\[
+\begin{align}
+\left\{\begin{array}{ll}
+\frac{\partial \rho}{\partial t}+\nabla \cdot(\rho \mathbf{u})=0 \\
+\rho \frac{\mathrm{D} \mathbf{u}}{\mathrm{D} t} = \rho
+\boldsymbol{F}-\nabla p \\
+\frac{\mathrm{D} s}{\mathrm{D} t} = 0 \quad or \quad
+\frac{\mathrm{D}}{\mathrm{D} t} \left(\frac{p}{\rho^{\gamma}}\right) = 0
+\\
+p = \rho R T
+\end{array}\right. \label{eq027} \tag{27}
+\end{align}
+\]</span> <strong>特别适用于计算流体力学（Computational Fluid Dynamics,
+CFD）的守恒型（conservation）控制方程形式</strong><a href="#refer-anchor-2"><sup>[2]</sup></a></p>
+<p><em>以下内容部分参考 John D. Anderson, JR.
+《计算流体力学入门》2.10节。</em>守恒型的控制方程，包括连续性方程、动量方程、能量方程均可以表示成统一的形式，有助于简化和组织给定计算程序的逻辑结构。注意，守恒型控制方程的左端都有一个散度项（divergence），其涉及某些物理量的通量（flux），例如：</p>
+<ul>
+<li>质量通量（mass flux）： <span class="math inline">\(\rho
+\mathbf{u}\)</span>；</li>
+<li><span class="math inline">\(x, y, z\)</span>
+方向上的动量通量（momentum flux in <span class="math inline">\(x, y,
+z\)</span> - direction）：<span class="math inline">\(\rho u \mathbf{u},
+\rho v \mathbf{u}, \rho w \mathbf{u}\)</span>；</li>
+<li>总能（内能 + 动能）通量（total energy flux）：<span class="math inline">\(\rho \left(e + V^{2} / 2\right)
+\mathbf{u}\)</span>，其中 <span class="math inline">\(V = \left |
+\mathbf{u} \right |\)</span> 为速度矢量大小；</li>
+</ul>
+<p>则可将基本方程组中的守恒型控制方程表示为统一的形式，在正交直角坐标系（三维）下，可由以下式子给出
+<span class="math display">\[
+\begin{align}
+\frac{\partial \mathbf{U}}{\partial t} + \frac{\partial
+\mathbf{F}_{1}}{\partial x} + \frac{\partial \mathbf{F}_{2}}{\partial y}
++ \frac{\partial \mathbf{F}_{3}}{\partial z} = \mathbf{J} +
+\frac{\partial \mathbf{F}_{V1}}{\partial x} + \frac{\partial
+\mathbf{F}_{V2}}{\partial y} + \frac{\partial \mathbf{F}_{V3}}{\partial
+z} \label{eq028} \tag{28}
+\end{align}
+\]</span> 其中，<span class="math inline">\(\mathbf{F}_{1},
+\mathbf{F}_{2}, \mathbf{F}_{3}\)</span> 代表无黏通量项（inviscid
+flux）； <span class="math inline">\(\mathbf{F}_{V1}, \mathbf{F}_{V2},
+\mathbf{F}_{V3}\)</span> 代表黏性通量项（viscid flux）；<span class="math inline">\(\mathbf{J}\)</span>
+代表源项（若体积力和热源被忽略，则该项为零）；<span class="math inline">\(\mathbf{U}\)</span>
+为解向量，采用列向量表示的各项表达式如下： <span class="math display">\[
+\begin{align}
+\mathbf{U} &amp; =
+\begin{bmatrix}
+\rho \\
+\rho u \\
+\rho v \\
+\rho w \\
+\rho \left(e + \frac{V^{2}}{2}\right)
+\end{bmatrix}^{\mathrm{T}} \label{eq029} \tag{29}\\
+\mathbf{F}_{1} &amp; =
+\begin{bmatrix}
+\rho u \\
+\rho u^{2} + p \\
+\rho v u \\
+\rho w u \\
+\left[\rho \left(e + \frac{V^{2}}{2}\right) + p\right] u
+\end{bmatrix}^{\mathrm{T}} \label{eq030} \tag{30} \\
+\mathbf{F}_{2} &amp; =
+\begin{bmatrix}
+\rho v \\
+\rho u v \\
+\rho v^{2} + p \\
+\rho w v \\
+\left[\rho \left(e + \frac{V^{2}}{2}\right) + p\right] v
+\end{bmatrix}^{\mathrm{T}} \label{eq031} \tag{31} \\
+\mathbf{F}_{3} &amp; =
+\begin{bmatrix}
+\rho w \\
+\rho u w \\
+\rho v w \\
+\rho w^{2} + p \\
+\left[\rho \left(e + \frac{V^{2}}{2}\right) + p\right]w
+\end{bmatrix}^{\mathrm{T}} \label{eq032} \tag{32}\\
+\mathbf{F}_{V1} &amp; =
+\begin{bmatrix}
+0 \\
+\pi_{1 1} \\
+\pi_{1 2} \\
+\pi_{1 3} \\
+u \pi_{1 1} + v \pi_{1 2} + w \pi_{1 3} + \kappa \frac{\partial
+T}{\partial x}
+\end{bmatrix}^{\mathrm{T}} \label{eq033} \tag{33} \\
+\mathbf{F}_{V2} &amp; =
+\begin{bmatrix}
+0 \\
+\pi_{2 1} \\
+\pi_{2 2} \\
+\pi_{2 3} \\
+u \pi_{2 1} + v \pi_{2 2} + w \pi_{2 3} + \kappa \frac{\partial
+T}{\partial y}\\
+\end{bmatrix}^{\mathrm{T}} \label{eq034} \tag{34} \\
+\mathbf{F}_{V3} &amp; =
+\begin{bmatrix}
+0 \\
+\pi_{3 1} \\
+\pi_{3 2} \\
+\pi_{3 3} \\
+u \pi_{3 1} + v \pi_{3 2} + w \pi_{3 3} + \kappa \frac{\partial
+T}{\partial z}
+\end{bmatrix}^{\mathrm{T}} \label{eq035} \tag{35} \\
+\mathbf{J} &amp; =
+\begin{bmatrix}
+0 \\
+\rho f_{x} \\
+\rho f_{y} \\
+\rho f_{z} \\
+\rho (u f_{x} + v f_{y} + w f_{z}) + \rho \dot{q}
+\end{bmatrix}^{\mathrm{T}} \label{eq036} \tag{36} \\
+\end{align}
+\]</span> 其中，单位质量流体的内能 <span class="math inline">\(e\)</span> 可根据式 <span class="math inline">\(\eqref{eq006}\)</span> 计算，系统状态方程为 <span class="math inline">\(\eqref{eq005}\)</span>；偏应力项 <span class="math inline">\(\pi_{i j} = 2 \mu \left(s_{i j} - \frac{1}{3} s_{k
+k} \delta_{i j} \right) +\mu^{\prime}s_{k k} \delta_{i
+j}\)</span>，若考虑斯托克斯假设成立，则有 <span class="math inline">\(\mu^{\prime} =
+0\)</span>，故偏应力张量各分量在正交直角坐标系下的表达式为 <span class="math display">\[
+\begin{align}
+\pi_{1 1} &amp; = 2 \mu \frac{\partial u}{\partial x} - \frac{2}{3} \mu
+\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +
+\frac{\partial w}{\partial z}\right) \label{eq037} \tag{37} \\
+\pi_{2 2} &amp; = 2 \mu \frac{\partial v}{\partial y} - \frac{2}{3} \mu
+\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +
+\frac{\partial w}{\partial z}\right) \label{eq038} \tag{38} \\
+\pi_{3 3} &amp; = 2 \mu \frac{\partial w}{\partial z} - \frac{2}{3} \mu
+\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +
+\frac{\partial w}{\partial z}\right) \label{eq039} \tag{39} \\
+\pi_{1 2} = \pi_{2 1} &amp; = \mu \left(\frac{\partial v}{\partial x} +
+\frac{\partial u}{\partial y}\right) \label{eq040} \tag{40} \\
+\pi_{2 3} = \pi_{3 2} &amp; = \mu \left(\frac{\partial w}{\partial y} +
+\frac{\partial v}{\partial z}\right) \label{eq041} \tag{41} \\
+\pi_{3 1} = \pi_{1 3} &amp; = \mu \left(\frac{\partial u}{\partial z} +
+\frac{\partial w}{\partial x}\right) \label{eq042} \tag{42} \\
+\end{align}
+\]</span> 将式 <span class="math inline">\(\eqref{eq029} \sim
+\eqref{eq036}\)</span> 各通量项的每一项代入式 <span class="math inline">\(\eqref{eq028}\)</span>
+并相加，便可以重构整个流体力学基本方程组。注意，该非定常流动方程组考虑了流体的黏性与可压缩性。</p>
+<p>在进行数值模拟时，若将整个流场进行网格离散，并给定边界条件与初始条件，则可以首先求得上述无黏通量与黏性通量中的各个分量，再通过时间推进方式数值求解得到每一个网格点的解向量
+<span class="math inline">\(\mathbf{U} = [U_{1}, U_{2}, U_{3}, U_{4},
+U_{5}]^{\mathrm{T}}\)</span>，并最终能够很容易地得到该时刻该网格点上的原始变量
+<span class="math inline">\([\rho, u, v, w,
+e]^{\mathrm{T}}\)</span>，即有 <span class="math display">\[
+\begin{align}
+\rho &amp; = U_{1} \label{eq043} \tag{43} \\
+u &amp; = \frac{U_{2}}{U_{1}} \label{eq044} \tag{44} \\
+v &amp; = \frac{U_{3}}{U_{1}} \label{eq045} \tag{46} \\
+w &amp; = \frac{U_{4}}{U_{1}} \label{eq047} \tag{47} \\
+e &amp; = \frac{U_{5}}{U_{1}} - \frac{u^{2} + v^{2} + w^{2}}{2}
+\label{eq048} \tag{48}
+\end{align}
+\]</span>
+迭代以上过程，直到各个网格处的流场变量收敛至预期值，最终能够获得整个流场变量信息。</p>
+<p>值得注意的是，以上基本方程组均是有量钢的，而实际在通过 CFD
+数值模拟各种流动时，常采用求解无<strong>量纲化的流体力学基本方程组</strong>，以提升计算的稳定性与鲁棒性。</p>
+<p><strong><em>有关可压缩 Navier-Stokes
+方程组无量纲化过程详见本专栏中的后续文章，敬请期待！</em></strong></p>
+<hr>
+<p>以上就是本文全部内容，如有疑问，敬请大家批评指正！</p>
+<p>相应文章也将发布在我的 <a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1477306597446213634">知乎专栏</a>
+上。后续我会不定期更新本博客与专栏，欢迎大家关注！</p>
+<hr>
+<h2 id="参考文献">参考文献</h2>
+<div id="refer-anchor-1">
+
+</div>
+<ul>
+<li>[1] 吴望一. 流体力学 上册[M]. 北京大学出版社, 1982.</li>
+</ul>
+<div id="refer-anchor-2">
+
+</div>
+<ul>
+<li>[2] John D. Anderson, JR. 计算流体力学入门[M]. 清华大学出版社,
+2010.</li>
+</ul>
+<hr>
+<div class="note note-info">
+            <p><font size="2.5">^_^ This is the END of the article. Thank you forreading! </font></p><p><font size="2.5">If you think this article is helpful to you, do nothesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on<i><b>2022/07/07</b></i> .</font></p>
+          </div>
+<center>
+<i> Who am I? A happy shrimp from Peking University! </i>
+</center>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/">Shared Notes</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Shared-Notes/Articles/">Articles</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Fluid-Mechanics/">Fluid Mechanics</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Theory/">Theory</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/11/NS_Note_Nondimensionalization/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">流体小白学习笔记（二）——可压缩流体基本方程组的无量纲化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/24/DATF/">
+                        <span class="hidden-mobile">湍流数据同化程序（DATF）使用说明 v1.0</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="lv-container" data-id="city" data-uid="MTAyMC81NTM1MS8zMTgxOA==">
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#lv-container', function() {
+        Fluid.utils.createScript('https://cdn-city.livere.com/js/embed.dist.js');
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <div align = center> <a target="_blank" rel="noopener" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" srcset="/img/loading.gif" lazyload title="Powered by Hexo"></a> <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/"><img src="https://img.shields.io/badge/Theme-Fluid-9cf?style=flat&amp;logo=fortran" srcset="/img/loading.gif" lazyload title="Theme Fluid"></a> <a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Zhenghao-Feng"><img src="https://img.shields.io/badge/ResearchGate-brightgreen?logo=researchgate&logoColor=white" srcset="/img/loading.gif" lazyload / title="My Research Profile"></a> <a target="_blank" rel="noopener" href="https://space.bilibili.com/167343763"><img src="https://img.shields.io/badge/dynamic/json?labelColor=FE7398&logo=bilibili&logoColor=white&label=Bilibili%20Fans&color=00aeec&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dbilibili%26queryKey%3D167343763" srcset="/img/loading.gif" lazyload / title="My Bilibili Space"></a> <a target="_blank" rel="noopener" href="https://github.com/pkufzh"><img src="https://img.shields.io/badge/dynamic/json?color=262525&label=Github%20Followers&logo=github&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Dpkufzh" srcset="/img/loading.gif" lazyload / title="My Github Homepage"></a> </div> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?siteId=17602339";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
