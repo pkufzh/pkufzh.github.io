@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_DATF.png">
 <meta property="article:published_time" content="2022-06-24T08:30:00.000Z">
-<meta property="article:modified_time" content="2022-08-13T09:12:21.671Z">
+<meta property="article:modified_time" content="2022-08-13T09:12:22.000Z">
 <meta property="article:author" content="pkufzh">
 <meta property="article:tag" content="Open-source">
 <meta property="article:tag" content="Codes">
@@ -82,7 +82,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -270,35 +270,26 @@
             <div class="markdown-body">
               <h1 id="郑重声明">郑重声明</h1>
 <div class="note note-warning">
-            <p><font color="red"><strong>请注意：本程序测试平台采用 In-house CFDcodes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守MIT License协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
+            <p><font color="red"><strong>请注意：本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守 MIT License 协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
           </div>
 <hr>
 <div class="note note-success">
-            <p><font color="blue"><strong>本仓库为西北工业大学航空学院 2021届本科毕业设计论文《翼型绕流的数据同化方法研究》源程序</strong></font></p><p><font color="blue"><strong>该论文获得 2021年全国高校航空航天类专业本科毕业设计成果交流会个人项目一等奖。</strong></font></p>
+            <p><font color="blue"><strong>本仓库为西北工业大学航空学院 2021 届本科毕业设计论文《翼型绕流的数据同化方法研究》源程序</strong></font></p><p><font color="blue"><strong>该论文获得 2021 年全国高校航空航天类专业本科毕业设计成果交流会个人项目一等奖。</strong></font></p>
           </div>
-<h1 id="data-assimilation-program-for-turbulent-flows-datf-version-1.0-v1.0">Data
-assimilation program for turbulent flows (DATF) Version 1.0 (v1.0)</h1>
+<h1 id="data-assimilation-program-for-turbulent-flows-datf-version-1.0-v1.0">Data assimilation program for turbulent flows (DATF) Version 1.0 (v1.0)</h1>
 <h1 id="程序介绍">0 程序介绍</h1>
-<p><strong>程序名称：Data assimilation program for turbulent flows
-(DATF) 湍流数据同化程序</strong></p>
-<p><strong>Github 仓库：<a target="_blank" rel="noopener" href="https://github.com/pkufzh/DATF_Release">点我传送 O(∩_∩)O
-~</a></strong></p>
-<p><strong>作者：北京大学工学院 2021 级博士生，西北工业大学航空学院 2017
-级本科生 冯铮浩</strong></p>
+<p><strong>程序名称：Data assimilation program for turbulent flows (DATF) 湍流数据同化程序</strong></p>
+<p>**Github 仓库：[点我传送 O(∩_∩)O ~](https://github.com/pkufzh/DATF_Release)**</p>
+<p><strong>作者：北京大学工学院 2021 级博士生，西北工业大学航空学院 2017 级本科生 冯铮浩</strong></p>
 <p><strong>联系邮箱：pkufzh@stu.pku.edu.cn</strong></p>
 <h1 id="程序整体框架">1 程序整体框架</h1>
-<p>​
-本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。目前程序整体框架为
-MATLAB（主要用于实现流程算法）与外部计算流体力学（CFD）程序或软件（主要用于调用求解）的组合模式，程序框架初步搭建完毕，各子程序与函数已完成封装，可根据需求便捷修改参数后，快速启动同化算例，且能实现单核
-CFD 求解器并行窗口运行。程序整体框架如图 1-1 所示。</p>
+<p>​ 本文介绍基于广义滤波方法的湍流数据同化通用程序，主要由前处理模块、同化算法模块与后处理模块三部分组成。程序提供了实验数据与求解器外部接口，预期可用于融合实验与计算结果的实时流场状态估计。目前程序整体框架为 MATLAB（主要用于实现流程算法）与外部计算流体力学（CFD）程序或软件（主要用于调用求解）的组合模式，程序框架初步搭建完毕，各子程序与函数已完成封装，可根据需求便捷修改参数后，快速启动同化算例，且能实现单核 CFD 求解器并行窗口运行。程序整体框架如图 1-1 所示。</p>
 <p><img src="/2022/06/24/DATF/Framework.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;"></p>
 <center>
-<font size="3.5"> 图 1-1 基于广义滤波同化方法的通用程序框架示意图
-</font>
+<font size="3.5"> 图 1-1 基于广义滤波同化方法的通用程序框架示意图 </font>
 </center>
 <h1 id="程序概况">2 程序概况</h1>
-<p>​ 本湍流数据同化程序概况如图 2-1
-所示。下面对程序包含的文件与文件夹及其功能进行介绍。</p>
+<p>​ 本湍流数据同化程序概况如图 2-1 所示。下面对程序包含的文件与文件夹及其功能进行介绍。</p>
 <p>​ <strong>源代码存放目录：Release_DATF_ETKF_Airfoil_Beta</strong></p>
 <p><img src="/2022/06/24/DATF/Program Description.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;"></p>
 <center>
@@ -308,10 +299,7 @@ CFD 求解器并行窗口运行。程序整体框架如图 1-1 所示。</p>
 <ul>
 <li>操作系统：<em>Windows 10 64-bit</em>；</li>
 <li>数值软件：<em>MATLAB R2017a</em> (及以上版本均可)；</li>
-<li>CFD 求解器：如 GFSI 、风雷、 CFL3D
-等按照一定规则修改后可直接植入。<strong>注意：本程序测试平台采用
-In-house CFD
-codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></li>
+<li>CFD 求解器：如 GFSI 、风雷、 CFL3D 等按照一定规则修改后可直接植入。<strong>注意：本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></li>
 </ul>
 <h2 id="数据同化主程序">2.1 数据同化主程序</h2>
 <ul>
@@ -338,159 +326,87 @@ codes，无法开源，故用户需要自己提供主程序端口，本程序仅
 <li><p><font color="#87CEFA"><strong><em>Region_Beta_Dots_Selected.m</em></strong></font></p>
 <p>功能：在开启区域数据同化后，对所选定区域内的网格单元进行平面随机采样</p></li>
 <li><p><font color="#87CEFA"><strong><em>shadedplot.m</em></strong></font></p>
-<p>功能：辅助绘制包络阴影区域 ## 2.3 外部数据 &amp;
-封装CFD求解器</p></li>
+<p>功能：辅助绘制包络阴影区域 ## 2.3 外部数据 &amp; 封装CFD求解器</p></li>
 <li><p><font color="blue"><strong><em>文件夹：Input_Data</em></strong></font></p>
 <p>用于存放实验数据文件，包括翼型表面压力系数分布、边界层速度型等，以及翼型外形数据文件。</p></li>
 <li><p><font color="blue"><strong><em>文件夹：Program_CFD_Base</em></strong></font></p>
-<p>用于存放封装后的 CFD 求解器，包括 Input 输入参数文件夹，Output
-输出结果文件夹，CFD 头文件文件夹，
-网格转换程序，求解主程序，以及批处理文件等。</p></li>
+<p>用于存放封装后的 CFD 求解器，包括 Input 输入参数文件夹，Output 输出结果文件夹，CFD 头文件文件夹， 网格转换程序，求解主程序，以及批处理文件等。</p></li>
 </ul>
 <h1 id="程序说明">3 程序说明</h1>
 <h2 id="参数设置与前处理模块">3.1 参数设置与前处理模块</h2>
 <h3 id="主要功能说明">3.1.1 主要功能说明</h3>
-<p>​
-本模块主要功能是对集合成员与同化流程进行设置。根据算例具体要求，在设置集合成员部分，能够指定集合成员变量、集合成员数量、集合扰动区间；在设置同化流程部分，能够指定状态变量、设计同化区域、选择同化算法、设置程序并行，另外本模块可对整个湍流数据同化流程的关键参数进行调整与控制。</p>
+<p>​ 本模块主要功能是对集合成员与同化流程进行设置。根据算例具体要求，在设置集合成员部分，能够指定集合成员变量、集合成员数量、集合扰动区间；在设置同化流程部分，能够指定状态变量、设计同化区域、选择同化算法、设置程序并行，另外本模块可对整个湍流数据同化流程的关键参数进行调整与控制。</p>
 <h3 id="详细代码说明">3.1.2 详细代码说明</h3>
-<p>​
-下面对参数设置与前处理模块进行详细代码说明。通常，对于一个新的数据同化算例，只需要修改该部分输入参数即可。</p>
+<p>​ 下面对参数设置与前处理模块进行详细代码说明。通常，对于一个新的数据同化算例，只需要修改该部分输入参数即可。</p>
 <ul>
 <li><strong><font color="red">设置全局续算开关</font></strong>
 <ul>
-<li>可默认 flag_da_xusuan = 0
-不开启续算，则程序从全部初始化状态开始计算。若开启续算，即
-flag_da_xusuan = 2，则需要指定同化中断轮次 -
-<em>p</em>，跳过集合成员初始化阶段，开始续算。</li>
+<li>可默认 flag_da_xusuan = 0 不开启续算，则程序从全部初始化状态开始计算。若开启续算，即 flag_da_xusuan = 2，则需要指定同化中断轮次 - <em>p</em>，跳过集合成员初始化阶段，开始续算。</li>
 </ul></li>
 </ul>
 <p><em>对应程序段：</em></p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 设置同化程序全局续算开关</span><br>flag_da_xusuan=<span class="hljs-number">0</span>; <span class="hljs-comment">% 设置是否进行全同化程序续算</span><br>                  <span class="hljs-comment">% 0 - 不开启续算；</span><br>                  <span class="hljs-comment">% 1 - 开启中断续算，可导入任意中断后保存.mat文件后自由调整同化参数，开始进行续算；</span><br>                  <span class="hljs-comment">% 2 - 直接定位至指定同化轮数 p 的保存文件，开始续算；</span><br><span class="hljs-comment">%% 初始化操作</span><br><span class="hljs-comment">% 若不开启续算，则清理所有工作区变量</span><br><span class="hljs-keyword">if</span> (flag_da_xusuan==<span class="hljs-number">0</span>)<br>    clear all<br>    clc<br>    clf<br>    close all<br>    flag_da_xusuan=<span class="hljs-number">0</span>;<br>    p=<span class="hljs-number">0</span>; <span class="hljs-comment">% 初始化同化轮数 p</span><br><span class="hljs-keyword">elseif</span> (flag_da_xusuan==<span class="hljs-number">2</span>)<br>    clear all<br>    flag_da_xusuan=<span class="hljs-number">2</span>;<br>    p=<span class="hljs-number">1</span>; <span class="hljs-comment">% 定位至指定同化轮数 p，继续同化</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong><font color="red">设置主要文件交互与并行相关参数</font></strong></li>
-<li>通常仅需根据算例修改 <strong><em>savename</em></strong>
-字符串，重命名结果根文件夹即可，其他各路径名称可保持默认。</li>
-<li>在根文件夹下，存放所有结果文件，其中
-<strong><em>DA_CompInfo_Brief.dat</em></strong>
-保存同化过程的所有提示信息。</li>
-<li>由于可能采用的 CFD
-程序仅能调用单线程进行计算，故本程序通过实现多窗口运行，来同时计算多个集合成员状态，以提升计算效率。实际可根据工作机线程数，设置并行线程/分组数
-<strong><em>PPNS</em></strong>。需要注意的是：这种处理方式并不是真正实现程序并行（例如：mpi
-/
-OpenMP），同时考虑多开程序，会导致内存占用较大、线程切换效率损失较高，故推荐设置的并行线程
-/ 分组数为总线程数的50%~75%。</li>
+<li>通常仅需根据算例修改 <strong><em>savename</em></strong> 字符串，重命名结果根文件夹即可，其他各路径名称可保持默认。</li>
+<li>在根文件夹下，存放所有结果文件，其中 <strong><em>DA_CompInfo_Brief.dat</em></strong> 保存同化过程的所有提示信息。</li>
+<li>由于可能采用的 CFD 程序仅能调用单线程进行计算，故本程序通过实现多窗口运行，来同时计算多个集合成员状态，以提升计算效率。实际可根据工作机线程数，设置并行线程/分组数 <strong><em>PPNS</em></strong>。需要注意的是：这种处理方式并不是真正实现程序并行（例如：mpi / OpenMP），同时考虑多开程序，会导致内存占用较大、线程切换效率损失较高，故推荐设置的并行线程 / 分组数为总线程数的50%~75%。</li>
 </ul>
 <p><em>对应程序段：</em></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% ------------  设置主要文件交互与并行相关参数 START ------------ %</span><br><br><span class="hljs-comment">% 设置数据交互路径</span><br>savename=<span class="hljs-string">&#x27;Results_20210604_Case_S809_AoA_12.2_Nmax_120_P_199_DA_58_Beta&#x27;</span>;<br>ddir_recal=(<span class="hljs-string">&#x27;Program_NWind2D_Parallel_Recal&#x27;</span>);  <span class="hljs-comment">% 设置重计算路径</span><br>ddir_post=(<span class="hljs-string">&#x27;Program_NWind2D_Parallel_Post&#x27;</span>);    <span class="hljs-comment">% 设置结果后处理路径</span><br>new_output_folder=[<span class="hljs-string">&#x27;.\&#x27;,savename,&#x27;</span>\<span class="hljs-string">&#x27;];</span><br><span class="hljs-string"></span><br><span class="hljs-string">% 若不开启续算开关，则直接建立新文件夹，保存计算结果</span><br><span class="hljs-string">if (flag_da_xusuan==0)</span><br><span class="hljs-string">    mkdir(new_output_folder);</span><br><span class="hljs-string">    mkdir([&#x27;</span>.\Output_Figures\<span class="hljs-string">&#x27;,savename]);</span><br><span class="hljs-string">end</span><br><span class="hljs-string">% 若开启指定续算开关：直接定位至指定同化轮数 p 的保存文件，开始续算（注意：指定同化轮数必须已经计算完毕）；</span><br><span class="hljs-string">if (flag_da_xusuan==2)</span><br><span class="hljs-string">    load([new_output_folder,savename,&#x27;</span>_S_Va_pre_restart_&#x27;,num2str(p,<span class="hljs-string">&#x27;%03d&#x27;</span>),<span class="hljs-string">&#x27;.mat&#x27;</span>]);<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">% 重启/续算模块设置完毕</span><br><br>targetPath=new_output_folder;<br>initPath=<span class="hljs-string">&#x27;Init_Ensemble_Member&#x27;</span>;<br><br><span class="hljs-comment">% 打开记录程序信息文件</span><br>fid_info=fopen([new_output_folder,<span class="hljs-string">&#x27;DA_CompInfo_Brief.dat&#x27;</span>],<span class="hljs-string">&#x27;w+&#x27;</span>);<br>fid_all=fopen([new_output_folder,<span class="hljs-string">&#x27;DA_CompInfo_Detailed.dat&#x27;</span>],<span class="hljs-string">&#x27;w+&#x27;</span>);<br><br><span class="hljs-comment">% 设置并行线程/分组数（可根据工作机线程设置）</span><br>PPNS=<span class="hljs-number">4</span>;<br><br><span class="hljs-comment">% -------------  设置主要文件交互与并行相关参数 END ------------- %</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% ------------  设置主要文件交互与并行相关参数 START ------------ %</span><br><br><span class="hljs-comment">% 设置数据交互路径</span><br>savename=<span class="hljs-string">&#x27;Results_20210604_Case_S809_AoA_12.2_Nmax_120_P_199_DA_58_Beta&#x27;</span>;<br>ddir_recal=(<span class="hljs-string">&#x27;Program_NWind2D_Parallel_Recal&#x27;</span>);  <span class="hljs-comment">% 设置重计算路径</span><br>ddir_post=(<span class="hljs-string">&#x27;Program_NWind2D_Parallel_Post&#x27;</span>);    <span class="hljs-comment">% 设置结果后处理路径</span><br>new_output_folder=[<span class="hljs-string">&#x27;.\&#x27;</span>,savename,<span class="hljs-string">&#x27;\&#x27;</span>];<br><br><span class="hljs-comment">% 若不开启续算开关，则直接建立新文件夹，保存计算结果</span><br><span class="hljs-keyword">if</span> (flag_da_xusuan==<span class="hljs-number">0</span>)<br>    mkdir(new_output_folder);<br>    mkdir([<span class="hljs-string">&#x27;.\Output_Figures\&#x27;</span>,savename]);<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">% 若开启指定续算开关：直接定位至指定同化轮数 p 的保存文件，开始续算（注意：指定同化轮数必须已经计算完毕）；</span><br><span class="hljs-keyword">if</span> (flag_da_xusuan==<span class="hljs-number">2</span>)<br>    load([new_output_folder,savename,<span class="hljs-string">&#x27;_S_Va_pre_restart_&#x27;</span>,num2str(p,<span class="hljs-string">&#x27;%03d&#x27;</span>),<span class="hljs-string">&#x27;.mat&#x27;</span>]);<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">% 重启/续算模块设置完毕</span><br><br>targetPath=new_output_folder;<br>initPath=<span class="hljs-string">&#x27;Init_Ensemble_Member&#x27;</span>;<br><br><span class="hljs-comment">% 打开记录程序信息文件</span><br>fid_info=fopen([new_output_folder,<span class="hljs-string">&#x27;DA_CompInfo_Brief.dat&#x27;</span>],<span class="hljs-string">&#x27;w+&#x27;</span>);<br>fid_all=fopen([new_output_folder,<span class="hljs-string">&#x27;DA_CompInfo_Detailed.dat&#x27;</span>],<span class="hljs-string">&#x27;w+&#x27;</span>);<br><br><span class="hljs-comment">% 设置并行线程/分组数（可根据工作机线程设置）</span><br>PPNS=<span class="hljs-number">4</span>;<br><br><span class="hljs-comment">% -------------  设置主要文件交互与并行相关参数 END ------------- %</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong><font color="red">设置生成初始集合成员相关参数</font></strong></li>
-<li>设置初始扰动变量模块：定义变量名称
-<strong><em>turbName</em></strong> （可设置为湍流常数、马赫数 Ma、迎角
-AoA等）；指定输入参数文件的相对路径 FilePath 、修改行数 ModiLine
-、修改格式 ModiFormat ；指定初始扰动变量扰动区间。</li>
+<li>设置初始扰动变量模块：定义变量名称 <strong><em>turbName</em></strong> （可设置为湍流常数、马赫数 Ma、迎角 AoA等）；指定输入参数文件的相对路径 FilePath 、修改行数 ModiLine 、修改格式 ModiFormat ；指定初始扰动变量扰动区间。</li>
 <li>利用拉丁超立方抽样方法进行初始扰动变量采样。</li>
-<li>设置目标同化变量模块：定义变量名称
-<strong><em>targetName</em></strong>（可设置为涡粘系数、马赫数 Ma、迎角
-AoA等）；说明目标同化变量类型 TypeTurb 与 TypeDA 。</li>
-<li>设置同化观测变量模块：定义变量名称
-<strong><em>refName</em></strong>（可设置为压力系数分布
-Cp、摩擦阻力系数分布 Cf、边界层速度型 BL等）。
+<li>设置目标同化变量模块：定义变量名称 <strong><em>targetName</em></strong>（可设置为涡粘系数、马赫数 Ma、迎角 AoA等）；说明目标同化变量类型 TypeTurb 与 TypeDA 。</li>
+<li>设置同化观测变量模块：定义变量名称 <strong><em>refName</em></strong>（可设置为压力系数分布 Cp、摩擦阻力系数分布 Cf、边界层速度型 BL等）。
 <ul>
-<li>若目标观测变量为 Cp, Cf,
-yplus：设置参与同化过程的翼型数据点编号，建立同化数据点序号数组
-<strong><em>num_da_arr</em></strong>，可根据重点区域进行标志。</li>
-<li>若目标观测变量为边界层速度型，则需要指定边界层站位数量、导入各站位观测信息（<span class="math inline">\(y /c\)</span> , <span class="math inline">\(u /
-u_{ref}\)</span>）、各站位处边界层同化位置。</li>
+<li>若目标观测变量为 Cp, Cf, yplus：设置参与同化过程的翼型数据点编号，建立同化数据点序号数组 <strong><em>num_da_arr</em></strong>，可根据重点区域进行标志。</li>
+<li>若目标观测变量为边界层速度型，则需要指定边界层站位数量、导入各站位观测信息（<span class="math inline">\(y /c\)</span> , <span class="math inline">\(u / u_{ref}\)</span>）、各站位处边界层同化位置。</li>
 </ul></li>
 </ul>
 <p><em>对应程序段：</em></p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% -------------  设置主要文件交互与并行相关参数 END ------------- %</span><br><br><span class="hljs-comment">% -------------  设置生成初始集合成员相关参数 START ------------- %</span><br><br><span class="hljs-comment">% 定义集合成员最大数量（注意：实际的 N_new ≤ N）</span><br>N_max=<span class="hljs-number">120</span>;<br><br><span class="hljs-comment">% ----------  指定初始扰动变量、目标同化变量、同化观测变量模块 START ---------- %</span><br><br><span class="hljs-comment">% ① 指定初始扰动变量模块（目前默认为单变量扰动）</span><br><span class="hljs-comment">% 算例标准状态设置</span><br><span class="hljs-comment">% 定义初始扰动变量名称、文件路径、修改行数、修改格式（均用数组表示，一一对应）</span><br><span class="hljs-comment">% 初始扰动变量名称</span><br>S_Va_turb_Name=[<span class="hljs-string">&quot;Cb1&quot;</span>,<span class="hljs-string">&quot;Sigma&quot;</span>,<span class="hljs-string">&quot;Cv1&quot;</span>,<span class="hljs-string">&quot;CKS&quot;</span>];<br><span class="hljs-comment">% S_Va_turb_Name=[&quot;Beta&quot;];</span><br>S_Va_turb_CharName=char(S_Va_turb_Name);<br><span class="hljs-comment">% 初始扰动变量类型：0 - 常数变量及其组合；1 - 空间分布变量</span><br>S_Va_turb_Type=<span class="hljs-number">0</span>;<br><span class="hljs-comment">% 初始扰动变量个数</span><br>S_Va_turb_Num=<span class="hljs-built_in">length</span>(S_Va_turb_Name);<br><span class="hljs-comment">% 初始扰动变量文件路径（省略运行程序根目录）</span><br><span class="hljs-comment">% S_Va_turb_FilePath_raw=char(&#x27;\Input\InputNS.dat&#x27;,&#x27;\Input\InputNS.dat&#x27;,&#x27;\Input\InputTurb.dat&#x27;);</span><br><span class="hljs-comment">% S_Va_turb_FilePath=strip(S_Va_turb_FilePath_raw,&#x27;right&#x27;);</span><br>S_Va_turb_FilePath=[<span class="hljs-string">&quot;\Input\InputSAconst.dat&quot;</span>,<span class="hljs-string">&quot;\Input\InputSAconst.dat&quot;</span>,<span class="hljs-string">&quot;\Input\InputSAconst.dat&quot;</span>,<span class="hljs-string">&quot;\Input\InputSAconst.dat&quot;</span>];<br><span class="hljs-comment">% 初始扰动变量修改行数（对应文件内）</span><br>S_Va_turb_ModiLine=[<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>];<br><span class="hljs-comment">% 初始扰动变量修改格式（对应文件内）</span><br>S_Va_turb_ModiFormat=[<span class="hljs-string">&quot;%-16.5f&quot;</span>,<span class="hljs-string">&quot;%-16.5f&quot;</span>,<span class="hljs-string">&quot;%-16.5f&quot;</span>,<span class="hljs-string">&quot;%-16.5f&quot;</span>];<br><span class="hljs-comment">% 初始扰动变量扰动区间</span><br><span class="hljs-comment">% 设置扰动方式：0 - 绝对值上下扰动；1 - 比例上下扰动（例如：设置50代表扰动区间为标准值的[50%,150%]）</span><br>S_Va_turb_way=[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>];<br>S_Va_turb_Std=[<span class="hljs-number">0.1355</span>,(<span class="hljs-number">2</span>/<span class="hljs-number">3</span>),<span class="hljs-number">7.1</span>,<span class="hljs-number">0.41</span>];  <span class="hljs-comment">% 初始扰动变量标准值</span><br>S_Va_turb_Det_base_lower=[<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>];  <span class="hljs-comment">% 初始扰动变量下区间</span><br>S_Va_turb_Det_base_upper=[<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>];  <span class="hljs-comment">% 初始扰动变量上区间</span><br><br>S_Va_turb_Det_real_lower=S_Va_turb_Det_base_lower;<br>S_Va_turb_Det_real_upper=S_Va_turb_Det_base_upper;<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(S_Va_turb_Std)<br>    <span class="hljs-comment">% 若采用比例上下扰动方式</span><br>    <span class="hljs-keyword">if</span> (S_Va_turb_way(<span class="hljs-built_in">i</span>)==<span class="hljs-number">1</span>)<br>        S_Va_turb_Det_real_lower(<span class="hljs-built_in">i</span>)=S_Va_turb_Std(<span class="hljs-built_in">i</span>)*(S_Va_turb_Det_base_lower(<span class="hljs-built_in">i</span>)/<span class="hljs-number">100</span>);<br>        S_Va_turb_Det_real_upper(<span class="hljs-built_in">i</span>)=S_Va_turb_Std(<span class="hljs-built_in">i</span>)*(S_Va_turb_Det_base_upper(<span class="hljs-built_in">i</span>)/<span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br>S_Va_turb_min=S_Va_turb_Std-S_Va_turb_Det_real_lower;<br>S_Va_turb_max=S_Va_turb_Std+S_Va_turb_Det_real_upper;<br><span class="hljs-comment">% 利用拉丁超立方进行初始扰动变量采样</span><br>Va_min=S_Va_turb_min;<br>Va_max=S_Va_turb_max;<br><span class="hljs-comment">% 初始同化变量个数</span><br>PN=<span class="hljs-built_in">length</span>(Va_min);<br>S_Va_coef=lhsdesign(N_max,PN);<br><span class="hljs-comment">% 生成N*P列扰动变量向量</span><br>S_Va_init=(<span class="hljs-built_in">ones</span>(N_max,<span class="hljs-number">1</span>)*Va_min)+S_Va_coef.*(<span class="hljs-built_in">ones</span>(N_max,<span class="hljs-number">1</span>)*(Va_max-Va_min));<br>S_Va_init_ave=<span class="hljs-built_in">mean</span>(S_Va_init);<br><br><span class="hljs-comment">% ② 指定目标同化变量模块</span><br><span class="hljs-comment">% 全部目标同化变量名称</span><br>S_Va_target_Name=[<span class="hljs-string">&quot;TMu&quot;</span>];<br><span class="hljs-comment">% S_Va_target_Name=[&quot;Beta&quot;];</span><br>S_Va_target_CharName=char(S_Va_target_Name);<br><span class="hljs-comment">% 全部目标同化变量数量</span><br>S_Va_target_Num=<span class="hljs-built_in">length</span>(S_Va_target_Name);<br><span class="hljs-comment">% 判断目标同化变量类型①（TypeTurb）：k - 是第k个初始扰动变量或分布（k~=0）；0 - 非初始扰动变量</span><br><span class="hljs-comment">% 注：若目标同化变量非初始扰动变量，则需要在更新步将值改为原始 STD 值</span><br>S_Va_target_TypeTurb=[<span class="hljs-number">0</span>];<br><span class="hljs-comment">% 判断目标同化变量类型②（TypeDA）：1 - 单（值）同化变量；2 - 流场（多值）同化变量</span><br>S_Va_target_TypeDA=[<span class="hljs-number">2</span>];<br><span class="hljs-comment">% 目标单值同化（且为初始扰动）的变量个数为 PT；流场（多值）同化变量个数 PS，即</span><br><span class="hljs-comment">% 例如在本算例中，如欲同化马赫数 Ma、迎角 AoA、全（部分）流场涡粘 TMu，则 PT = 2；</span><br><span class="hljs-comment">%                   欲仅同化迎角 AoA、全（部分）流场涡粘 TMu，则 PT = 1；</span><br><span class="hljs-comment">% PT=sum((S_Va_target_TypeTurb&gt;0) &amp; (S_Va_target_TypeDA==1));</span><br>PT=sum((S_Va_target_TypeDA==<span class="hljs-number">1</span>));<br>PS=sum((S_Va_target_TypeDA==<span class="hljs-number">2</span>));<br><span class="hljs-comment">% 标记初始扰动变量中同时满足[为目标同化]和[单值]的变量（e.g. &quot;Ma&quot; &quot;AoA&quot;），并保存在S_Va_target_NonTurb数组</span><br>Lia=<span class="hljs-built_in">ismember</span>(S_Va_turb_Name,S_Va_target_Name);<br>S_Va_turb_target=double(Lia);<br><br><span class="hljs-comment">% ③ 指定同化观测变量模块</span><br><span class="hljs-comment">% 全部同化观测变量名称</span><br>S_Va_ref_Name=[<span class="hljs-string">&quot;Cp&quot;</span>];<br><span class="hljs-comment">% S_Va_ref_Name=[&quot;BL&quot;];</span><br>S_Va_ref_CharName=char(S_Va_ref_Name);<br><span class="hljs-comment">% 全部同化观测变量数量</span><br>S_Va_ref_Num=<span class="hljs-built_in">length</span>(S_Va_ref_Name);<br><br><span class="hljs-comment">% 若目标观测变量为Cp,Cf,yplus    </span><br>    <span class="hljs-comment">% 设置参与同化过程的翼型数据点编号</span><br>    <span class="hljs-comment">% num_da_min=1;    % 取样最小值</span><br>    <span class="hljs-comment">% num_da_max=97;  % 取样最大值</span><br>    <span class="hljs-comment">% num_da_gap=2;    % 取样间隔</span><br>    <span class="hljs-comment">% 建立同化数据点序号数组</span><br>    <span class="hljs-comment">% num_da_arr=(num_da_min:num_da_gap:num_da_max);</span><br>    <span class="hljs-comment">% 可根据重点区域进行标志</span><br>    <span class="hljs-comment">% num_da_arr=[(10:2:42),(48:64),(65:73),(74:2:92)];</span><br>    <span class="hljs-comment">% num_da_arr=[(10:2:42),(48:92)];</span><br>    <span class="hljs-comment">% num_da_arr=[(10:2:42),(48:73),(74:2:92)]; % RAE2822</span><br>    <span class="hljs-comment">% num_da_arr=[(18:3:63),(90:2:168)]; % 56 Points Selected for S809 （P = 199）</span><br>    num_da_arr=[(<span class="hljs-number">20</span>:<span class="hljs-number">2</span>:<span class="hljs-number">60</span>),(<span class="hljs-number">94</span>:<span class="hljs-number">2</span>:<span class="hljs-number">166</span>)]; <span class="hljs-comment">% 58 Points Selected for S809 （P = 199）</span><br>    <span class="hljs-comment">% 记录同化数据点个数</span><br>    k=<span class="hljs-built_in">length</span>(num_da_arr);<br><br><span class="hljs-comment">% 若目标观测变量为边界层速度型，则需要指定边界层站位数量、导入各站位观测信息（y/c,u/u_ref）、各站位处边界层同化位置</span><br>    <span class="hljs-comment">% N_BL=4;</span><br>    <span class="hljs-comment">% BL_Type=[1,1,1,1];  % 设置各站位边界层取点模式：0 - 指定起始、终止编号以及间隔；1 - 指定同化点编号</span><br>    <span class="hljs-comment">% BL_S=[]; % 设置各站位计算值起始编号</span><br>    <span class="hljs-comment">% BL_T=[]; % 设置各站位计算值终止编号</span><br>    <span class="hljs-comment">% BL_G=[]; % 设置各站位计算值编号间隔</span><br>    <span class="hljs-comment">% global BL_setting N_BL L_BL BL_num BL_lab BL_dot</span><br>    BL_setting=textread(<span class="hljs-string">&#x27;BL_DA_Setting.dat&#x27;</span>); <span class="hljs-comment">% 导入边界层同化设置文件</span><br>    N_BL=<span class="hljs-built_in">size</span>(BL_setting,<span class="hljs-number">1</span>);<br>    L_BL=<span class="hljs-built_in">size</span>(BL_setting,<span class="hljs-number">2</span>);<br>    <span class="hljs-comment">% BL_dot=(-1)*ones(N_BL,100); % 保存边界层同化位置信息</span><br>    BL_num=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N_BL); <span class="hljs-comment">% 保存各站位边界层同化点数</span><br>    BL_lab=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N_BL); <span class="hljs-comment">% 保存参与同化的边界层编号</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N_BL<br>        BL_lab(<span class="hljs-built_in">i</span>)=BL_setting(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>); <span class="hljs-comment">% 保存边界层站位编号</span><br>        BL_type=BL_setting(<span class="hljs-built_in">i</span>,<span class="hljs-number">2</span>); <span class="hljs-comment">% 设置各站位边界层取点模式：0 - 指定起始、终止编号以及间隔；1 - 指定同化点编号</span><br>        <span class="hljs-keyword">if</span> (BL_type==<span class="hljs-number">0</span>)<br>            BL_S=BL_setting(<span class="hljs-built_in">i</span>,<span class="hljs-number">3</span>);<br>            BL_T=BL_setting(<span class="hljs-built_in">i</span>,<span class="hljs-number">4</span>);<br>            BL_G=BL_setting(<span class="hljs-built_in">i</span>,<span class="hljs-number">5</span>);<br>            cnt_dot=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span>=BL_S:BL_G:BL_T<br>                cnt_dot=cnt_dot+<span class="hljs-number">1</span>;<br>                BL_dot(<span class="hljs-built_in">i</span>,cnt_dot)=<span class="hljs-built_in">j</span>;<br>            <span class="hljs-keyword">end</span><br>            BL_num(<span class="hljs-built_in">i</span>)=cnt_dot;<br>        <span class="hljs-keyword">elseif</span> (BL_type==<span class="hljs-number">1</span>)<br>            cnt_dot=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> kkk=<span class="hljs-number">3</span>:L_BL<br>                <span class="hljs-keyword">if</span> (BL_setting(<span class="hljs-built_in">i</span>,kkk)~=<span class="hljs-number">0</span>)<br>                    cnt_dot=cnt_dot+<span class="hljs-number">1</span>;<br>                    BL_dot(<span class="hljs-built_in">i</span>,cnt_dot)=BL_setting(<span class="hljs-built_in">i</span>,kkk);<br>                <span class="hljs-keyword">end</span><br>            <span class="hljs-keyword">end</span><br>            BL_num(<span class="hljs-built_in">i</span>)=cnt_dot;<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% Pos_Obs=(-1)*ones(N_BL,100); % 保存边界层同化位置信息</span><br>    <span class="hljs-comment">% 导入指定边界层的速度型信息（实验数据 + 位置信息）</span><br>    kb=sum(BL_num); <span class="hljs-comment">% 统计参与同化的边界层速度型点数量</span><br>    Exp_Obs_Arr=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,kb);<br>    BL_obs_num=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N_BL<br>        Vel_Exp_Data=load([<span class="hljs-string">&#x27;.\Input_Data\Input_Exp_Hump_BL_Vel_&#x27;</span>,num2str(BL_lab(<span class="hljs-built_in">i</span>),<span class="hljs-string">&#x27;%03d&#x27;</span>),<span class="hljs-string">&#x27;.dat&#x27;</span>]);<br>        Vel_Shape_Data=load([<span class="hljs-string">&#x27;.\Input_Data\Input_Hump_BL_Profile_&#x27;</span>,num2str(BL_lab(<span class="hljs-built_in">i</span>),<span class="hljs-string">&#x27;%03d&#x27;</span>),<span class="hljs-string">&#x27;.dat&#x27;</span>]);<br>        <br>        <span class="hljs-comment">% 整理指定编号同化点的位置信息（y/c）</span><br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span>=<span class="hljs-number">1</span>:BL_num(<span class="hljs-built_in">i</span>)<br>            Pos_Obs(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">j</span>)=Vel_Shape_Data(BL_dot(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">j</span>));<br>            <span class="hljs-comment">% 插值得到边界层指定位置的速度实验数据</span><br>            Exp_Obs(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">j</span>)=interp1(Vel_Exp_Data(:,<span class="hljs-number">1</span>),Vel_Exp_Data(:,<span class="hljs-number">2</span>),Pos_Obs(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">j</span>),<span class="hljs-string">&#x27;linear&#x27;</span>,<span class="hljs-string">&#x27;extrap&#x27;</span>);<br>            BL_obs_num=BL_obs_num+<span class="hljs-number">1</span>; <span class="hljs-comment">% 同化观测点 + 1</span><br>            Exp_Obs_Arr(BL_obs_num)=Exp_Obs(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">j</span>); <span class="hljs-comment">% 保存所有插值出的实验观测数据，数量 = k</span><br>        <span class="hljs-keyword">end</span><br>        <br>    <span class="hljs-keyword">end</span><br>    <br><br><span class="hljs-comment">% -----------  指定初始扰动变量、目标同化变量、同化观测变量模块 END ----------- %</span><br><br><span class="hljs-comment">% --------------  设置生成初始集合成员相关参数 END -------------- %</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong><font color="red">设置同化过程主要流场计算参数（共三个阶段）</font></strong></li>
-<li>设置定常求解收敛最大迭代步数（集合生成过程）——
-<strong><em>MStepNS_cov</em></strong></li>
-<li>设置内迭代操作最大次数，即同化最大轮数 ——
-<strong><em>Max_inner_iter</em></strong></li>
-<li>设置内迭代预测迭代计算步数 ——
-<strong><em>MStepNS_pre</em></strong></li>
-<li>设置每代成员重计算步数（集合重计算过程） ——
-<strong><em>MStepNS_recal_ensemble</em></strong></li>
-<li>设置集合成员生成、内迭代以及重计算过程的 CFL 数（三元素数组） ——
-<strong><em>CFL_Setting</em></strong></li>
-<li>设置集合成员生成、内迭代、重计算过程的收敛精度（以 10
-为底，三元素数组） —— <strong><em>Resi_target_log</em></strong></li>
-<li>设置各阶段（集合生成、内迭代、重计算）的截断残差水平，即若残差未达到该设置值，则认为此次计算未收敛
-—— <strong><em>Resi_target_lev</em></strong></li>
-<li>更新（关闭）续算操纵开关，即设置流场是否续算：0 -
-否（从初始流场开始计算）；1 - 是 （从前一轮计算流场开始计算）——
-<strong><em>JX_NS</em></strong></li>
-<li>更新（关闭）续算操纵开关，即设置涡粘场是否续算：0 -
-否（不固定涡粘，直接采用湍流模型计算）；1 - 是 （固定涡粘进行计算）；3 -
-引入 Beta 项进行计算 —— <strong><em>JX_Turb</em></strong></li>
-<li>设置是否进行当前算例与标准算例计算结果的比较（流场各变量
-Rho、U、V、P、TMu 的绝对误差场，以及总
-MSE、RMSE），需要在Output文件夹中导入基准流场 FlowField_STD.PLT
-文件，输出误差云图 FlowField_Err.PLT 和误差信息 FlowField_Err_Info.txt
-文件 —— <strong><em>STD_Comp</em></strong></li>
-<li>设置每轮 L2NORM 收敛要求水平，达到即退出当前计算（注：5 -
-代表收敛截断水平为 5%；当且仅当湍流续算开关 JX_Turb = 1 时生效） ——
-<strong><em>L2NORM_Setting</em></strong></li>
+<li>设置定常求解收敛最大迭代步数（集合生成过程）—— <strong><em>MStepNS_cov</em></strong></li>
+<li>设置内迭代操作最大次数，即同化最大轮数 —— <strong><em>Max_inner_iter</em></strong></li>
+<li>设置内迭代预测迭代计算步数 —— <strong><em>MStepNS_pre</em></strong></li>
+<li>设置每代成员重计算步数（集合重计算过程） —— <strong><em>MStepNS_recal_ensemble</em></strong></li>
+<li>设置集合成员生成、内迭代以及重计算过程的 CFL 数（三元素数组） —— <strong><em>CFL_Setting</em></strong></li>
+<li>设置集合成员生成、内迭代、重计算过程的收敛精度（以 10 为底，三元素数组） —— <strong><em>Resi_target_log</em></strong></li>
+<li>设置各阶段（集合生成、内迭代、重计算）的截断残差水平，即若残差未达到该设置值，则认为此次计算未收敛 —— <strong><em>Resi_target_lev</em></strong></li>
+<li>更新（关闭）续算操纵开关，即设置流场是否续算：0 - 否（从初始流场开始计算）；1 - 是 （从前一轮计算流场开始计算）—— <strong><em>JX_NS</em></strong></li>
+<li>更新（关闭）续算操纵开关，即设置涡粘场是否续算：0 - 否（不固定涡粘，直接采用湍流模型计算）；1 - 是 （固定涡粘进行计算）；3 - 引入 Beta 项进行计算 —— <strong><em>JX_Turb</em></strong></li>
+<li>设置是否进行当前算例与标准算例计算结果的比较（流场各变量 Rho、U、V、P、TMu 的绝对误差场，以及总 MSE、RMSE），需要在Output文件夹中导入基准流场 FlowField_STD.PLT 文件，输出误差云图 FlowField_Err.PLT 和误差信息 FlowField_Err_Info.txt 文件 —— <strong><em>STD_Comp</em></strong></li>
+<li>设置每轮 L2NORM 收敛要求水平，达到即退出当前计算（注：5 - 代表收敛截断水平为 5%；当且仅当湍流续算开关 JX_Turb = 1 时生效） —— <strong><em>L2NORM_Setting</em></strong></li>
 <li><strong><font color="red">设置同化过程主要流程与算法控制参数</font></strong></li>
-<li>设置算例类型（0 -
-翼型绕流：需导入上下翼型外形数据以及实验数据，共4个输入文件，并进行插值排序；1
--
-单壁内流，如后台阶（Backstep）、驼峰（Hump）等：需导入壁面外形参数以及实验数据，共2个输入文件，并进行插值排序）
-—— <strong><em>flag_flow_type</em></strong></li>
-<li>设置是否进行初始标准算例：0 - 否；1 - 是 ——
-<strong><em>flag_std</em></strong></li>
-<li>设置是否进行部分区域数据同化：0 - 否；1 - 是 ——
-<strong><em>flag_da_part</em></strong></li>
-<li>设置数据同化核心算法：1 - 集合卡尔曼滤波（EnKF）；2 -
-集合变换卡尔曼滤波（ETKF） ——
-<strong><em>flag_da_method</em></strong></li>
-<li>设置数据同化观测值类型：0 -
-相对误差，同化目标变为使相对误差变为零；1 - 绝对误差（传统方式） ——
-<strong><em>flag_da_relative</em></strong></li>
-<li><strong><font color="red">设置区域数据同化参数</font></strong>
-<strong><font color="blue">（可选用）</font></strong></li>
-<li>设置同化区域节点个数，可为任意多边形（须满足 &gt;= 3），下面输入
-NNDA 个坐标（XDA, YDA） —— <strong><em>NNDA</em></strong></li>
+<li>设置算例类型（0 - 翼型绕流：需导入上下翼型外形数据以及实验数据，共4个输入文件，并进行插值排序；1 - 单壁内流，如后台阶（Backstep）、驼峰（Hump）等：需导入壁面外形参数以及实验数据，共2个输入文件，并进行插值排序） —— <strong><em>flag_flow_type</em></strong></li>
+<li>设置是否进行初始标准算例：0 - 否；1 - 是 —— <strong><em>flag_std</em></strong></li>
+<li>设置是否进行部分区域数据同化：0 - 否；1 - 是 —— <strong><em>flag_da_part</em></strong></li>
+<li>设置数据同化核心算法：1 - 集合卡尔曼滤波（EnKF）；2 - 集合变换卡尔曼滤波（ETKF） —— <strong><em>flag_da_method</em></strong></li>
+<li>设置数据同化观测值类型：0 - 相对误差，同化目标变为使相对误差变为零；1 - 绝对误差（传统方式） —— <strong><em>flag_da_relative</em></strong></li>
+<li><strong><font color="red">设置区域数据同化参数</font></strong> <strong><font color="blue">（可选用）</font></strong></li>
+<li>设置同化区域节点个数，可为任意多边形（须满足 &gt;= 3），下面输入 NNDA 个坐标（XDA, YDA） —— <strong><em>NNDA</em></strong></li>
 <li>设置同化区域节点横坐标 —— <strong><em>XDA</em></strong></li>
 <li>设置同化区域节点纵坐标 —— <strong><em>YDA</em></strong></li>
 <li><strong><font color="red">设置同化算例外部输入信息</font></strong></li>
-<li><em>[翼型算例]</em> 导入上下翼面的外形数据文件（自动插值） ——
-<strong><em>shape_upper</em></strong> &amp;
-<strong><em>shape_lower</em></strong></li>
-<li><em>[翼型算例]</em> 导入上下翼面的实验数据 ——
-<strong><em>exp_upper_data</em></strong> &amp;
-<strong><em>exp_lower_data</em></strong></li>
-<li>[非翼型算例] 导入外形数据（自动插值） ——
-<strong><em>shape_outline</em></strong></li>
-<li>[非翼型算例] 导入实验数据 ——
-<strong><em>exp_outline</em></strong></li>
-<li>翼型算例：导入上下翼面的实验数据 ——
-<strong><em>exp_upper_data</em></strong> &amp;
-<strong><em>exp_lower_data</em></strong></li>
+<li><em>[翼型算例]</em> 导入上下翼面的外形数据文件（自动插值） —— <strong><em>shape_upper</em></strong> &amp; <strong><em>shape_lower</em></strong></li>
+<li><em>[翼型算例]</em> 导入上下翼面的实验数据 —— <strong><em>exp_upper_data</em></strong> &amp; <strong><em>exp_lower_data</em></strong></li>
+<li>[非翼型算例] 导入外形数据（自动插值） —— <strong><em>shape_outline</em></strong></li>
+<li>[非翼型算例] 导入实验数据 —— <strong><em>exp_outline</em></strong></li>
+<li>翼型算例：导入上下翼面的实验数据 —— <strong><em>exp_upper_data</em></strong> &amp; <strong><em>exp_lower_data</em></strong></li>
 <li><strong><font color="red">设置数据同化实验值与误差估计参数</font></strong></li>
-<li>设置观测值协方差（方差），并假定这些测量误差不相关；设置是否开启
-自适应观测值标准差调节模型 - Adaptive observation standard deviation
-adjustment model（<strong><em>AOSDAM</em></strong>，否 - 0；固定放缩模式
-- 1；区间平均模式 - 2；区间适应模式 - 3）</li>
+<li>设置观测值协方差（方差），并假定这些测量误差不相关；设置是否开启 自适应观测值标准差调节模型 - Adaptive observation standard deviation adjustment model（<strong><em>AOSDAM</em></strong>，否 - 0；固定放缩模式 - 1；区间平均模式 - 2；区间适应模式 - 3）</li>
 <li>模式开关 —— <strong><em>flag_sigma_obs_adapt</em></strong></li>
 <li>放缩因子 —— <strong><em>flag_sigma_obs_coeff</em></strong></li>
-<li>设定初始观测值标准差水平 ——
-<strong><em>sigma_obs_init</em></strong></li>
-<li>设定观测值标准差下限，即调整前后的标准差均不可低于下限 ——
-<strong><em>sigma_obs_min</em></strong></li>
-<li>设定观测值标准差上限，即调整前后的标准差均不可高于上限——
-<strong><em>sigma_obs_max</em></strong></li>
+<li>设定初始观测值标准差水平 —— <strong><em>sigma_obs_init</em></strong></li>
+<li>设定观测值标准差下限，即调整前后的标准差均不可低于下限 —— <strong><em>sigma_obs_min</em></strong></li>
+<li>设定观测值标准差上限，即调整前后的标准差均不可高于上限—— <strong><em>sigma_obs_max</em></strong></li>
 </ul>
 <p><em>对应程序段：</em></p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% -----------------  设置主要求解迭代参数 START ----------------- %</span><br><br>MStepNS_cov=<span class="hljs-number">50000</span>;   <span class="hljs-comment">% 定常NS求解收敛最大迭代步数（集合生成过程）</span><br>Max_inner_iter=<span class="hljs-number">10</span>;  <span class="hljs-comment">% 设置内迭代操作最大次数</span><br>MStepNS_pre=<span class="hljs-number">50000</span>;   <span class="hljs-comment">% 设置内迭代预测步数</span><br>MStepNS_recal_ensemble=<span class="hljs-number">60000</span>;  <span class="hljs-comment">% 设置每代成员重计算步数（集合重计算过程）</span><br>CFL_Setting=[<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]; <span class="hljs-comment">% 分别设置集合成员生成、内迭代以及重计算过程的 CFL 数</span><br>Resi_target_log=[<span class="hljs-number">-9.0</span>,<span class="hljs-number">-9.0</span>,<span class="hljs-number">-9.0</span>]; <span class="hljs-comment">% 分别定义集合成员生成、内迭代、重计算过程的收敛精度（以 10 为底）</span><br>Resi_target=<span class="hljs-number">10.</span>^(Resi_target_log);<br>Resi_target_lev=[<span class="hljs-number">-7.5</span>,<span class="hljs-number">-6.0</span>,<span class="hljs-number">-7.0</span>]; <span class="hljs-comment">% 规定各阶段（集合生成、内迭代、重计算）的截断残差水平，以确定集合成员捕捉范围</span><br><span class="hljs-comment">% Resi_target_gen_level=Resi_target_log(1)+1.5; % 规定集合生成截断残差水平为期望残差值 + f ，以扩大集合成员捕捉范围</span><br>JX_NS=[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]; <span class="hljs-comment">% 更新（关闭）JX_NS 续算操纵开关，即设置流场是否续算：0 - 否（从初始流场开始计算）；1 - 是 （从前一轮计算流场开始计算）</span><br><br>JX_Turb=[<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>]; <span class="hljs-comment">% 更新（关闭）JX_Turb 续算操纵开关，即设置涡粘场是否续算：0 - 否（不固定涡粘，直接采用湍流模型计算）；1 - 是 （固定涡粘进行计算）；3 - 引入 Beta 项进行计算</span><br>STD_Comp=[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>]; <span class="hljs-comment">% 是否进行当前算例与标准算例计算结果的比较（流场各变量 RU、U、V、P、TMu 的绝对误差场，以及总MSE、RMSE）</span><br>                  <span class="hljs-comment">% 需要在Output文件夹中导入 FlowField_STD.PLT 文件，输出 FlowField_Err.PLT 和 FlowField_Err_Info.txt 文件</span><br>L2NORM_Setting=[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]; <span class="hljs-comment">% 设置每轮 L2NORM 收敛要求水平，达到即退出当前计算（注：5 - 代表收敛截断水平为 5%；当且仅当湍流续算开关 JX_Turb = 1 时生效）</span><br><br><br><span class="hljs-comment">% 设置算例类型（0 - 翼型绕流：需导入上下翼型外形数据以及实验数据，共4个输入文件，并进行插值排序）</span><br><span class="hljs-comment">%               1 - 单壁内流，如后台阶（Backstep）、驼峰（Hump）等：需导入壁面外形参数以及实验数据，共2个输入文件，并进行插值排序</span><br>flag_flow_type=<span class="hljs-number">0</span>;<br><br>flag_std=<span class="hljs-number">0</span>;  <span class="hljs-comment">% 设置是否进行初始标准算例：0 - 否；1 - 是</span><br>flag_da_part=<span class="hljs-number">0</span>;  <span class="hljs-comment">% 设置是否进行部分区域数据同化：0 - 否；1 - 是</span><br>flag_da_method=<span class="hljs-number">2</span>; <span class="hljs-comment">% 设置数据同化核心算法：1 - 集合卡尔曼滤波（EnKF）；2 - 集合变换卡尔曼滤波（ETKF）</span><br>flag_da_relative=<span class="hljs-number">1</span>; <span class="hljs-comment">% 设置数据同化观测值类型：0 - 相对误差，同化目标变为使相对误差变为零；1 - 绝对误差（传统方式）</span><br>flag_beta_turb_type=<span class="hljs-number">0</span>; <span class="hljs-comment">% 设置网格取样点规则（对于 Beta修正项 同化情形）：0 - 每次扰动点固定；1 - 每次扰动点随机；</span><br><br><span class="hljs-comment">% 如果初始扰动与同化目标中出现 &quot;Beta&quot; 项，则进行扰动设置</span><br><span class="hljs-keyword">if</span> ((strcmp(char(S_Va_target_Name(<span class="hljs-number">1</span>)),<span class="hljs-string">&#x27;Beta&#x27;</span>)==<span class="hljs-number">1</span>) || (strcmp(char(S_Va_target_Name(<span class="hljs-number">1</span>)),<span class="hljs-string">&#x27;Beta&#x27;</span>)==<span class="hljs-number">1</span>))<br>    flag_da_part=<span class="hljs-number">1</span>; <span class="hljs-comment">% 开启区域数据同化</span><br>    flag_da_beta=<span class="hljs-number">1</span>; <span class="hljs-comment">% 开启扰动项Beta(x)同化</span><br>    flag_Va_init=<span class="hljs-number">1</span>; <span class="hljs-comment">% 开启集合成员导入流场多维工作变量标志</span><br>    flag_sel_dot=<span class="hljs-number">2</span>; <span class="hljs-comment">% 设置扰动Beta(x)的方式</span><br>                    <span class="hljs-comment">% 拟定规则 1 - 直接选取相关编号间隔，即在选取区域内每隔一定编号进行单点采样，选取散点并进行平面插值；</span><br>                    <span class="hljs-comment">% 拟定规则 2 - 精细化采样均匀采样；</span><br>                    <span class="hljs-comment">% 拟定规则 3 - 采样二维光滑函数进行采样（待开发......）；</span><br>    <span class="hljs-comment">% 设置 Beta 扰动规则：方差 sigma_2，满足分布 Beta ~ N(std_beta,sigma_2)</span><br>    <span class="hljs-comment">% 规则①取点间隔信息</span><br>    DA_NG_gap=<span class="hljs-number">200</span>;<br>    <span class="hljs-comment">% 规则①~③取点距离信息</span><br>    std_beta=<span class="hljs-number">1.0</span>;<br>    sigma_beta=<span class="hljs-number">3.0</span>;<br>    dis_ratio=<span class="hljs-number">5.0</span>;<br><span class="hljs-keyword">else</span><br>    <span class="hljs-comment">% 若不进行 Beta扰动项 同化</span><br>    flag_da_beta=<span class="hljs-number">0</span>; <span class="hljs-comment">% 关闭扰动项Beta(x)同化</span><br>    flag_Va_init=<span class="hljs-number">0</span>; <span class="hljs-comment">% 关闭集合成员导入流场多维工作变量，使用普通单变量组合扰动</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">% 区域数据同化设置</span><br>NNDA=<span class="hljs-number">4</span>; <span class="hljs-comment">% NNDA -- 同化区域节点个数，可为任意多边形（须满足&gt;=3），下面输入 NNDA 个坐标（XDA,YDA）</span><br><span class="hljs-comment">% XDA=[1.05,1.2,1.2,1.05]; % XDA(NNDA) -- 同化区域节点横坐标</span><br><span class="hljs-comment">% YDA=[0.1,0.1,0.0,0.0]; % YDA(NNDA) -- 同化区域节点纵坐标</span><br><span class="hljs-comment">% XDA=[0.8,1.5,1.5,0.8]; % XDA(NNDA) -- 同化区域节点横坐标</span><br><span class="hljs-comment">% YDA=[0.1,0.1,0.02,0.02]; % YDA(NNDA) -- 同化区域节点纵坐标</span><br>XDA=[<span class="hljs-number">0.5499846528026755</span>,<span class="hljs-number">1.3977168074273609</span>,<span class="hljs-number">1.3977168074273609</span>,<span class="hljs-number">0.5499846528026755</span>]; <span class="hljs-comment">% XDA(NNDA) -- 同化区域节点横坐标</span><br>YDA=[<span class="hljs-number">0.11283900866252453</span>,<span class="hljs-number">0.16714063248086963</span>,<span class="hljs-number">0.005</span>,<span class="hljs-number">0.005</span>]; <span class="hljs-comment">% YDA(NNDA) -- 同化区域节点纵坐标</span><br><br><span class="hljs-keyword">if</span> (flag_flow_type==<span class="hljs-number">0</span>)<br>    <span class="hljs-comment">% 导入上下翼面的外形数据（自动插值）</span><br>    shape_upper=load(<span class="hljs-string">&#x27;.\Input_Data\Input_Data_Shape_S809_upper.dat&#x27;</span>);<br>    shape_lower=load(<span class="hljs-string">&#x27;.\Input_Data\Input_Data_Shape_S809_lower.dat&#x27;</span>);<br>    <span class="hljs-comment">% 导入上下翼面的实验数据</span><br>    exp_upper_data=load(<span class="hljs-string">&#x27;.\Input_Data\s809_200w_aoa12.2_exp_down.dat&#x27;</span>);<br>    exp_lower_data=load(<span class="hljs-string">&#x27;.\Input_Data\s809_200w_aoa12.2_exp_up.dat&#x27;</span>);<br><span class="hljs-keyword">elseif</span> (flag_flow_type==<span class="hljs-number">1</span>)<br>    <span class="hljs-comment">% 导入外形数据（自动插值）</span><br>    shape_outline=load(<span class="hljs-string">&#x27;.\Input_Data\Input_Data_Shape_Hump.dat&#x27;</span>);<br>    <span class="hljs-comment">% 导入实验数据</span><br>    exp_outline=load(<span class="hljs-string">&#x27;.\Input_Data\Input_Data_Exp_Hump.dat&#x27;</span>);<br><span class="hljs-keyword">end</span><br>    <br><span class="hljs-comment">% ------------------  设置主要求解迭代参数 END ------------------ %</span><br><br><span class="hljs-comment">% -----------  设置数据同化实验值与误差估计参数 START ----------- %</span><br><br><span class="hljs-comment">% 设置观测值协方差（方差），并假定这些测量误差不相关</span><br><span class="hljs-comment">% !!!!!!! 方差具体设置值需要再考虑（大一些？自适应方差调整模型？） !!!!!!!</span><br><span class="hljs-comment">% 2021/04/27 更新模块</span><br><span class="hljs-comment">% 设置是否开启 自适应观测值标准差调节模型 - Adaptive observation standard deviation adjustment model </span><br><span class="hljs-comment">%               abbr. AOSDAM（否 - 0；固定放缩模式 - 1；区间平均模式 - 2；区间适应模式 - 3）</span><br><span class="hljs-comment">% 算法说明：若关闭自适应模型，则设定所有观测值标准差为一固定值 sigma_obs；</span><br><span class="hljs-comment">%           若开启自适应模型（1 - 固定放缩模式）：则每轮同化前所有观测值标准差设置为上一轮标准差乘以放缩因子；</span><br><span class="hljs-comment">%           若开启自适应模型（2 - 区间平均模式），则每轮同化前根据上一轮所有观测值对应的计算值包络区间平均宽度，将所有观测值的标准差调整为平均期望标准差水平（乘以放缩因子）；</span><br><span class="hljs-comment">%           若开启自适应模型（3 - 区间适应模式），则每轮同化前根据上一轮各观测值对应的计算值包络区间宽度，将各观测值的标准差调整为相应期望标准差水平（乘以放缩因子）；</span><br><span class="hljs-comment">% 变量说明：flag_sigma_obs_adapt - 模式开关</span><br><span class="hljs-comment">%           flag_sigma_obs_coeff - 放缩因子</span><br><span class="hljs-comment">%           sigma_obs_init       - 设定初始观测值标准差水平</span><br><span class="hljs-comment">%           sigma_obs_min        - 设定观测值标准差下限，即调整前后的标准差均不可低于下限</span><br><span class="hljs-comment">%           sigma_obs_max        - 设定观测值标准差上限，即调整前后的标准差均不可高于上限</span><br>flag_sigma_obs_adapt=<span class="hljs-number">0</span>;<br>flag_sigma_obs_coeff=<span class="hljs-number">0.80</span>;<br>sigma_obs_ini=<span class="hljs-number">0.15</span>; <span class="hljs-comment">% 设置初始观测标准差水平</span><br>sigma_obs_min=<span class="hljs-number">0.02</span>; <span class="hljs-comment">% 指定观测标准差下限为0.05，对应方差为0.0025</span><br>sigma_obs_max=<span class="hljs-number">0.80</span>; <span class="hljs-comment">% 指定观测标准差上限为0.80，对应方差为0.6400</span><br><br><span class="hljs-comment">% 计算数据同化初始集合分析值误差协方差</span><br><span class="hljs-comment">% C_pp_e_a=cov(S_Va_ana&#x27;);</span><br><br><span class="hljs-comment">% ----------  设置数据同化实验值与误差估计参数 END ---------- %</span><br></code></pre></td></tr></table></figure>
-<p>​
-完成上述所有参数设置后，本程序将在工作区打印主要的输入参数，同时将所有提示信息写入
-<strong><em>DA_CompInfo_Brief.dat</em></strong> 文件。
-一组参数设置与前处理模块命令行信息提示如图 3-1 所示。</p>
+<p>​ 完成上述所有参数设置后，本程序将在工作区打印主要的输入参数，同时将所有提示信息写入 <strong><em>DA_CompInfo_Brief.dat</em></strong> 文件。 一组参数设置与前处理模块命令行信息提示如图 3-1 所示。</p>
 <p><img src="/2022/06/24/DATF/Comp_Info.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;"></p>
 <center>
 <font size="3.5"> 图 3-1 参数设置与前处理模块命令行信息提示</font>
@@ -501,103 +417,48 @@ adjustment model（<strong><em>AOSDAM</em></strong>，否 - 0；固定放缩模�
 <li><strong>步骤二：</strong>根据设置线程数，复制创建并行程序组。</li>
 </ul>
 <h2 id="同化算法模块">3.2 同化算法模块</h2>
-<p>​
-本模块是整个湍流数据同化程序框架的核心，主要功能是实现同化算法并进行结果分析。在完成前处理模块全部设置后，程序将依次完成初始化、内迭代、重计算三个阶段，主要包括以下步骤：</p>
+<p>​ 本模块是整个湍流数据同化程序框架的核心，主要功能是实现同化算法并进行结果分析。在完成前处理模块全部设置后，程序将依次完成初始化、内迭代、重计算三个阶段，主要包括以下步骤：</p>
 <ol type="1">
 <li>处理外部导入的算例实验数据与模型几何数据；</li>
-<li><strong>同化初始化阶段</strong>：批处理调用外部流体求解器，生成首代集合成员
-<span class="math inline">\(\left\{x_{i, 0}\right\}_{i=1}^{N}\)</span>
-，初始化状态变量，设时间步 $ k = 1$
-；建立实验观测值与计算值之间的映射关系 $ H_{k+1}$ ；</li>
-<li><strong>同化内迭代阶段</strong>：设置实验观测误差水平，调用滤波算法，首先进行预测步骤得到
-<span class="math inline">\(\left\{x_{i,
-k+1}^{f}\right\}_{i=1}^{N}\)</span> ，再更新状态变量得到 <span class="math inline">\(\left\{x_{i, k+1}^{a}\right\}_{i=1}^{N}\)</span>
-；</li>
-<li><strong>同化重计算阶段</strong>：使用新的状态变量 <span class="math inline">\(\overline{\boldsymbol{x}_{k}}\)</span>
-重新计算标准状态算例，结果可视化；</li>
-<li>根据当前计算值与实验值的误差，判断同化过程是否达到收敛条件，或 <span class="math inline">\(k\)</span> 是否达到 <span class="math inline">\(k_{max}\)</span> 。若满足收敛条件或者 <span class="math inline">\(k=k_{max}\)</span>
-，则程序进入后处理模块；若不收敛或者 <span class="math inline">\(k&lt;k_{max}\)</span> ，则回到步骤4)，迭代步 <span class="math inline">\(k=k+1\)</span> ；</li>
+<li><strong>同化初始化阶段</strong>：批处理调用外部流体求解器，生成首代集合成员 <span class="math inline">\(\left\{x_{i, 0}\right\}_{i=1}^{N}\)</span> ，初始化状态变量，设时间步 $ k = 1$ ；建立实验观测值与计算值之间的映射关系 $ H_{k+1}$ ；</li>
+<li><strong>同化内迭代阶段</strong>：设置实验观测误差水平，调用滤波算法，首先进行预测步骤得到 <span class="math inline">\(\left\{x_{i, k+1}^{f}\right\}_{i=1}^{N}\)</span> ，再更新状态变量得到 <span class="math inline">\(\left\{x_{i, k+1}^{a}\right\}_{i=1}^{N}\)</span> ；</li>
+<li><strong>同化重计算阶段</strong>：使用新的状态变量 <span class="math inline">\(\overline{\boldsymbol{x}_{k}}\)</span> 重新计算标准状态算例，结果可视化；</li>
+<li>根据当前计算值与实验值的误差，判断同化过程是否达到收敛条件，或 <span class="math inline">\(k\)</span> 是否达到 <span class="math inline">\(k_{max}\)</span> 。若满足收敛条件或者 <span class="math inline">\(k=k_{max}\)</span> ，则程序进入后处理模块；若不收敛或者 <span class="math inline">\(k&lt;k_{max}\)</span> ，则回到步骤4)，迭代步 <span class="math inline">\(k=k+1\)</span> ；</li>
 </ol>
-<p>​
-目前程序可供选择的同化算法包括集合卡尔曼滤波（EnKF）、集合变换卡尔曼滤波（ETKF）。除调用外部的CFD
-solver求解器之外，上述各个步骤均在数值计算软件环境下进行，程序通过保存数据文件与交叉调用的操作，自动完成所有的数据交互工作，两部分工作结合共同完成数据同化过程。</p>
+<p>​ 目前程序可供选择的同化算法包括集合卡尔曼滤波（EnKF）、集合变换卡尔曼滤波（ETKF）。除调用外部的CFD solver求解器之外，上述各个步骤均在数值计算软件环境下进行，程序通过保存数据文件与交叉调用的操作，自动完成所有的数据交互工作，两部分工作结合共同完成数据同化过程。</p>
 <h2 id="后处理模块">3.3 后处理模块</h2>
-<p>​
-本模块主要功能是对同化结果进行可视化与分析。进入后处理模块后，程序将对同化过程中保存的数据进行提取与分析，完成流场可视化，计算涡粘场误差敏感性系数，可供后续的数据处理与物理分析。</p>
+<p>​ 本模块主要功能是对同化结果进行可视化与分析。进入后处理模块后，程序将对同化过程中保存的数据进行提取与分析，完成流场可视化，计算涡粘场误差敏感性系数，可供后续的数据处理与物理分析。</p>
 <h1 id="实际算例演示">4 实际算例演示</h1>
-<h2 id="算例一rae2822-翼型跨声速绕流数据同化">4.1 算例一：RAE2822
-翼型跨声速绕流数据同化</h2>
+<h2 id="算例一rae2822-翼型跨声速绕流数据同化">4.1 算例一：RAE2822 翼型跨声速绕流数据同化</h2>
 <h3 id="算例介绍">4.1.1 算例介绍</h3>
-<p>​ 最早 Whitcomb 等人提出的超临界翼型（Supercritical
-Airfoil）能够大幅提升飞机的阻力发散马赫数（Drag Divergence Mach
-Number），并显著提升跨声速飞行的气动效率，因此被广泛使用在现代民机翼型设计领域。与普通翼型相比，超临界翼型的外形特点是前缘钝圆，上翼面平坦，下翼面在后缘处存在反凹，且后缘较薄并稍向下弯曲。由于上表面平坦，在减缓气流加速的同时，也会降低部分升力。为克服这一缺点，通常采用增加下翼面后缘弯度来弥补前缘的升力不足，因此超临界翼型一般具有显著的“后加载”特征。</p>
-<p>​ RAE2822 翼型跨声速绕流标准算例来流条件如下：马赫数 <span class="math inline">\(Ma=0.729\)</span>，迎角 <span class="math inline">\(\alpha =
-{2.31}^{\circ}\)</span>，基于单位弦长的雷诺数 <span class="math inline">\(\operatorname{Re}=6.5\times
-{10}^{6}\)</span>。本文计算网格采用混合网格，边界层内为结构网格，外流区域为非结构网格，网格的总节点数为
-23439，总单元数为 29628，翼型表面计算点数为
-420，为更精细地捕捉尾迹区的湍流粘性特征，在翼型后缘进行放射状区域网格加密，同时该网格已通过网格收敛性验证。本文采用的流场求解器基于雷诺平均
-N-S 方程，选用一方程 S-A 湍流模型，迎风格式选用
-AUSM+-up，采用二阶插值精度，CFL 数设为
-5。本文采用的非结构混合网格以及计算压力场结果如图 4-1 所示。</p>
+<p>​ 最早 Whitcomb 等人提出的超临界翼型（Supercritical Airfoil）能够大幅提升飞机的阻力发散马赫数（Drag Divergence Mach Number），并显著提升跨声速飞行的气动效率，因此被广泛使用在现代民机翼型设计领域。与普通翼型相比，超临界翼型的外形特点是前缘钝圆，上翼面平坦，下翼面在后缘处存在反凹，且后缘较薄并稍向下弯曲。由于上表面平坦，在减缓气流加速的同时，也会降低部分升力。为克服这一缺点，通常采用增加下翼面后缘弯度来弥补前缘的升力不足，因此超临界翼型一般具有显著的“后加载”特征。</p>
+<p>​ RAE2822 翼型跨声速绕流标准算例来流条件如下：马赫数 <span class="math inline">\(Ma=0.729\)</span>，迎角 <span class="math inline">\(\alpha = {2.31}^{\circ}\)</span>，基于单位弦长的雷诺数 <span class="math inline">\(\operatorname{Re}=6.5\times {10}^{6}\)</span>。本文计算网格采用混合网格，边界层内为结构网格，外流区域为非结构网格，网格的总节点数为 23439，总单元数为 29628，翼型表面计算点数为 420，为更精细地捕捉尾迹区的湍流粘性特征，在翼型后缘进行放射状区域网格加密，同时该网格已通过网格收敛性验证。本文采用的流场求解器基于雷诺平均 N-S 方程，选用一方程 S-A 湍流模型，迎风格式选用 AUSM+-up，采用二阶插值精度，CFL 数设为 5。本文采用的非结构混合网格以及计算压力场结果如图 4-1 所示。</p>
 <p><img src="/2022/06/24/DATF/RAE2822_Grid.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;"></p>
 <center>
-<font size="3.5"> 图 4-1
-RAE2822跨声速翼型混合网格以及计算压力场结果</font>
+<font size="3.5"> 图 4-1 RAE2822跨声速翼型混合网格以及计算压力场结果</font>
 </center>
-<p>​ 图 4-2 展示了不同 CFD solver
-计算的翼型表面压力系数分布与实验测量值的对比，其中 NRARC 与 WIND
-的数据均来自 NASA 官网，In-house Code
-代表本文计算结果。由标准状态计算结果可知，本文测试采用的 CFD
-求解器精度与 NRARC、WIND
-相当，但是不同求解器在上翼面激波、上翼面前缘吸力峰以及下翼面后缘位置与用空心圆圈代表的实验测量值均存在较大差异。</p>
+<p>​ 图 4-2 展示了不同 CFD solver 计算的翼型表面压力系数分布与实验测量值的对比，其中 NRARC 与 WIND 的数据均来自 NASA 官网，In-house Code 代表本文计算结果。由标准状态计算结果可知，本文测试采用的 CFD 求解器精度与 NRARC、WIND 相当，但是不同求解器在上翼面激波、上翼面前缘吸力峰以及下翼面后缘位置与用空心圆圈代表的实验测量值均存在较大差异。</p>
 <p><img src="/2022/06/24/DATF/RAE2822_Cp_STD.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p>
 <center>
-<font size="3.5"> 图 4-2 不同 CFD
-求解器计算的翼型表面压力系数分布与实验测量值对比</font>
+<font size="3.5"> 图 4-2 不同 CFD 求解器计算的翼型表面压力系数分布与实验测量值对比</font>
 </center>
-<p>​
-根据上面的标准状态计算结果，分析可得由于精细捕捉超临界翼型上缘激波位置与间断特征较难，故在该强间断面附近的表面压力系数分布的计算结果通常与实验测量有较大偏差。因此，对于激波位置附近计算不准的问题，可以应用本文提出的同化思路，结合实验测量数据对在跨声速阶段的翼型绕流计算进行湍流数据同化。首先确定同化状态变量。由文献可知，在跨声速翼型风洞实验中，由于存在动壁干扰及数据修正，故在
-CFD
-求解器中设置的包括马赫数与迎角在内的边界条件可能和实际实验存在误差，均存在较大的不确定性；同时考虑到
-CFD
-计算得到的激波后上翼面边界层速度型分布也与实验测量存在差异，而其与跨声速绕流尾迹区湍流涡粘场的特征密切相关。<strong>由上述分析，本算例同化状态变量设为马赫数
-<span class="math inline">\(Ma\)</span>、迎角 <span class="math inline">\(\alpha\)</span> 以及全流场涡粘系数 <span class="math inline">\({\mu}_{t}\)</span>，同化目标变量为翼型表面的压力分布
-<span class="math inline">\({C}_{p}\)</span>。</strong></p>
+<p>​ 根据上面的标准状态计算结果，分析可得由于精细捕捉超临界翼型上缘激波位置与间断特征较难，故在该强间断面附近的表面压力系数分布的计算结果通常与实验测量有较大偏差。因此，对于激波位置附近计算不准的问题，可以应用本文提出的同化思路，结合实验测量数据对在跨声速阶段的翼型绕流计算进行湍流数据同化。首先确定同化状态变量。由文献可知，在跨声速翼型风洞实验中，由于存在动壁干扰及数据修正，故在 CFD 求解器中设置的包括马赫数与迎角在内的边界条件可能和实际实验存在误差，均存在较大的不确定性；同时考虑到 CFD 计算得到的激波后上翼面边界层速度型分布也与实验测量存在差异，而其与跨声速绕流尾迹区湍流涡粘场的特征密切相关。<strong>由上述分析，本算例同化状态变量设为马赫数 <span class="math inline">\(Ma\)</span>、迎角 <span class="math inline">\(\alpha\)</span> 以及全流场涡粘系数 <span class="math inline">\({\mu}_{t}\)</span>，同化目标变量为翼型表面的压力分布 <span class="math inline">\({C}_{p}\)</span>。</strong></p>
 <h3 id="程序设置">4.1.2 程序设置</h3>
-<p>​ 下面对 RAE2822 翼型跨声速绕流数据同化算例的程序设置过程进行说明。 -
-<strong><font color="red">步骤一：创建并封装标准算例计算程序组</font></strong></p>
+<p>​ 下面对 RAE2822 翼型跨声速绕流数据同化算例的程序设置过程进行说明。 - <strong><font color="red">步骤一：创建并封装标准算例计算程序组</font></strong></p>
 <ul>
-<li><p>首先采用 CFD solver 运行 RAE2822
-翼型绕流的标准算例程序组，并将所有结果全部保存至根目录下的
-<strong><em>Program_CFD_Base</em></strong>
-文件夹下，获取标准计算结果信息，并将该文件夹作为后续创建并行程序组的基础程序组。基础程序组文件夹包括
-Input 输入参数文件夹、CFD solver 头文件包、Output
-输出结果文件夹、网格转换程序、计算程序以及批处理文件等，需要封装在同一个文件夹下，并重命名。</p></li>
-<li><p><strong>注意：</strong>建议需要更换算例时，仅更改输入文件夹下的
-US2D.dat 网格文件以及 InputNS.dat
-输入参数文件，然后依次运行网格转换程序以及标准计算程序，其他设置与文件均可保持默认不变。</p>
+<li><p>首先采用 CFD solver 运行 RAE2822 翼型绕流的标准算例程序组，并将所有结果全部保存至根目录下的 <strong><em>Program_CFD_Base</em></strong> 文件夹下，获取标准计算结果信息，并将该文件夹作为后续创建并行程序组的基础程序组。基础程序组文件夹包括 Input 输入参数文件夹、CFD solver 头文件包、Output 输出结果文件夹、网格转换程序、计算程序以及批处理文件等，需要封装在同一个文件夹下，并重命名。</p></li>
+<li><p><strong>注意：</strong>建议需要更换算例时，仅更改输入文件夹下的 US2D.dat 网格文件以及 InputNS.dat 输入参数文件，然后依次运行网格转换程序以及标准计算程序，其他设置与文件均可保持默认不变。</p>
 <ul>
-<li><strong>注意：</strong>需要对 CFD solver
-源代码中的输入输出部分进行一定调整，详细见更新后的 Develop_Version
-项目源代码工程。</li>
-<li><strong>注意：</strong>在结果文件夹中，除流场结果外，有一些 .plt
-格式的 Tecplot 模板文件（如：Comp_Cp_Exp_Com_DA_Model_New.plt
-等），已经调整好大致格式，可方便查看结果。</li>
+<li><strong>注意：</strong>需要对 CFD solver 源代码中的输入输出部分进行一定调整，详细见更新后的 Develop_Version 项目源代码工程。</li>
+<li><strong>注意：</strong>在结果文件夹中，除流场结果外，有一些 .plt 格式的 Tecplot 模板文件（如：Comp_Cp_Exp_Com_DA_Model_New.plt 等），已经调整好大致格式，可方便查看结果。</li>
 </ul></li>
 <li><p><strong><font color="red">步骤二：添加翼型外形以及实验数据文件</font></strong></p>
 <ul>
-<li>在根目录下的 Input_Data 文件夹下，添加描述 RAE2822
-翼型的上下翼面外形（<span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>）数据文件，分别命名为
-<strong><em>Input_Data_Shape_RAE2822_lower.dat</em></strong> 与
-<strong><em>Input_Data_Shape_RAE2822_upper.dat</em></strong>
-文件。添加描述 RAE2822 翼型的上下翼面实验测量压力系数分布（<span class="math inline">\(x\)</span>, <span class="math inline">\(C_{p}\)</span>）文件，分别命名为
-<strong><em>Input_Data_Exp_RAE2822_lower.dat</em></strong> 与
-<strong><em>Input_Data_Exp_RAE2822_upper.dat</em></strong>。</li>
+<li>在根目录下的 Input_Data 文件夹下，添加描述 RAE2822 翼型的上下翼面外形（<span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>）数据文件，分别命名为 <strong><em>Input_Data_Shape_RAE2822_lower.dat</em></strong> 与 <strong><em>Input_Data_Shape_RAE2822_upper.dat</em></strong> 文件。添加描述 RAE2822 翼型的上下翼面实验测量压力系数分布（<span class="math inline">\(x\)</span>, <span class="math inline">\(C_{p}\)</span>）文件，分别命名为 <strong><em>Input_Data_Exp_RAE2822_lower.dat</em></strong> 与 <strong><em>Input_Data_Exp_RAE2822_upper.dat</em></strong>。</li>
 <li><strong>注意：</strong>上述四个文件均为两列格式，其中外形与实验测点信息均可为稀疏数据点，本程序将自动完成排序、插值以及组合操作。参考格式详见示例程序组。</li>
 </ul></li>
 <li><p><strong><font color="red">步骤三：配置主函数参数设置与前处理模块</font></strong></p>
-<p>​
-<strong>按以下子步骤，依次完成参数设置与前处理模块的配置，各参数具体意义详见第三部分的程序说明。</strong></p>
+<p>​ <strong>按以下子步骤，依次完成参数设置与前处理模块的配置，各参数具体意义详见第三部分的程序说明。</strong></p>
 <ul>
 <li><p>设置全局续算开关；</p></li>
 <li><p>设置主要文件交互与并行相关参数；</p></li>
@@ -608,94 +469,56 @@ US2D.dat 网格文件以及 InputNS.dat
 <li><p>设置同化算例外部输入信息；</p></li>
 <li><p>设置数据同化实验值与误差估计参数。</p></li>
 </ul>
-<p>​
-<strong>特别注意：在上述步骤中，除了设置参与同化过程的翼型数据点编号，即建立同化数据点序号数组</strong>
-<strong><em>num_da_arr</em></strong>
-<strong>暂无需设置外，其他参数需完整配置，将在后面进一步确定同化观测点的具体位置。</strong>一组参考设置信息展示如图
-4-3 所示。</p></li>
+<p>​ <strong>特别注意：在上述步骤中，除了设置参与同化过程的翼型数据点编号，即建立同化数据点序号数组</strong> <strong><em>num_da_arr</em></strong> <strong>暂无需设置外，其他参数需完整配置，将在后面进一步确定同化观测点的具体位置。</strong>一组参考设置信息展示如图 4-3 所示。</p></li>
 </ul>
 <p><img src="/2022/06/24/DATF/RAE2822_CommandLine_Output_Info.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;"></p>
 <center>
-<font size="3.5"> 图 4-3
-RAE2822翼型绕流数据同化参数设置模块输出示例</font>
+<font size="3.5"> 图 4-3 RAE2822翼型绕流数据同化参数设置模块输出示例</font>
 </center>
-<p>​
-当完成所有参数设置后，<strong>需要从程序开始至创建并行程序组之前，截取前处理代码段并在工作区运行（示例程序为第
-706
-行）</strong>，完成对翼型外形以及压力系数分布的前处理与排序，程序将在
-CFD solver 程序组下的 Output 结果文件夹中，写入更新后的
-CP_CF_Comp_New.PLT（气动力系数曲线）、CP_New.PLT（压力系数分布曲线）、InputExpData.PLT（插值并排序后的
-<span class="math inline">\(C_{p}\)</span> 实验数据），并将流场文件
-FlowField.PLT 复制为 FlowField_Ori.PLT，将 FlowField_Info.PLT 文件
-复制为
-FlowField_STD.PLT，将此作为绘制后续流场误差云图的基准流场信息。</p>
+<p>​ 当完成所有参数设置后，<strong>需要从程序开始至创建并行程序组之前，截取前处理代码段并在工作区运行（示例程序为第 706 行）</strong>，完成对翼型外形以及压力系数分布的前处理与排序，程序将在 CFD solver 程序组下的 Output 结果文件夹中，写入更新后的 CP_CF_Comp_New.PLT（气动力系数曲线）、CP_New.PLT（压力系数分布曲线）、InputExpData.PLT（插值并排序后的 <span class="math inline">\(C_{p}\)</span> 实验数据），并将流场文件 FlowField.PLT 复制为 FlowField_Ori.PLT，将 FlowField_Info.PLT 文件 复制为 FlowField_STD.PLT，将此作为绘制后续流场误差云图的基准流场信息。</p>
 <ul>
 <li><strong><font color="red">步骤四：确定同化观测数据点位置，设置参与同化过程的翼型数据点编号</font></strong>
 <ul>
-<li><p><strong>首先根据 <span class="math inline">\(C_{p}\)</span>
-的计算与实验结果对比，确定观测数据点的主要分布区域以及密集程度：</strong>上翼面前段观测点可以较稀疏，激波位置附近以及后段观测点需要密集；下翼面全段整体可以稀疏，由于后缘网格加密，故靠近后缘位置观测点需要稍密。</p></li>
-<li><p><strong>接着记录参与同化过程的翼型数据点编号：</strong>本程序将稀疏实验数据进行插值，并使得测量位置插值点与计算点一一对应，故仅需要记录计算数据点编号，程序将会自动建立观测与计算位置之间的映射关系。具体操作是用
-Tecplot 软件打开 CFD 程序组下的 Output 结果文件夹中的
-CP_New.PLT，相比原始曲线，此 <span class="math inline">\(C_{p}\)</span>
-曲线上下翼面的计算点均按照坐标顺序进行排序，编号呈现逆时针增大趋势。点击菜单
-<strong><em>Plot -- Label Points and Cells...</em></strong>
-按钮，页面将会显示压力系数分布曲线上各点的编号。根据前面确定的观测数据点主要分布区域以及密集程度，可以记录相应位置的计算数据点编号并保存至同化数据点序号数组
-<strong><em>num_da_arr</em></strong>
-，程序将获取对应该计算点的实验插值点数值。本参考算例共确定同化观测点位置81个，在图
-4-2 中以黑色实心点表示，对应的序号数组代码行如下：</p></li>
+<li><p><strong>首先根据 <span class="math inline">\(C_{p}\)</span> 的计算与实验结果对比，确定观测数据点的主要分布区域以及密集程度：</strong>上翼面前段观测点可以较稀疏，激波位置附近以及后段观测点需要密集；下翼面全段整体可以稀疏，由于后缘网格加密，故靠近后缘位置观测点需要稍密。</p></li>
+<li><p><strong>接着记录参与同化过程的翼型数据点编号：</strong>本程序将稀疏实验数据进行插值，并使得测量位置插值点与计算点一一对应，故仅需要记录计算数据点编号，程序将会自动建立观测与计算位置之间的映射关系。具体操作是用 Tecplot 软件打开 CFD 程序组下的 Output 结果文件夹中的 CP_New.PLT，相比原始曲线，此 <span class="math inline">\(C_{p}\)</span> 曲线上下翼面的计算点均按照坐标顺序进行排序，编号呈现逆时针增大趋势。点击菜单 <strong><em>Plot -- Label Points and Cells...</em></strong> 按钮，页面将会显示压力系数分布曲线上各点的编号。根据前面确定的观测数据点主要分布区域以及密集程度，可以记录相应位置的计算数据点编号并保存至同化数据点序号数组 <strong><em>num_da_arr</em></strong> ，程序将获取对应该计算点的实验插值点数值。本参考算例共确定同化观测点位置81个，在图 4-2 中以黑色实心点表示，对应的序号数组代码行如下：</p></li>
 </ul></li>
 </ul>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs matlab">num_da_arr=[(<span class="hljs-number">12</span>:<span class="hljs-number">7</span>:<span class="hljs-number">75</span>),(<span class="hljs-number">76</span>:<span class="hljs-number">5</span>:<span class="hljs-number">186</span>),(<span class="hljs-number">208</span>:<span class="hljs-number">5</span>:<span class="hljs-number">288</span>),(<span class="hljs-number">290</span>:<span class="hljs-number">3</span>:<span class="hljs-number">320</span>),(<span class="hljs-number">321</span>:<span class="hljs-number">5</span>:<span class="hljs-number">376</span>),(<span class="hljs-number">377</span>:<span class="hljs-number">4</span>:<span class="hljs-number">405</span>)]; <span class="hljs-comment">% 81 Points Selected for RAE2822 (P = 420)</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>步骤五：检查步骤三中的参数设置，再次运行前处理代码段，查看初始目标同化曲线情况</li>
 </ul>
-<p>​ 完成上述五个步骤后，即可启动 MATLAB
-湍流数据同化主程序，程序将自动完成所有算法实验与数据交互工作。由于滤波同化流程对集合成员计算量以及内存需求量均较大，故完整版程序的起始运行时间较长（<strong>需
-1 ~ 2
-天</strong>），需要定时查看运行状态，以防出现程序中断以及内存崩溃问题。</p>
+<p>​ 完成上述五个步骤后，即可启动 MATLAB 湍流数据同化主程序，程序将自动完成所有算法实验与数据交互工作。由于滤波同化流程对集合成员计算量以及内存需求量均较大，故完整版程序的起始运行时间较长（<strong>需 1 ~ 2 天</strong>），需要定时查看运行状态，以防出现程序中断以及内存崩溃问题。</p>
 <h3 id="结果查看">4.1.3 结果查看</h3>
-<p>​ 在程序运行过程中，程序将在指定文件夹下（如本参考算例的
-Results_20210709_Case_RAE2822_Nmax_128_P_420_DA_81 文件夹）记录所有的
-CFD 计算结果，主要信息将写入 MATLAB 命令行窗口以及
-<strong><em>DA_CompInfo_Brief.dat</em></strong>
-文本文档。主要结果文件说明如下：</p>
+<p>​ 在程序运行过程中，程序将在指定文件夹下（如本参考算例的 Results_20210709_Case_RAE2822_Nmax_128_P_420_DA_81 文件夹）记录所有的 CFD 计算结果，主要信息将写入 MATLAB 命令行窗口以及 <strong><em>DA_CompInfo_Brief.dat</em></strong> 文本文档。主要结果文件说明如下：</p>
 <ul>
-<li><p><strong><em>Pre_Ensemble_Generation</em></strong>
-文件夹：保存初始集合成员的计算结果。</p>
+<li><p><strong><em>Pre_Ensemble_Generation</em></strong> 文件夹：保存初始集合成员的计算结果。</p>
 <ul>
 <li>TMuPData_Post.PLT —— 流场涡粘方差系数云图</li>
 </ul></li>
-<li><p><strong><em>Inner_Iteration_Round_00(k)</em></strong>
-文件夹：保存第 <strong><em>k</em></strong>
-轮内迭代集合成员的计算结果。</p></li>
-<li><p><strong><em>DA_Final_Results</em></strong>
-文件夹：保存每一轮集合成员的重计算结果，即数据同化的最终结果。结果文件的两个重要模板文件结果说明如下：</p>
+<li><p><strong><em>Inner_Iteration_Round_00(k)</em></strong> 文件夹：保存第 <strong><em>k</em></strong> 轮内迭代集合成员的计算结果。</p></li>
+<li><p><strong><em>DA_Final_Results</em></strong> 文件夹：保存每一轮集合成员的重计算结果，即数据同化的最终结果。结果文件的两个重要模板文件结果说明如下：</p>
 <ul>
 <li>Comp_Cp_Exp_Com_DA_Model_New.lay —— 同化前后压力系数曲线对比</li>
 </ul>
 <p><img src="/2022/06/24/DATF/RAE2822_Cp_Comp.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p>
 <ul>
-<li>Flowfield_Model_Err_Observation.lay ——
-RAE2822翼型绕流同化前后的涡粘场对比云图</li>
+<li>Flowfield_Model_Err_Observation.lay —— RAE2822翼型绕流同化前后的涡粘场对比云图</li>
 </ul>
 <p><img src="/2022/06/24/DATF/RAE2822_Flowfield_Comp.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p></li>
-<li><p><strong><em>Results_Recal_Covergence_Analysis</em></strong>
-文件夹：保存内迭代过程气动力收敛曲线结果。可制作一组模板图如下：</p></li>
+<li><p><strong><em>Results_Recal_Covergence_Analysis</em></strong> 文件夹：保存内迭代过程气动力收敛曲线结果。可制作一组模板图如下：</p></li>
 </ul>
 <p><img src="/2022/06/24/DATF/RAE2822_Cl_Cd.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 30%;"></p>
 <ul>
-<li>..._Pre.mat，..._S_Va_init.mat,
-..._S_Va_pre_renew_001.mat：程序过程保存文件，用以后续续算。</li>
-<li><em>[根目录]</em> <strong><em>Output_Figures</em></strong>
-文件夹：保存初始集合成员与内迭代过程集合成员计算的压力系数曲线分布图片。</li>
+<li>..._Pre.mat，..._S_Va_init.mat, ..._S_Va_pre_renew_001.mat：程序过程保存文件，用以后续续算。</li>
+<li><em>[根目录]</em> <strong><em>Output_Figures</em></strong> 文件夹：保存初始集合成员与内迭代过程集合成员计算的压力系数曲线分布图片。</li>
 </ul>
 <hr>
 <div class="note note-warning">
-            <p><font color="red"><strong>本程序测试平台采用 In-house CFDcodes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守MIT License协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
+            <p><font color="red"><strong>本程序测试平台采用 In-house CFD codes，无法开源，故用户需要自己提供主程序端口，本程序仅提供湍流数据同化框架。</strong></font></p><p><font color="red"><strong>本仓库中的所有关于数据同化核心代码全部由作者原创，遵守 MIT License 协议。任何形式的转发引用请务必注意标明出处！请尊重作者劳动成果！</strong></font></p>
           </div>
 <hr>
 <div class="note note-info">
-            <p>^_^ This is the END of the page. Thank you for reading!</p><p>If you think this project is helpful to you, do not hesitate to<em>Light a Star</em> ~ 🌟 or <em>Fork this repository</em> ~ 🍴!</p><p>Uploaded by <strong><em>pkufzh (Small Shrimp)</em></strong> on<strong><em>2022/06/23</em></strong>.</p><p><em>This project is protected by the MIT license. Please obey theopen source rules strictly.</em></p>
+            <p>^_^ This is the END of the page. Thank you for reading!</p><p>If you think this project is helpful to you, do not hesitate to <em>Light a Star</em> ~ 🌟 or <em>Fork this repository</em> ~ 🍴!</p><p>Uploaded by <strong><em>pkufzh (Small Shrimp)</em></strong> on <strong><em>2022/06/23</em></strong>.</p><p><em>This project is protected by the MIT license. Please obey the open source rules strictly.</em></p>
           </div>
 <hr>
 <p><em>Who am I? A happy shrimp from Peking University!</em></p>

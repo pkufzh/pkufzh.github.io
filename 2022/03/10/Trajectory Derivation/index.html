@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pkufzh.github.io/img/posts/Cover_Trajectory%20Derivation.png">
 <meta property="article:published_time" content="2022-03-10T04:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-08T03:00:23.226Z">
+<meta property="article:modified_time" content="2022-08-08T03:00:24.000Z">
 <meta property="article:author" content="pkufzh">
 <meta property="article:tag" content="Theory">
 <meta property="article:tag" content="Aeronautics &amp; Astronautics">
@@ -78,7 +78,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
@@ -269,39 +269,25 @@
             <p><em>在经典牛顿力学框架下，给出在有心力下探测器绕天体运行轨道方程推导的一种思路~</em></p>
           </div>
 <p>假设一个探测器质量为 <span class="math inline">\(m\)</span>，其围绕球形天体质量为 <span class="math inline">\(M\)</span>，探测器与天体中心之间距离为 <span class="math inline">\(r\)</span>，探测器相比天体很小，可认为是质点。</p>
-<p>如图 <a href="#fig1">1</a> 所示，以天体中心为坐标原点，建立极坐标系
-<span class="math inline">\((r, \;
-\theta)\)</span>，其极轴方向假定任意，极角逆时针旋转方向为正，沿极径与极角方向的单位矢量分别为
-<span class="math inline">\(\vec{e_{r}}\)</span> 与 <span class="math inline">\(\vec{e_{\theta}}\)</span>。现推导其在天体引力下的运动轨道方程
-<span class="math inline">\(r = f(\theta)\)</span>。</p>
+<p>如图 <a href="#fig1">1</a> 所示，以天体中心为坐标原点，建立极坐标系 <span class="math inline">\((r, \; \theta)\)</span>，其极轴方向假定任意，极角逆时针旋转方向为正，沿极径与极角方向的单位矢量分别为 <span class="math inline">\(\vec{e_{r}}\)</span> 与 <span class="math inline">\(\vec{e_{\theta}}\)</span>。现推导其在天体引力下的运动轨道方程 <span class="math inline">\(r = f(\theta)\)</span>。</p>
 <p><span id="fig1"></span></p>
 <p><img src="/2022/03/10/Trajectory%20Derivation/Fig_1s.png" srcset="/img/loading.gif" lazyload style="zoom:40%;"></p>
 <center>
 <font size="2.5"> 图 1 探测器绕天体运动示意图 </font>
 </center>
 <p><br></p>
-<p>下面推导探测器所受加速度 <span class="math inline">\(\vec{a}\)</span>
-的矢量表达式。探测器的位置矢量 <span class="math inline">\(\vec{r}\)</span> 可表示为 <span class="math display">\[
+<p>下面推导探测器所受加速度 <span class="math inline">\(\vec{a}\)</span> 的矢量表达式。探测器的位置矢量 <span class="math inline">\(\vec{r}\)</span> 可表示为 <span class="math display">\[
 \vec{r} = r \vec{e_{r}}
 \tag{1}
 \label{1}
-\]</span> 注意到，固定极径 <span class="math inline">\(r\)</span>
-改变极角 <span class="math inline">\(\theta\)</span> 时， <span class="math inline">\(\vec{e_{r}}\)</span> 变化；而固定极角 <span class="math inline">\(\theta\)</span> 改变极径 <span class="math inline">\(r\)</span> 时，<span class="math inline">\(\vec{e_{r}}\)</span> 不变，故上式中 <span class="math inline">\(\vec{e_{r}}\)</span> 仅为 <span class="math inline">\(\theta\)</span> 的函数，即 <span class="math inline">\(\vec{e_{r}} =
-\vec{e_{r}}(\theta)\)</span>，类似可得 <span class="math inline">\(\vec{e_{\theta}} =
-\vec{e_{\theta}}(\theta)\)</span>。</p>
-<p>首先，给出后续推导过程中涉及到的几个矢量关系式。如图 <a href="#fig2">2</a>
-所示，由导数与矢量几何性质，容易证明以下两个关系式成立 <span class="math display">\[
-\frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} \theta} = \lim_{\Delta \theta
-\to 0} \frac{\left.\vec{e}_{r}\right|_{\theta + \Delta \theta} -
-\left.\vec{e}_{r}\right|_{\theta}}{\Delta \theta} = \vec{e_{\theta}}
+\]</span> 注意到，固定极径 <span class="math inline">\(r\)</span> 改变极角 <span class="math inline">\(\theta\)</span> 时， <span class="math inline">\(\vec{e_{r}}\)</span> 变化；而固定极角 <span class="math inline">\(\theta\)</span> 改变极径 <span class="math inline">\(r\)</span> 时，<span class="math inline">\(\vec{e_{r}}\)</span> 不变，故上式中 <span class="math inline">\(\vec{e_{r}}\)</span> 仅为 <span class="math inline">\(\theta\)</span> 的函数，即 <span class="math inline">\(\vec{e_{r}} = \vec{e_{r}}(\theta)\)</span>，类似可得 <span class="math inline">\(\vec{e_{\theta}} = \vec{e_{\theta}}(\theta)\)</span>。</p>
+<p>首先，给出后续推导过程中涉及到的几个矢量关系式。如图 <a href="#fig2">2</a> 所示，由导数与矢量几何性质，容易证明以下两个关系式成立 <span class="math display">\[
+\frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} \theta} = \lim_{\Delta \theta \to 0} \frac{\left.\vec{e}_{r}\right|_{\theta + \Delta \theta} - \left.\vec{e}_{r}\right|_{\theta}}{\Delta \theta} = \vec{e_{\theta}}
 \tag{2}
 \label{2}
 \]</span></p>
 <p><span class="math display">\[
-\frac{\mathrm{d} \vec{e_{\theta}}}{\mathrm{d} \theta} = \lim_{\Delta
-\theta \to 0} \frac{\left.\vec{e}_{\theta}\right|_{\theta + \Delta
-\theta} - \left.\vec{e}_{\theta}\right|_{\theta}}{\Delta \theta} = -
-\vec{e_{r}}
+\frac{\mathrm{d} \vec{e_{\theta}}}{\mathrm{d} \theta} = \lim_{\Delta \theta \to 0} \frac{\left.\vec{e}_{\theta}\right|_{\theta + \Delta \theta} - \left.\vec{e}_{\theta}\right|_{\theta}}{\Delta \theta} = - \vec{e_{r}}
 \tag{3}
 \label{3}
 \]</span> <span id="fig2"></span></p>
@@ -311,41 +297,23 @@
 </center>
 <p><br></p>
 <p>由求导及链式法则，可得探测器的速度矢量 <span class="math inline">\(\vec{v}\)</span> 为 <span class="math display">\[
-\vec{v} = \frac{\mathrm{d} \vec{r}}{\mathrm{d} t} = \dot{r} \vec{e_{r}}
-+ r \frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} t} = \dot{r} \vec{e_{r}} +
-r \frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} \theta} \dot{\theta}
+\vec{v} = \frac{\mathrm{d} \vec{r}}{\mathrm{d} t} = \dot{r} \vec{e_{r}} + r \frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} t} = \dot{r} \vec{e_{r}} + r \frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} \theta} \dot{\theta}
 \tag{4}
 \label{4}
-\]</span> 上式中简写符号 <span class="math inline">\(\dot{x}\)</span>
-表示将变量 <span class="math inline">\(x\)</span> 对时间 <span class="math inline">\(t\)</span> 求导。将式 <span class="math inline">\(\eqref{2}\)</span> 代入式 <span class="math inline">\(\eqref{4}\)</span> 可得 <span class="math display">\[
+\]</span> 上式中简写符号 <span class="math inline">\(\dot{x}\)</span> 表示将变量 <span class="math inline">\(x\)</span> 对时间 <span class="math inline">\(t\)</span> 求导。将式 <span class="math inline">\(\eqref{2}\)</span> 代入式 <span class="math inline">\(\eqref{4}\)</span> 可得 <span class="math display">\[
 \vec{v} = \dot{r} \vec{e_{r}} + r \dot{\theta} \vec{e_{\theta}}
 \tag{5}
 \label{5}
-\]</span> 进一步，将上式 <span class="math inline">\(\eqref{5}\)</span>
-两边对时间 <span class="math inline">\(t\)</span>
-再求一次导数，代入关系式 <span class="math inline">\(\eqref{2}\)</span>
-<span class="math inline">\(\eqref{3}\)</span>，可得加速度矢量表达式为
-<span class="math display">\[
+\]</span> 进一步，将上式 <span class="math inline">\(\eqref{5}\)</span> 两边对时间 <span class="math inline">\(t\)</span> 再求一次导数，代入关系式 <span class="math inline">\(\eqref{2}\)</span> <span class="math inline">\(\eqref{3}\)</span>，可得加速度矢量表达式为 <span class="math display">\[
 \begin{aligned}
-\vec{a}=\frac{\mathrm{d} \vec{v}}{\mathrm{~d} t} &amp; =
-\frac{\mathrm{d}}{\mathrm{d} t} \left(\dot{r} \vec{e}_{r}\right) +
-\frac{\mathrm{d}}{\mathrm{d} t}\left(r \dot{\theta}
-\vec{e}_{\theta}\right) \\
-&amp; = \ddot{r} \vec{e}_{r}+\dot{r} \frac{\mathrm{d}
-\vec{e}_{r}}{\mathrm{~d} t} + \dot{r} \dot{\theta} \vec{e}_{\theta} + r
-\ddot{\theta} \overrightarrow{e_{\theta}} + r \dot{\theta}
-\frac{\mathrm{d} \vec{e}_{\theta}}{\mathrm{d} t} \\
-&amp; = \ddot{r} \vec{e}_{r} + \dot{r} \dot{\theta} \vec{e_{\theta}} +
-\dot{r} \dot{\theta} \vec{e_{\theta}} + r \ddot{\theta} \vec{e_{\theta}}
-- r \dot{\theta}^{2} \vec{r_{r}} \\
-&amp; = \left(\ddot{r} - r \dot{\theta}^2\right) \vec{e_{r}} + \left(2
-\dot{r} \dot{\theta} + r \ddot{\theta}\right) \vec{e_{\theta}}
+\vec{a}=\frac{\mathrm{d} \vec{v}}{\mathrm{~d} t} &amp; = \frac{\mathrm{d}}{\mathrm{d} t} \left(\dot{r} \vec{e}_{r}\right) + \frac{\mathrm{d}}{\mathrm{d} t}\left(r \dot{\theta} \vec{e}_{\theta}\right) \\
+&amp; = \ddot{r} \vec{e}_{r}+\dot{r} \frac{\mathrm{d} \vec{e}_{r}}{\mathrm{~d} t} + \dot{r} \dot{\theta} \vec{e}_{\theta} + r \ddot{\theta} \overrightarrow{e_{\theta}} + r \dot{\theta} \frac{\mathrm{d} \vec{e}_{\theta}}{\mathrm{d} t} \\
+&amp; = \ddot{r} \vec{e}_{r} + \dot{r} \dot{\theta} \vec{e_{\theta}} + \dot{r} \dot{\theta} \vec{e_{\theta}} + r \ddot{\theta} \vec{e_{\theta}} - r \dot{\theta}^{2} \vec{r_{r}} \\
+&amp; = \left(\ddot{r} - r \dot{\theta}^2\right) \vec{e_{r}} + \left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) \vec{e_{\theta}}
 \end{aligned}
 \tag{6}
 \label{6}
-\]</span>
-由于探测器所受天体的万有引力提供其全部加速度，故由牛顿第二定律可列出方程
-<span class="math display">\[
+\]</span> 由于探测器所受天体的万有引力提供其全部加速度，故由牛顿第二定律可列出方程 <span class="math display">\[
 \vec{F} = m \vec{a}
 \tag{7}
 \label{7}
@@ -353,120 +321,77 @@ r \frac{\mathrm{d} \vec{e_{r}}}{\mathrm{d} \theta} \dot{\theta}
 \vec{F} = - \frac{G M m}{r^{2}} \vec{e_{r}}
 \tag{8}
 \label{8}
-\]</span> 其中，<span class="math inline">\(G\)</span>
-为引力常量。联立式 <span class="math inline">\(\eqref{7}\)</span> <span class="math inline">\(\eqref{8}\)</span>，并将式 <span class="math inline">\(\eqref{6}\)</span> 代入，可得 <span class="math display">\[
-- \frac{G M m}{r^{2}} \vec{e_{r}} = m \left[\left(\ddot{r} - r
-\dot{\theta}^2\right) \vec{e_{r}} + \left(2 \dot{r} \dot{\theta} + r
-\ddot{\theta}\right) \vec{e_{\theta}}\right]
+\]</span> 其中，<span class="math inline">\(G\)</span> 为引力常量。联立式 <span class="math inline">\(\eqref{7}\)</span> <span class="math inline">\(\eqref{8}\)</span>，并将式 <span class="math inline">\(\eqref{6}\)</span> 代入，可得 <span class="math display">\[
+- \frac{G M m}{r^{2}} \vec{e_{r}} = m \left[\left(\ddot{r} - r \dot{\theta}^2\right) \vec{e_{r}} + \left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) \vec{e_{\theta}}\right]
 \tag{9}
 \label{9}
 \]</span> 整理可得 <span class="math display">\[
-m \left[\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G
-M}{r^{2}}\right] \vec{e_{r}} + m \left(2 \dot{r} \dot{\theta} + r
-\ddot{\theta}\right) \vec{e_{\theta}} = \vec{0}
+m \left[\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}}\right] \vec{e_{r}} + m \left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) \vec{e_{\theta}} = \vec{0}
 \tag{10}
 \label{10}
-\]</span> 由单位矢量 <span class="math inline">\(\vec{e_{r}}\)</span> 与
-<span class="math inline">\(\vec{e_{\theta}}\)</span>
-的正交性，可得以下方程组 <span class="math display">\[
+\]</span> 由单位矢量 <span class="math inline">\(\vec{e_{r}}\)</span> 与 <span class="math inline">\(\vec{e_{\theta}}\)</span> 的正交性，可得以下方程组 <span class="math display">\[
 \begin{align}
-&amp;\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}} = 0
-\quad \tag{11} \label{11}\\
-&amp;\left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) = 0  \quad
-\tag{12} \label{12}
+&amp;\left(\ddot{r} - r \dot{\theta}^2\right) + \frac{G M}{r^{2}} = 0 \quad \tag{11} \label{11}\\
+&amp;\left(2 \dot{r} \dot{\theta} + r \ddot{\theta}\right) = 0  \quad \tag{12} \label{12}
 \end{align}
-\]</span> 观察上述方程组，其中出现 <span class="math inline">\(r\)</span> 与 <span class="math inline">\(\theta\)</span> 对时间 <span class="math inline">\(t\)</span>
-的各阶导数，而轨道方程与时间应无关，故考虑将关于时间的导数项转换为 <span class="math inline">\(r\)</span> 与 <span class="math inline">\(\theta\)</span> 之间的关系式。</p>
+\]</span> 观察上述方程组，其中出现 <span class="math inline">\(r\)</span> 与 <span class="math inline">\(\theta\)</span> 对时间 <span class="math inline">\(t\)</span> 的各阶导数，而轨道方程与时间应无关，故考虑将关于时间的导数项转换为 <span class="math inline">\(r\)</span> 与 <span class="math inline">\(\theta\)</span> 之间的关系式。</p>
 <p>将式 <span class="math inline">\(\eqref{12}\)</span> 两边同乘 <span class="math inline">\(r\)</span> ，左边化为全微分，则方程可改写为 <span class="math display">\[
-\frac{\mathrm{d}}{\mathrm{d} t} \left(r^{2} \dot{\theta}\right) = 2 r
-\dot{r} \dot{\theta} + r^{2} \ddot{\theta} = 0
+\frac{\mathrm{d}}{\mathrm{d} t} \left(r^{2} \dot{\theta}\right) = 2 r \dot{r} \dot{\theta} + r^{2} \ddot{\theta} = 0
 \tag{13}
 \label{13}
 \]</span> 则解得 <span class="math display">\[
 r^{2} \dot{\theta} = L = \operatorname{const}.
 \tag{14}
 \label{14}
-\]</span> 由此可知，在探测器绕天体运行过程中，<span class="math inline">\(r^{2} \dot{\theta}\)</span>
-为一守恒量，被称为<strong>第一守恒量</strong>，采用 <span class="math inline">\(L\)</span>
-表示，实际上它是物体在有心力运动下<strong>角动量守恒</strong>的数学体现。</p>
+\]</span> 由此可知，在探测器绕天体运行过程中，<span class="math inline">\(r^{2} \dot{\theta}\)</span> 为一守恒量，被称为<strong>第一守恒量</strong>，采用 <span class="math inline">\(L\)</span> 表示，实际上它是物体在有心力运动下<strong>角动量守恒</strong>的数学体现。</p>
 <p>根据式 <span class="math inline">\(\eqref{14}\)</span>，可得 <span class="math display">\[
 \dot{\theta} = \frac{L}{r^{2}}
 \tag{15}
 \label{15}
-\]</span> 将上式 <span class="math inline">\(\eqref{15}\)</span> 代入式
-<span class="math inline">\(\eqref{11}\)</span>，整理可得 <span class="math display">\[
+\]</span> 将上式 <span class="math inline">\(\eqref{15}\)</span> 代入式 <span class="math inline">\(\eqref{11}\)</span>，整理可得 <span class="math display">\[
 \ddot{r} - r \left(\frac{L}{r^{2}}\right)^{2} + \frac{G M}{r^{2}} = 0
 \tag{16}
 \label{16}
 \]</span> 由上式可得根据守恒量，可以消去 <span class="math inline">\(\theta\)</span> 关于时间 <span class="math inline">\(t\)</span> 的导数，下面尝试消去 <span class="math inline">\(r\)</span> 关于时间 <span class="math inline">\(t\)</span> 的导数。由链式法则可得 <span class="math display">\[
-\dot{r} = \frac{\mathrm{d} r}{\mathrm{d} t} = \frac{\mathrm{d}
-r}{\mathrm{d} \theta} \dot{\theta} = r_{\theta} \cdot \frac{L}{r^{2}}
+\dot{r} = \frac{\mathrm{d} r}{\mathrm{d} t} = \frac{\mathrm{d} r}{\mathrm{d} \theta} \dot{\theta} = r_{\theta} \cdot \frac{L}{r^{2}}
 \tag{17}
 \label{17}
-\]</span> 上式中，<span class="math inline">\(r_{\theta}\)</span>
-代表变量 <span class="math inline">\(r\)</span> 对变量 <span class="math inline">\(\theta\)</span> 求导。再将上式两边对时间 <span class="math inline">\(t\)</span> 求导一次，可得 <span class="math display">\[
-\ddot{r} = \frac{\mathrm{d} \dot{r}}{\mathrm{d} t} =
-\frac{\mathrm{d}}{\mathrm{d} t} \left(r_{\theta} \frac{L}{r^{2}}\right)
-= \frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot
-\frac{L}{r^{2}}\right) \dot{\theta} = \frac{\mathrm{d}}{\mathrm{d}
-\theta} \left(r_{\theta} \cdot \frac{L}{r^{2}}\right) \cdot
-\frac{L}{r^{2}}
+\]</span> 上式中，<span class="math inline">\(r_{\theta}\)</span> 代表变量 <span class="math inline">\(r\)</span> 对变量 <span class="math inline">\(\theta\)</span> 求导。再将上式两边对时间 <span class="math inline">\(t\)</span> 求导一次，可得 <span class="math display">\[
+\ddot{r} = \frac{\mathrm{d} \dot{r}}{\mathrm{d} t} = \frac{\mathrm{d}}{\mathrm{d} t} \left(r_{\theta} \frac{L}{r^{2}}\right) = \frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot \frac{L}{r^{2}}\right) \dot{\theta} = \frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot \frac{L}{r^{2}}\right) \cdot \frac{L}{r^{2}}
 \tag{18}
 \label{18}
-\]</span> 将上式 <span class="math inline">\(\eqref{18}\)</span> 代入式
-<span class="math inline">\(\eqref{16}\)</span> 可得 <span class="math display">\[
-\frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot
-\frac{L}{r^{2}}\right) \cdot \frac{L}{r^{2}} - r
-\left(\frac{L}{r^{2}}\right)^{2} + \frac{G M}{r^{2}} = 0
+\]</span> 将上式 <span class="math inline">\(\eqref{18}\)</span> 代入式 <span class="math inline">\(\eqref{16}\)</span> 可得 <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot \frac{L}{r^{2}}\right) \cdot \frac{L}{r^{2}} - r \left(\frac{L}{r^{2}}\right)^{2} + \frac{G M}{r^{2}} = 0
 \tag{19}
 \label{19}
-\]</span> 将上式两边同乘 <span class="math inline">\(r^{2} /
-L\)</span>，化简可得 <span class="math display">\[
-\frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot
-\frac{\mathrm{d}}{\mathrm{d} r} \left(\frac{L}{r}\right)\right) + r
-\cdot \left(\frac{L}{r^{2}}\right) = \frac{G M}{L}
+\]</span> 将上式两边同乘 <span class="math inline">\(r^{2} / L\)</span>，化简可得 <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d} \theta} \left(r_{\theta} \cdot \frac{\mathrm{d}}{\mathrm{d} r} \left(\frac{L}{r}\right)\right) + r \cdot \left(\frac{L}{r^{2}}\right) = \frac{G M}{L}
 \tag{20}
 \label{20}
 \]</span> 进一步整理可得 <span class="math display">\[
-\frac{\mathrm{d}^{2}}{\mathrm{d} \theta^{2}} \left(\frac{L}{r}\right) +
-\left(\frac{L}{r}\right) = \frac{G M}{L}
+\frac{\mathrm{d}^{2}}{\mathrm{d} \theta^{2}} \left(\frac{L}{r}\right) + \left(\frac{L}{r}\right) = \frac{G M}{L}
 \tag{21}
 \label{21}
-\]</span> 上式可视为变量 <span class="math inline">\((L/r)\)</span>
-关于自变量 <span class="math inline">\(\theta\)</span>
-的二阶非齐次线性微分方程，其解为齐次微分方程通解与原方程某特解的叠加，具体求解过程从略。得到最终解为
-<span class="math display">\[
+\]</span> 上式可视为变量 <span class="math inline">\((L/r)\)</span> 关于自变量 <span class="math inline">\(\theta\)</span> 的二阶非齐次线性微分方程，其解为齐次微分方程通解与原方程某特解的叠加，具体求解过程从略。得到最终解为 <span class="math display">\[
 \frac{L}{r} = A \cos(\theta + \psi) + \frac{G M}{L}
 \tag{22}
 \label{22}
-\]</span> 其中，<span class="math inline">\(A,\;\psi\)</span>
-为待定系数。将上式 <span class="math inline">\(\eqref{22}\)</span>
-变形，可得 <span class="math display">\[
+\]</span> 其中，<span class="math inline">\(A,\;\psi\)</span> 为待定系数。将上式 <span class="math inline">\(\eqref{22}\)</span> 变形，可得 <span class="math display">\[
 r = \frac{\frac{L^{2}}{G M}}{1 + \frac{L A}{G M} \cos(\theta + \psi)}
 \tag{23}
 \label{23}
-\]</span>
-上式即为探测器的轨道方程，其形式为极坐标系下的圆锥曲线，但其中仍包含未知系数。下面引入条件来确定待定常数
-<span class="math inline">\(A,\;\psi\)</span>，进一步化简轨道方程。</p>
+\]</span> 上式即为探测器的轨道方程，其形式为极坐标系下的圆锥曲线，但其中仍包含未知系数。下面引入条件来确定待定常数 <span class="math inline">\(A,\;\psi\)</span>，进一步化简轨道方程。</p>
 <ul>
-<li><strong>条件 1：假设选择极轴（即 <span class="math inline">\(\theta
-= 0\)</span> 的径矢）穿过探测器关于天体的近地点，确定 <span class="math inline">\(\psi\)</span>。</strong></li>
+<li><strong>条件 1：假设选择极轴（即 <span class="math inline">\(\theta = 0\)</span> 的径矢）穿过探测器关于天体的近地点，确定 <span class="math inline">\(\psi\)</span>。</strong></li>
 </ul>
-<p>如图 <a href="#fig3">3</a>
-所示，由天体运动物理知识可知，近地点为探测器轨道曲率半径最小的位置，其值设为
-<span class="math inline">\(r_{\min}\)</span>。</p>
+<p>如图 <a href="#fig3">3</a> 所示，由天体运动物理知识可知，近地点为探测器轨道曲率半径最小的位置，其值设为 <span class="math inline">\(r_{\min}\)</span>。</p>
 <p><span id="fig3"></span></p>
 <p><img src="/2022/03/10/Trajectory%20Derivation/Fig_3s.png" srcset="/img/loading.gif" lazyload style="zoom:40%;"></p>
 <center>
-<font size="2.5"> 图 3 选择极轴穿过近地点情况下探测器绕天体运动示意图
-</font>
+<font size="2.5"> 图 3 选择极轴穿过近地点情况下探测器绕天体运动示意图 </font>
 </center>
 <p><br></p>
-<p>若当 <span class="math inline">\(\theta = 0\)</span> 时，有 <span class="math inline">\(r =
-r_{\min}\)</span>，则须满足轨道方程分母中，<span class="math inline">\(\cos(\theta + \psi)\)</span>
-取得极大值，故在一个周期 <span class="math inline">\([0, 2 \pi)\)</span>
-内，当且仅当 <span class="math inline">\(\psi = 0\)</span>
-时，满足条件，此时有 <span class="math display">\[
+<p>若当 <span class="math inline">\(\theta = 0\)</span> 时，有 <span class="math inline">\(r = r_{\min}\)</span>，则须满足轨道方程分母中，<span class="math inline">\(\cos(\theta + \psi)\)</span> 取得极大值，故在一个周期 <span class="math inline">\([0, 2 \pi)\)</span> 内，当且仅当 <span class="math inline">\(\psi = 0\)</span> 时，满足条件，此时有 <span class="math display">\[
 r_{\min} = \frac{\frac{L^{2}}{G M}}{1 + \frac{L A}{G M}}
 \tag{24}
 \label{24}
@@ -474,28 +399,20 @@ r_{\min} = \frac{\frac{L^{2}}{G M}}{1 + \frac{L A}{G M}}
 <ul>
 <li><strong>条件 2：假设给定探测器的总能量为 <span class="math inline">\(E_{0}\)</span>，由能量守恒关系确定 <span class="math inline">\(A\)</span>。</strong></li>
 </ul>
-<p>在满足<strong>条件 1</strong> 的约束下，考虑<strong>条件
-2</strong>。</p>
-<p>一方面，探测器在近地点满足 <span class="math inline">\(r =
-r_{\min}\)</span>，且其运行速度达到最大值 <span class="math inline">\(V
-= V_{\max}\)</span>，且满足速度为轨道切向，法向分量为零，即 <span class="math inline">\(V = V_{\tau}\)</span>。</p>
-<p>另一方面，考虑式 <span class="math inline">\(\eqref{14}\)</span>
-角动量守恒量，在近地点满足以下关系</p>
+<p>在满足<strong>条件 1</strong> 的约束下，考虑<strong>条件 2</strong>。</p>
+<p>一方面，探测器在近地点满足 <span class="math inline">\(r = r_{\min}\)</span>，且其运行速度达到最大值 <span class="math inline">\(V = V_{\max}\)</span>，且满足速度为轨道切向，法向分量为零，即 <span class="math inline">\(V = V_{\tau}\)</span>。</p>
+<p>另一方面，考虑式 <span class="math inline">\(\eqref{14}\)</span> 角动量守恒量，在近地点满足以下关系</p>
 <p><span class="math display">\[
-r^{2} \dot{\theta} = r \cdot \left(r \dot{\theta}\right) = r \cdot
-V_{\tau} = r_{\min} \cdot V_{\max} = L
+r^{2} \dot{\theta} = r \cdot \left(r \dot{\theta}\right) = r \cdot V_{\tau} = r_{\min} \cdot V_{\max} = L
 \tag{25}
 \label{25}
 \]</span></p>
-<p>故由上式 <span class="math inline">\(\eqref{25}\)</span> 可得关系式
-<span class="math display">\[
+<p>故由上式 <span class="math inline">\(\eqref{25}\)</span> 可得关系式 <span class="math display">\[
 V_{\max} = \frac{L}{r_{\min}}
 \tag{26}
 \label{26}
-\]</span> 探测器的总能量 <span class="math inline">\(E_{0}\)</span>
-由动能与势能组成，在近地点有以下守恒方程成立 <span class="math display">\[
-E_{0} = \frac{1}{2} m V_{\max}^{2} - \frac{G M m}{r_{\min}} =
-\frac{1}{2} m \cdot \frac{L^{2}}{r_{\min}^{2}} - \frac{G M m}{r_{\min}}
+\]</span> 探测器的总能量 <span class="math inline">\(E_{0}\)</span> 由动能与势能组成，在近地点有以下守恒方程成立 <span class="math display">\[
+E_{0} = \frac{1}{2} m V_{\max}^{2} - \frac{G M m}{r_{\min}} = \frac{1}{2} m \cdot \frac{L^{2}}{r_{\min}^{2}} - \frac{G M m}{r_{\min}}
 \tag{27}
 \label{27}
 \]</span> 联立式 <span class="math inline">\(\eqref{24}\)</span> <span class="math inline">\(\eqref{27}\)</span>，可解得 <span class="math display">\[
@@ -503,14 +420,11 @@ A = \frac{G M}{L} \sqrt{1 + \frac{2 E_{0} L^{2}}{G^{2} M^{2}}}
 \tag{28}
 \label{28}
 \]</span> 故通过引入以上两个条件，已经确定出待定系数 <span class="math inline">\(A,\;\psi\)</span>，将其代入式 <span class="math inline">\(\eqref{23}\)</span> 可得 <span class="math display">\[
-r = \frac{\frac{L^{2}}{G M}}{1 + \sqrt{1 + \frac{2 E_{0} L^{2}}{G^{2}
-M^{2}}} \cos \theta}
+r = \frac{\frac{L^{2}}{G M}}{1 + \sqrt{1 + \frac{2 E_{0} L^{2}}{G^{2} M^{2}}} \cos \theta}
 \tag{29}
 \label{29}
-\]</span> 上式即为考虑极轴穿过近地点且携带总能量 <span class="math inline">\(E_{0}\)</span>
-的探测器绕天体运行的<strong>最终轨道方程</strong>，其为圆锥曲线形式。</p>
-<p>下面对轨道方程 <span class="math inline">\(\eqref{29}\)</span>
-进行分析。定义<strong>离心率</strong> <span class="math display">\[
+\]</span> 上式即为考虑极轴穿过近地点且携带总能量 <span class="math inline">\(E_{0}\)</span> 的探测器绕天体运行的<strong>最终轨道方程</strong>，其为圆锥曲线形式。</p>
+<p>下面对轨道方程 <span class="math inline">\(\eqref{29}\)</span> 进行分析。定义<strong>离心率</strong> <span class="math display">\[
 e = \sqrt{1 + \frac{2 E_{0} L^{2}}{G^{2} M^{2}}}
 \tag{30}
 \label{30}
@@ -523,51 +437,32 @@ e &gt; 1, \quad \quad &amp;\text{Hyperbola (escape)}
 \end{array}\right.
 \tag{31}
 \label{31}
-\]</span> 由式 <span class="math inline">\(\eqref{30}\)</span>
-表达式，可知探测器携带的总能量 <span class="math inline">\(E_{0}\)</span> 与离心率 <span class="math inline">\(e\)</span>
-之间相关，也即与轨道形状密切相关，分别讨论如下：</p>
+\]</span> 由式 <span class="math inline">\(\eqref{30}\)</span> 表达式，可知探测器携带的总能量 <span class="math inline">\(E_{0}\)</span> 与离心率 <span class="math inline">\(e\)</span> 之间相关，也即与轨道形状密切相关，分别讨论如下：</p>
 <ul>
-<li><strong>情形 1：当 <span class="math inline">\(E_{0} \geqslant
-0\)</span> 时，<span class="math inline">\(e \geqslant
-1\)</span>。</strong></li>
+<li><strong>情形 1：当 <span class="math inline">\(E_{0} \geqslant 0\)</span> 时，<span class="math inline">\(e \geqslant 1\)</span>。</strong></li>
 </ul>
-<p>此时探测器沿开放轨道将作<strong>逃逸运动</strong>，不会被天体捕获。该情形对应最小能量为
-<span class="math inline">\(E_{0} =
-0\)</span>，轨道为<strong>抛物线（<em>Parabola</em>）</strong>，结合式
-<span class="math inline">\(\eqref{27}\)</span> 可解得 <span class="math inline">\(V_{\max}\)</span>，此为探测器绕天体运行的<strong>最小逃逸速度</strong>。对于地球，可计算该速度为
-<span class="math display">\[
-V_{\max} = \sqrt{\frac{2 G M}{r_{\min}}} = \sqrt{\frac{2 \times 6.67
-\times 10^{-11} \times 5.97 \times 10^{24}}{6.38 \times 10^{6}}} \approx
-11.2 \; \text{km/s}
+<p>此时探测器沿开放轨道将作<strong>逃逸运动</strong>，不会被天体捕获。该情形对应最小能量为 <span class="math inline">\(E_{0} = 0\)</span>，轨道为<strong>抛物线（<em>Parabola</em>）</strong>，结合式 <span class="math inline">\(\eqref{27}\)</span> 可解得 <span class="math inline">\(V_{\max}\)</span>，此为探测器绕天体运行的<strong>最小逃逸速度</strong>。对于地球，可计算该速度为 <span class="math display">\[
+V_{\max} = \sqrt{\frac{2 G M}{r_{\min}}} = \sqrt{\frac{2 \times 6.67 \times 10^{-11} \times 5.97 \times 10^{24}}{6.38 \times 10^{6}}} \approx 11.2 \; \text{km/s}
 \tag{32}
 \label{32}
-\]</span>
-此也即探测器脱离地球引力控制所需的<strong>第二宇宙速度</strong>。</p>
+\]</span> 此也即探测器脱离地球引力控制所需的<strong>第二宇宙速度</strong>。</p>
 <ul>
 <li><strong>情形 2：当 $ - (G M m)/(2 r) E_{0} &lt; 0$ 时，<span class="math inline">\(0 \leqslant e &lt; 1\)</span>。</strong></li>
 </ul>
-<p>此时探测器沿椭圆轨道，围绕绕天体作周期性运动，被天体捕获。若 <span class="math inline">\(E_{0} = -(G M m)/(2 r)\)</span>，则 <span class="math inline">\(e =
-0\)</span>，轨道为<strong>圆（<em>Circle</em>）</strong>，结合式 <span class="math inline">\(\eqref{27}\)</span> <span class="math inline">\(\eqref{29}\)</span> 可解得 <span class="math inline">\(V_{\max}\)</span>，此为探测器绕天体周期运动的最小围绕速度。对于地球，可计算该速度为
-<span class="math display">\[
-V_{\max} = \sqrt{\frac{G M}{r_{\min}}} = \sqrt{\frac{6.67 \times
-10^{-11} \times 5.97 \times 10^{24}}{6.38 \times 10^{6}}} \approx 7.9 \;
-\text{km/s}
+<p>此时探测器沿椭圆轨道，围绕绕天体作周期性运动，被天体捕获。若 <span class="math inline">\(E_{0} = -(G M m)/(2 r)\)</span>，则 <span class="math inline">\(e = 0\)</span>，轨道为<strong>圆（<em>Circle</em>）</strong>，结合式 <span class="math inline">\(\eqref{27}\)</span> <span class="math inline">\(\eqref{29}\)</span> 可解得 <span class="math inline">\(V_{\max}\)</span>，此为探测器绕天体周期运动的最小围绕速度。对于地球，可计算该速度为 <span class="math display">\[
+V_{\max} = \sqrt{\frac{G M}{r_{\min}}} = \sqrt{\frac{6.67 \times 10^{-11} \times 5.97 \times 10^{24}}{6.38 \times 10^{6}}} \approx 7.9 \; \text{km/s}
 \tag{33}
 \label{33}
-\]</span>
-此也即探测器围绕地球旋转所需的<strong>第一宇宙速度</strong>。</p>
+\]</span> 此也即探测器围绕地球旋转所需的<strong>第一宇宙速度</strong>。</p>
 <ul>
-<li><strong>情形 3：当 <span class="math inline">\(E_{0} &lt; - (G M
-m)/(2 r)\)</span> 时，<span class="math inline">\(e &lt;
-0\)</span>。</strong></li>
+<li><strong>情形 3：当 <span class="math inline">\(E_{0} &lt; - (G M m)/(2 r)\)</span> 时，<span class="math inline">\(e &lt; 0\)</span>。</strong></li>
 </ul>
-<p>此时，探测器的总能量无法将探测器加速至天体的第一宇宙速度，探测器将返回天体表面（<em>crash
-to earth</em>）而失效。</p>
+<p>此时，探测器的总能量无法将探测器加速至天体的第一宇宙速度，探测器将返回天体表面（<em>crash to earth</em>）而失效。</p>
 <p>另外，还可以在<strong>拉格朗日（<em>Lagrangrian</em>）</strong>或者<strong>哈密顿（<em>Hamiltonian</em>）</strong>力学框架下以更精练的方法对方程进行推导。</p>
 <p>值得一提的是，<em>Hamiltonian</em> 力学框架是量子力学的奠基石。</p>
 <hr>
 <div class="note note-info">
-            <p><font size="2.5">^_^ This is the END of the article. Thank you forreading! </font></p><p><font size="2.5">If you think this article is helpful to you, do nothesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on<i><b>2022/03/10</b></i> .</font></p>
+            <p><font size="2.5">^_^ This is the END of the article. Thank you for reading! </font></p><p><font size="2.5">If you think this article is helpful to you, do not hesitate to leave your comments!</font></p><p><font size="2.5">Finished by <i><b>pkufzh (Small Shrimp)</b></i> on <i><b>2022/03/10</b></i> .</font></p>
           </div>
 <center>
 <i> Who am I? A happy shrimp from Peking University! </i>
